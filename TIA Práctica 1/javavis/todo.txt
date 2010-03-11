@@ -1,0 +1,71 @@
+- Change the NEW option
+
+- Take a look to capture image
+
+- Ver bien PCA: hay c—digo repetido. Ver con un ejemplo. Cambiar mensajes. Poner en inglŽs
+
+- Poner licencia log4j
+
+- Cambiar la morfolog’a matem‡tica para trabajar mejor.
+
+ - Funciones a revisar:
+	- FHistoKMeans: línea 418. AverageHisto no se actualiza, porque no se devuelve
+  
+- DOCUMENTAR!!!! Añadir los artículos publicados a la web
+	- Poner que asumimos que siempre hay que ejecutar javavis desde el directorio
+	  raíz
+	- Documentar ecualización del histograma
+	- FFuzzyKMeans  Poner referencia 
+	  http://www.usyd.edu.au/su/agric/acpa/fkme/FkME.html y ver si en la web está
+	  Usamos sigma=2.
+- Recordar poner que para que aparezca el nombre en el dock hay que a–adir una opci—n
+- Recordar cambiar todo lo de User3x3 a Convol3x3...
+
+Last changes in the current version:
+- Included log4j in order to allow easy debugging
+- Several function organization: FRGBToXXX classes (FRGBToHSB, etc.) join into one function (FRGBToColor).
+- A classes reorganization has been done. 
+- New Functions added:
+	- FHistoEqual: applies histogram equalization
+	- FSift: calculates Sift features
+	- FSaliency and FScaleSaliency: calculates Saliency feature detector
+	- FMser: calculates mser features detector.
+	- FRGBToColor: converts from RGB to other color format: HSB, HSI, YCbCr. FRGBToHSI, FRGToHSB and FRGBToYCbCr 
+     do not present any more.
+    - FLevelThresholding: find the optimal threshold to binarizes a gray level image (applied to Byte and Short images)
+    - FConvAlgorithm: applies clasical edge detection methods, like Prewitt, Sobel and Laplacian 
+- Added norms for including new functions
+- Included JIPException. JIPFunction throws this exception. To inform of errors, a
+  new JIPException must be created.
+- Several minors optimization were introduced.
+- Now, geometric data is link with color data in order to color each element 
+  independently
+- Added a progress bar. It is necessary to include some code in a new function in
+  order to get this bar working. 
+- Added two new frameworks in the same frame for:
+    - Managing 3D data.
+    - Using a desktop to show the behavior of individual functions.
+- Mayor modification, including adaptation to java 1.5
+  - Use of Enums and templates
+  - POINT and SEGMENT image types now are ArrayList<Integer> data.
+  - EDGES and POLYGON image types, ArrayList<ArrayList<Integer>>
+  - Vector objects are not used anymore. ArrayList is used instead
+  - Solved several bugs in FSegEdges
+  - FCanny: solved a bug when processing BYTE type images.
+  - FSusan now is working properly. 
+  - FFuzzyKMeans now is well implemented
+  - FMirror modified and optimized
+  - FScale faster and simpler
+  - FInterSegment faster and simpler
+  - Solved a bug in MatMorph
+  - File format changed. Now a JIPSequence is saved in the file in binary format. Faster
+    and clearer. The jip format now is compressed, implemented using the ZIP classes
+  - Undo: now is working properly. Allows 10 undos and redos
+  - Language support. Just needs to create a file for the language required. In the
+    Gui constructor the Locale is checked. English and Spanish available
+  - Help working!
+  - Now, when a function is applied, the parameter values are stored, so it is
+    possible to apply the same function with the same param values to another image 
+  - Now, Javavis is a Eclipse project. It needs just to import it in Eclipse in order
+    to use it. Furthermore, there is an Ant task to compile, run and generate Javadoc.
+  - Params and results have now methods to work with

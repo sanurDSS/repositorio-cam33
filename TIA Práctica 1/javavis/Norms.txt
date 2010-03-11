@@ -1,0 +1,31 @@
+Norms that must observe functions in order to be included in JavaVis
+--------------------------------------------------------------------
+
+- Function must begin with F 
+- An icon of 17x17 pixels must be attached with the function, showing any related 
+  feature with the function.
+- An example of execution, with the original image (the test images provided with JavaVis can 
+  be used) and the result one, indicating the parameters used.
+- JIPException must be thrown
+- The function must contain enough comentaries so that the function can be understood. 
+  At the beginning of the class a generic text (in English, of course) must appear. 
+  This is an example of FBinarize.
+  
+* <P><FONT COLOR="red">
+*<B>FBinarize:</B> Binarize a byte image to binary.<BR>
+**<B>Description</B><BR>
+*<FONT COLOR="blue">
+*It converts the input byte image in a binary image. To do that,
+*a pixel in the output image is 1 if the value in the corresponding input image
+* is between the range [u1, u2], 0 otherwise.<BR>
+*Only applicable for BYTE type.<BR>
+*<ul><B>Input parameters:</B><BR>
+*<li>img: Input image.<BR>
+*<li>u1: Lower bound of the range to consider as 1<BR>
+*<li>u2: Upper bound of the range to consider as 1<BR>
+*</ul>
+<ul><B>Output parameters:</B><BR>
+*<li>Binary image.<BR><BR>
+*</ul>
+
+  The text here will appear at the web page.

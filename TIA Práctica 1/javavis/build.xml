@@ -1,0 +1,43 @@
+<project name="Javavis" default="run" basedir=".">
+
+  <!-- Propiedades -->
+  <property name="src.home" value="."/>
+  <property name="bin.home" value="bin"/>
+  <property name="lib.home" value="lib"/>
+  <property name="doc.home" value="docs"/>
+  <property name="main.class" value="javavis.Gui"/>
+
+  <path id="path.compilacion">
+    <pathelement location="${bin.home}"/>
+    <fileset dir="${lib.home}">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- Objetivos -->
+  <target name="compile">
+    <mkdir dir="${bin.home}"/>
+    <javac srcdir="${src.home}"
+           destdir="${bin.home}"
+           classpathref="path.compilacion"/>
+  </target>
+
+  <target name="run" depends="compile">
+    <java classname="${main.class}"
+          classpathref="path.compilacion" 
+          fork="true"/>
+  </target>
+
+  <target name="clean">
+    <delete dir="${bin.home}"/>
+  </target>
+
+  <target name="javadoc">
+    <mkdir dir="${doc.home}"/>
+    <javadoc sourcepath="${src.home}"
+             destdir="${doc.home}"
+             packagenames="*">
+      <classpath refid="path.compilacion"/>
+    </javadoc>
+  </target>
+</project>

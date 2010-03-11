@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: Miguel Cazorla	
+Class-Path: bin lib\colt.jar lib\BareBonesBrowserLaunch.jar lib\xercesImpl.jar lib\xml-apis.jar
+Main-Class: javavis.Gui

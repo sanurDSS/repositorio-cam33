@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="lib/|lib/" kind="src" path=""/>
+	<classpathentry exported="true" kind="lib" path="lib/xercesImpl.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xml-apis.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/colt.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/BareBonesBrowserLaunch.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jhall.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/kd.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,32 @@
+[2008-11-20 17:01:51,174] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1629)) - javavis.base.JIPException: JIPFunction.getParamValue: parameter not found
+[2008-11-20 17:02:18,266] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1629)) - javavis.base.JIPException: JIPFunction.getParamValue: parameter not found
+[2008-11-25 17:09:17,439] ERROR(javavis.jip2d.gui.Gui2D$DoAction.nnew(Gui2D.java:1802)) - java.lang.NullPointerException
+[2008-11-27 12:36:59,737] ERROR(javavis.jip2d.gui.Gui2D$DoAction.nnew(Gui2D.java:1810)) - java.lang.NullPointerException
+[2008-11-27 16:51:12,998] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: OpenWindow can not be applied to this image format
+[2008-12-01 16:06:24,824] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: getPixel: coordinates (189, 0) out of the range (0..189, 0..189).
+[2008-12-01 16:10:37,662] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: getPixel: coordinates (189, 0) out of the range (0..189, 0..189).
+[2008-12-01 16:12:06,587] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: getPixel: coordinates (189, 0) out of the range (0..189, 0..189).
+[2008-12-02 17:11:36,817] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: getAllPixels: band number out of range
+[2008-12-04 15:40:32,134] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: OpenWindow can not be applied to this image format
+[2008-12-04 16:47:26,964] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: getPixel: coordinates (12, -1) out of the range (0..378, 0..378).
+[2008-12-04 16:52:07,006] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: getPixel: coordinates (1, 47) out of the range (0..47, 0..47).
+[2008-12-08 10:41:25,892] ERROR(javavis.jip2d.gui.InfoPanelBottom.updateInfo(InfoPanelBottom.java:219)) - javavis.base.JIPException: getPixel: coordinates (495, 416) out of the range (0..258, 0..258).
+[2008-12-08 17:11:48,775] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: getAllPixels: band number out of range
+[2008-12-08 18:15:32,823] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: getPixel: coordinates (53, 366) out of the range (0..189, 0..189).
+[2008-12-08 18:18:03,505] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: getPixel: coordinates (53, 366) out of the range (0..189, 0..189).
+[2008-12-10 11:02:59,099] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: JIPFunction.setParamValue: parameter not found
+[2008-12-10 16:35:17,856] ERROR(javavis.jip2d.gui.Gui2D$DoAction.nnew(Gui2D.java:1810)) - java.lang.NullPointerException
+[2008-12-11 12:27:23,287] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: This function must be applied to a BYTE image
+[2008-12-11 12:28:09,643] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: This algorithm must be used with a sequence having an only frame
+[2008-12-11 12:28:26,412] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: This algorithm must be used with a sequence having an only frame
+[2008-12-11 12:28:49,231] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: This algorithm must be used with a sequence having an only frame
+[2008-12-11 12:29:21,593] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: This function requires a FLOAT type image
+[2008-12-11 17:11:46,918] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: This function must be applied to a BYTE image
+[2008-12-11 17:18:37,578] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: JIPFunction.setParamValue: parameter not found
+[2009-01-06 10:11:11,270] ERROR(javavis.base.JIPToolkit.getSeqFromFileRaw(JIPToolkit.java:396)) - java.io.InvalidClassException: javavis.jip2d.base.JIPImage; local class incompatible: stream classdesc serialVersionUID = -8547352122182918964, local class serialVersionUID = -2507098790835811919
+[2009-01-06 10:11:27,810] ERROR(javavis.base.JIPToolkit.getSeqFromFileRaw(JIPToolkit.java:396)) - java.io.InvalidClassException: javavis.jip2d.base.JIPImage; local class incompatible: stream classdesc serialVersionUID = -8547352122182918964, local class serialVersionUID = -2507098790835811919
+[2009-01-06 10:20:48,047] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: Select Process Sequence
+[2009-01-06 10:50:06,890] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: GrayToGray can not be applied to this image format
+[2009-01-08 16:46:05,057] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: GrayToGray can not be applied to this image format
+[2009-03-06 10:26:19,691] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: FSearchImage must be applied to the complete sequence
+[2009-03-06 10:28:05,512] ERROR(javavis.jip2d.gui.Gui2D$DoAction.run(Gui2D.java:1637)) - javavis.base.JIPException: JIPFunction.getParamValue: parameter not found

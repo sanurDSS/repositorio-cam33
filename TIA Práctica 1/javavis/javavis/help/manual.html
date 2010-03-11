@@ -1,0 +1,475 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="GENERATOR" content="TtH 3.68">
+ <style type="text/css"> div.p { margin-top: 7pt;}</style>
+ <style type="text/css"><!--
+ td div.comp { margin-top: -0.6ex; margin-bottom: -1ex;}
+ td div.comb { margin-top: -0.6ex; margin-bottom: -.6ex;}
+ td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;}
+ td div.norm {line-height:normal;}
+ span.roman {font-family: serif; font-style: normal; font-weight: normal;}
+ span.overacc2 {position: relative;  left: .8em; top: -1.2ex;}
+ span.overacc1 {position: relative;  left: .6em; top: -1.2ex;} --></style>
+
+
+<title>Manual HFSM</title>
+
+<div class="p"><!----></div>
+
+<h3 align="center">Miguel &#193;ngel Cazorla Quevedo<br />
+                TeamChaos </h3>
+
+<title> TeamChaos. Manual de usuario y programación de la herramienta HFSM</title>
+
+<h1 align="center">TeamChaos. Manual de usuario y programación de la herramienta HFSM </h1>
+
+<div class="p"><!----></div>
+
+
+
+<div class="p"><!----></div>
+
+<h1>Contents </h1>
+<a href="#tth_sEc1"
+>1&nbsp; Introducci&#243;n</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc1.1"
+>1.1&nbsp; Conceptos de aut&#243;mata</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc1.2"
+>1.2&nbsp; Formato de fichero</a><br />
+<a href="#tth_sEc2"
+>2&nbsp; Uso de la herramienta</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc2.1"
+>2.1&nbsp; Botones y men&#250;s</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc2.2"
+>2.2&nbsp; Generar c&#243;digo</a><br />
+<a href="#tth_sEc3"
+>3&nbsp; Construir un aut&#243;mata ejemplo</a><br />
+<a href="#tth_sEc4"
+>4&nbsp; TODO</a><br />
+
+
+<div class="p"><!----></div>
+ <h2><a name="tth_sEc1">
+1</a>&nbsp;&nbsp;Introducción</h2> El presente manual tiene como objetivo el mostrar el funcionamiento de la
+herramienta HFSM, integrada en el ChaosManager del TeamChaos.
+
+<div class="p"><!----></div>
+     <h3><a name="tth_sEc1.1">
+1.1</a>&nbsp;&nbsp;Conceptos de autómata</h3>
+Un autómata puede estar compuesto por estados y transiciones entre estados. Un ejemplo de autómata
+es el mostrado en la Figura&nbsp;<a href="#segunda">1</a>. Detallamos algunos conceptos:
+
+<dl compact="compact">
+ <dt><b>Estado</b></dt>
+    <dd> En un instante de tiempo cualquiera, un jugador ejecutará un estado. Un estado
+    es un conjunto de acciones (normalmente con alguna llamada a una conducta de bajo nivel) que
+    el perro ejecuta. Contiene código C (u OPENR) que se ejecutará cuando el perro se encuentre en
+    ese estado.</dd>
+ <dt><b>MetaEstado</b></dt>
+    <dd> Es un estado que contiene un autómata. Puede estar formado por estados,
+    transiciones o metaestados. Se permite definir MetaEstados externos. Estos metaestados se
+    guardan como un autómata independiente (en sí es un autómata) y permiten referenciarlos desde
+    distintos sitios de nuestro autómata o desde distintos autómatas, sin tener que duplicar
+    código. De esta manera el mantenimiento se hace más eficiente (se puede pensar como una
+    subrutina).</dd>
+ <dt><b>Transiciones</b></dt>
+    <dd> Permiten el cambio entre estados. Siempre tiene un estado inicial y otro
+    final. Aquí, cuando hablamos de estado puede ser estado o metaestado (cualquier combinación E-M,
+    E-E, M-E, M-M). Constan de dos partes. La primera es el test. Si el perro se encuentra en un
+    determinado estado, comprobará las condiciones de test de todas las transiciones que parten de
+    ese estado. Si alguno de los test de las transiciones devuelve cierto, se pasará al estado
+    final de la transición. Por ello, el código de test de una transición tiene que devolver un
+    valor booleano, devolviendo cierto cuando queramos que cambie de estado. También podemos
+    querer que se ejecute algún código en la transición, por ello podemos asociar un código a la
+    transición. Si tenemos varias transiciones que parten del mismo estado y queremos que una se
+    ejecute antes que la otra, haremos uso de la prioridad. A menor prioridad, antes se comprueba
+    la condición de test de esa transición. Tened en cuenta que la primera que cumpla la condición
+    de test es la que se usará para cambiar de estado.</dd>
+</dl>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_fIg1">
+</a>
+<IMG src="images/segunda.jpg" >
+<table align="center" border="0"><tr><td>
+</td></tr></table><!--hboxt-->  <center>Figure 1: <a name="segunda">
+</a> Ejemplo de autómata.</center>
+
+<div class="p"><!----></div>
+Un metaestado es un autómata en sí y debe cumplir los requisitos de un autómata. De hecho, nuestro
+autómata principal es un metaestado. Un autómata debe tener siempre un estado inicial, que es el
+que se ejecutará cada vez que entremos en este autómata. Imaginemos que nuestro autómata tiene dos
+metaestados y transiciones entre estos. Estamos en el estado inicial y se cumple la condición para
+pasar al otro estado. Es un metaestado, por lo que se empieza a ejecutar el subautómata dentro de
+ese metaestado. Empezará ejecutando el estado inicial de ese metaestado. Nota importante: tened en
+cuenta que no sólo se comprueban las condiciones de las transiciones que parten del estado dentro
+del metaestado, sino que también se comprueban las condiciones que parten del metaestado en el
+nivel superior. Es más, primero se comprueban esas transiciones.
+
+<div class="p"><!----></div>
+     <h3><a name="tth_sEc1.2">
+1.2</a>&nbsp;&nbsp;Formato de fichero</h3>
+Un proyecto se guarda en un directorio, con el nombre del proyecto. Dentro de este directorio
+encontramos un fichero con extensión <em>.xas</em> que es un fichero XML que contiene la definición
+del autómata. También veremos varios ficheros <em>.cc</em> con el código de los estados y las
+transiciones. Un ejemplo de código XML es el siguiente:
+<font size="-1">
+
+<pre>
+&lt;strategy&nbsp;stateCount='29'&nbsp;transitionCount='20'&nbsp;metaStateCountName='6'&nbsp;stateCountName='3'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transitionCountName='8'&nbsp;&#62;
+&lt;metastate&nbsp;name='Center'&nbsp;id='1'&nbsp;x='675'&nbsp;y='262'&nbsp;metaStateCountName='1'&nbsp;stateCountName='3'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transitionCountName='3'&nbsp;initial='1'&nbsp;extern='0'&nbsp;&#62;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;state&nbsp;name='KeepInArea'&nbsp;id='24'&nbsp;x='77'&nbsp;y='129'&nbsp;initial='1'&nbsp;&#62;&nbsp;&lt;/state&#62;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;state&nbsp;name='Face'&nbsp;id='28'&nbsp;x='594'&nbsp;y='241'&nbsp;initial='0'&nbsp;&#62;&nbsp;&lt;/state&#62;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;transition&nbsp;name='BallCloseAndInArea'&nbsp;id='18'&nbsp;x='260'&nbsp;y='374'&nbsp;priority='1'&nbsp;to='28'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from='24'&nbsp;&#62;&lt;/transition&#62;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;transition&nbsp;name='BallFar'&nbsp;id='19'&nbsp;x='427'&nbsp;y='39'&nbsp;priority='1'&nbsp;to='24'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from='28'&#62;&lt;/transition&#62;
+&lt;/metastate&#62;
+&lt;metastate&nbsp;name='Defender'&nbsp;id='2'&nbsp;x='50'&nbsp;y='511'&nbsp;metaStateCountName='1'&nbsp;stateCountName='4'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transitionCountName='6'&nbsp;initial='0'&nbsp;extern='0'&nbsp;&#62;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;state&nbsp;name='Face'&nbsp;id='25'&nbsp;x='23'&nbsp;y='191'&nbsp;initial='1'&nbsp;&#62;&nbsp;&lt;/state&#62;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;state&nbsp;name='ClearBall'&nbsp;id='27'&nbsp;x='554'&nbsp;y='331'&nbsp;initial='0'&nbsp;&#62;&nbsp;&lt;/state&#62;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;transition&nbsp;name='BallClose'&nbsp;id='14'&nbsp;x='283'&nbsp;y='437'&nbsp;priority='1'&nbsp;to='27'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from='25'&#62;&lt;/transition&#62;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;transition&nbsp;name='BallFar'&nbsp;id='15'&nbsp;x='502'&nbsp;y='68'&nbsp;priority='1'&nbsp;to='25'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from='27'&#62;&lt;/transition&#62;
+&lt;/metastate&#62;
+&lt;metastate&nbsp;name='Localized'&nbsp;id='3'&nbsp;x='104'&nbsp;y='33'&nbsp;metaStateCountName='4'&nbsp;stateCountName='3'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transitionCountName='1'&nbsp;initial='0'&nbsp;extern='0'&nbsp;&#62;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;state&nbsp;name='Localize'&nbsp;id='13'&nbsp;x='143'&nbsp;y='89'&nbsp;initial='1'&nbsp;&#62;&nbsp;&lt;/state&#62;
+&lt;/metastate&#62;
+&lt;transition&nbsp;name='BallVisMyArea'&nbsp;id='7'&nbsp;x='420'&nbsp;y='342'&nbsp;priority='1'&nbsp;to='2'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from='1'&#62;&lt;/transition&#62;
+&lt;transition&nbsp;name='NotLocCL'&nbsp;id='6'&nbsp;x='444'&nbsp;y='167'&nbsp;priority='2'&nbsp;to='3'&nbsp;from='1'&#62;&lt;/transition&#62;
+&lt;transition&nbsp;name='NotLocDL'&nbsp;id='4'&nbsp;x='206'&nbsp;y='236'&nbsp;priority='1'&nbsp;to='3'&nbsp;from='2'&#62;&lt;/transition&#62;
+&lt;transition&nbsp;name='LocBallNotVisOtherAreaDC'&nbsp;id='5'&nbsp;x='440'&nbsp;y='503'&nbsp;priority='2'&nbsp;to='1'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from='2'&#62;&lt;/transition&#62;
+&lt;transition&nbsp;name='LocBallVisMyArea'&nbsp;id='3'&nbsp;x='10'&nbsp;y='238'&nbsp;priority='1'&nbsp;to='2'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from='3'&#62;&lt;/transition&#62;
+&lt;transition&nbsp;name='LocBallNotVisOtherAreaLC'&nbsp;id='2'&nbsp;x='638'&nbsp;y='16'&nbsp;priority='2'&nbsp;to='1'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from='3'&nbsp;&#62;&lt;/transition&#62;&nbsp;&lt;/strategy&#62;
+
+</pre></font>
+
+<div class="p"><!----></div>
+En el fichero se guarda información de los estados, las transiciones y los metaestados. Estos
+últimos pueden contener a su vez más estados, transiciones y metaestados. Para cada elemento,
+guardamos su nombre, su identificador (único y se usa para identificar al fichero <em>.cc</em>) y su
+posición en la pantalla (los valores <em>x</em> e <em>y</em>). También se guarda información relativa
+a cada elemento: para las transiciones de qué estado a qué estado va y su prioridad; los estados
+también indica si es estado inicial; el metaestado si es externo.
+
+<div class="p"><!----></div>
+ <h2><a name="tth_sEc2">
+2</a>&nbsp;&nbsp;Uso de la herramienta</h2>
+Para arrancar la herramienta, ejecutamos el ChaosManager, nos vamos a la pestaña <em>Player
+Tools</em> y a la derecha y arriba tenemos el botón <em>FSMBuilder</em> que arranca la herramienta. Nos
+aparece la ventana mostrada en la Figura&nbsp;<a href="#primera">2</a>. Aquí, nos permite abrir un proyecto ya
+existente o bien crear uno nuevo. Si le decimos crear uno nuevo, nos pide dónde guardarlo.
+<em>Importante</em>: por norma, empezad los proyectos con la primera letra en mayúscula. Si abrimos
+uno tenemos que entrar en el directorio y abrir el fichero <em>.xas</em>. Como norma general, dejad
+los autómatas que se vayan a usar en el equipo en ChaosManager2005/conf/hfsm.
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_fIg2">
+</a>
+<IMG src="images/primera.jpg" >
+<table align="center" border="0"><tr><td>
+</td></tr></table><!--hboxt-->  <center>Figure 2: <a name="primera">
+</a> Pantalla principal de la herramienta.</center>
+
+<div class="p"><!----></div>
+     <h3><a name="tth_sEc2.1">
+2.1</a>&nbsp;&nbsp;Botones y menús</h3>
+Disponemos de varias opciones en la herramienta (ver Figura&nbsp;<a href="#menus">3</a>). Los menús son los
+siguiente:
+
+<dl compact="compact">
+ <dt><b>File</b></dt>
+    <dd> Permite abrir, renombrar, salvar, salvar como y salir de la aplicación.</dd>
+ <dt><b>Generation</b></dt>
+    <dd> Verifica si un autómata es correcto y genera el código para el TeamChaos.</dd>
+ <dt><b>Add</b></dt>
+    <dd> Permite añadir estados, metaestados, transiciones y gestiona las variables
+    privadas.</dd>
+ <dt><b>View</b></dt>
+    <dd> Muestra u oculta el árbol de navegación y la barra de herramientas.</dd>
+ <dt><b>Help</b></dt>
+    <dd> Ayuda y el Acerca de.</dd>
+</dl>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_fIg3">
+</a>
+<IMG src="images/menus.jpg" >
+<table align="center" border="0"><tr><td>
+</td></tr></table><!--hboxt-->  <center>Figure 3: <a name="menus">
+</a> Vista detalle de los botones y menús de la herramienta.</center>
+
+<div class="p"><!----></div>
+En la barra de herramientas (justo debajo de los menús) nos encontramos con una serie de botones.
+Su función es la siguiente (de izquierda a derecha):
+
+<ul>
+<li> Abre un proyecto.
+<div class="p"><!----></div>
+</li>
+
+<li> Salva el proyecto actual.
+<div class="p"><!----></div>
+</li>
+
+<li> Añade un nuevo estado. Simplemente pinchando sobre cualquier sitio en el panel, nos
+    posiciona el estado.
+<div class="p"><!----></div>
+</li>
+
+<li> Añade un nuevo metaestado. Igual en funcionamiento al anterior.
+<div class="p"><!----></div>
+</li>
+
+<li> Añade un nuevo metaestado externo. Pinchamos sobre un sitio y nos abre un selector de
+    ficheros que nos permitirá incluir (referenciar, no lo incluye) un autómata ya guardado.
+<div class="p"><!----></div>
+</li>
+
+<li> Añade una nueva transición. Primero tenemos que pinchar en el estado de partida, luego
+    en el de destino y por último en el sitio donde queramos posicionar la transición.
+<div class="p"><!----></div>
+</li>
+
+<li> Expande los elementos mostrados.
+<div class="p"><!----></div>
+</li>
+
+<li> Minimiza los elementos mostrados (ver Figura&nbsp;<a href="#escondidos">4</a>).
+<div class="p"><!----></div>
+</li>
+</ul>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_fIg4">
+</a>
+<IMG src="images/escondidos.jpg" >
+<table align="center" border="0"><tr><td>
+</td></tr></table><!--hboxt-->  <center>Figure 4: <a name="escondidos">
+</a> Vista minimizada de un autómata.</center>
+
+<div class="p"><!----></div>
+Cada metaestado se puede abrir en una solapa nueva. Todas se pueden abrir y cerrar, excepto el
+autómata principal, el de más alto nivel.
+
+<div class="p"><!----></div>
+<em>Importante</em>: Lo nombres de estados y las transiciones deben ser nombres válidos para C.
+Cuando cambiamos el nombre a un estado, por ejemplo, no nos deja introducir caracteres no válidos.
+Para cambiar el nombre al estado, además de ponerlo, debemos pulsar el botón OK. Todos los
+elementos (estados, metaestados y transiciones) tienen varios botones en la parte inferior
+derecha. Explicamos lo que significa cada uno:
+
+<ul>
+<li> El último, la X, sirve para eliminar el elemento. En el caso de transiciones sólo
+    elimina la transición, pero en un estado eliminará todas las transiciones que parten o llegan
+    a él.
+<div class="p"><!----></div>
+</li>
+
+<li> El primer botón del estado sirve para cambiarlo a MetaEstado. El segundo sirve para
+    introducir el código que queremos que ejecute cuando el robot se encuentra en ese estado. No
+    tenemos que poner nombre de función ni nada por el estilo. Para la programación podemos usar C
+    y cualquier código que usaríamos en el TeamChaos.
+<div class="p"><!----></div>
+</li>
+
+<li> En el caso de la transición, el primer botón sirve para modificar el código del test de
+    la transición. Este código se ejecuta cada vez que el robot se encuentra en un estado que es
+    de partida de la transición. El test debe devolver un valor booleano.  El segundo botón es el
+    del código de la transición. Podemos desear que, además de comprobar si se cumple la
+    transición, se ejecute alguna acción.
+<div class="p"><!----></div>
+</li>
+
+<li> En el caso de los metaestados, tenemos un botón que nos permitirá entrar en el
+    metaestado para definirlo (crear un autómata). El metaestado externo no permite modificar el
+    autómata. Para modificarlo, hay que abrir el autómata. <em>Muy importante</em>: No se comprueban
+    ciclos.
+<div class="p"><!----></div>
+</li>
+</ul>
+
+<div class="p"><!----></div>
+Por último quedan las variables privadas. Seleccionamos la opción <em>Private variables</em> en el
+menú <em>Add</em> y nos aparecerá una ventana como la mostrada en la Figura&nbsp;<a href="#private">5</a>. Podemos
+añadir nuevas variables o modificar las ya existentes. Una variable privada es común a todo el
+autómata. Es decir, cualquier estado o transición la puede usar en su código. Si creamos una nueva
+variable, nos aparecerá una nueva fila con los siguientes datos:
+
+<ul>
+<li> <em>Name</em>: El nombre de la variable. Como siempre, tiene que cumplir el estándar de C.
+<div class="p"><!----></div>
+</li>
+
+<li> <em>Type</em>: El tipo de la variable (int, float, etc.). No se realizan comprobaciones.
+<div class="p"><!----></div>
+</li>
+
+<li> <em>NumberElem</em>: Número de elementos de la variable. Si es uno es una variable, más de
+    uno es una array.
+<div class="p"><!----></div>
+</li>
+
+<li> <em>InitialValue</em>: Podemos dar un valor inicial a la variable. En el caso del array
+    este campo no se tiene en cuenta.
+<div class="p"><!----></div>
+</li>
+</ul>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_fIg5">
+</a>
+<IMG src="images/private.jpg" >
+<table align="center" border="0"><tr><td>
+</td></tr></table><!--hboxt-->  <center>Figure 5: <a name="private">
+</a> Variables privadas.</center>
+
+<div class="p"><!----></div>
+     <h3><a name="tth_sEc2.2">
+2.2</a>&nbsp;&nbsp;Generar código</h3>
+El autómata que definamos tiene que estar bien formado para poder generar código. En el menú
+<em>Generation</em> tenemos varias opciones relacionadas con la generación de código. Las primeras
+opciones (<em>Verify</em> y <em>Verify all</em>) comprueban si el autómata es correcto. Un autómata no
+es correcto si: tiene algún estado al que no llega ni sale ninguna transición; no hay estado
+inicial; se repiten nombres de estado o transición. La última opción, <em>Generate Code</em>,
+realiza la comprobación de si es correcto y genera el código. La generación de código es
+automática y se genera directamente en el directorio adecuado del TeamChaos2005 y se modifican los
+ficheros necesarios para compilar. Cuando se genera código, además de los ficheros necesarios
+(<em>.cc</em>, <em>.h</em>, etc.) se generan los makefiles y ficheros auxiliares necesarios para la
+compilación. Estos últimos ficheros se generan para todas las máquinas de estado que en el momento
+de la generación se encuentren en TeamChaos2005/src/source/Hbm/hfsm Detallamos los ficheros que se
+generan y para qué sirven:
+
+<ul>
+<li> TeamChaos2005/src/source/hbm.path Fichero que define los ficheros a compilar (de las
+    máquinas de estado).
+<div class="p"><!----></div>
+</li>
+
+<li> TeamChaos2005/src/source/Hbm/hfsm_headers.auto.h Contiene los ficheros que se han de
+    incluir para poder compilar. Este fichero es usado en TeamChaos2005/src/source/Hbm/Hbm.h
+<div class="p"><!----></div>
+</li>
+
+<li> TeamChaos2005/src/source/Hbm/hfsm_init_roles.auto.h Contiene el código para comprobar
+    qué rol tiene el jugador actual. El rol es leído del MS y se compara lo que pongamos con los
+    nombres de las máquinas de estado. Para indicar al jugador que tome un rol determinado,
+    debemos poner el mismo nombre de la máquina de estados. Se usa en
+    TeamChaos2005/src/source/Hbm/Hbm.cc
+<div class="p"><!----></div>
+</li>
+
+<li> TeamChaos2005/src/source/Hbm/hfsm_related_constants.auto.h Contiene la definición de las
+    constantes que identifican a los distintos roles. Usado en TeamChaos2005/src/source/Hbm/Hbm.cc
+<div class="p"><!----></div>
+</li>
+
+<li> TeamChaos2005/src/source/Hbm/hfsm_switch.auto.h Contiene el <em>switch</em> que inicializa
+    el rol, creando un objeto de la clase que implementa el rol correspondiente. Se usa en
+    TeamChaos2005/src/source/Hbm/Hbm.cc
+    distintos roles.
+<div class="p"><!----></div>
+</li>
+</ul>
+
+<div class="p"><!----></div>
+<em>Nota importante</em>: al renombrar un proyecto, se cambia el nombre del autómata (directorio y
+proyecto), pero no se cambia el directorio del TeamChaos. HAY QUE BORRAR EL DIRECTORIO CON EL
+NOMBRE ANTIGUO EN EL TEAMCHAOS Y REALIZAR UN REFRESH EN ECLIPSE.
+
+<div class="p"><!----></div>
+ <h2><a name="tth_sEc3">
+3</a>&nbsp;&nbsp;Construir un autómata ejemplo</h2>
+Vamos a realizar paso a paso la construcción de un autómata sencillo. Va a consistir en un estado,
+un metaestado que contendrá un único estado y transiciones entre el estado y el metaestado.
+Iniciamos la herramienta y le decimos que nos cree un nuevo proyecto. Le damos como nombre MiRol y
+lo guardamos donde nos interese.
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_fIg6">
+</a>
+<IMG src="images/tercera.jpg" >
+<table align="center" border="0"><tr><td>
+</td></tr></table><!--hboxt-->  <center>Figure 6: <a name="tercera">
+</a> Creación de un nuevo autómata.</center>
+
+<div class="p"><!----></div>
+Ahora vamos a crear el autómata. Pinchamos en el botón para incluir un nuevo estado (o la opción
+del menú <em>Add</em>) y a continuación donde queramos posicionar el estado. Haremos lo mismo para
+el metaestado. Para las transiciones, incluimos la nueva transición, pinchando sobre el estado de
+partida, después el de destino y por último en la posición donde queramos posicionar la
+transición. Hacemos lo mismo con la otra transición. Cambiamos el nombre a todos los elementos.
+Tendremos un autómata como el mostrado en la Figura&nbsp;<a href="#cuarta">7</a>.
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_fIg7">
+</a>
+<IMG src="images/cuarta.jpg" >
+<table align="center" border="0"><tr><td>
+</td></tr></table><!--hboxt-->  <center>Figure 7: <a name="cuarta">
+</a> Definición de autómata.</center>
+
+<div class="p"><!----></div>
+Modificamos el código de cada estado y transición, pinchando en el botón correspondiente de cada
+elemento. Vamos ahora a definir el contenido del metaestado. Pinchamos en el botón y nos aparecerá
+una nueva ventana donde podremos añadir nuevo estados, metaestados y transiciones. Añadimos un
+nuevo estado, le cambiamos el nombre y modificamos su código. Ya por último procedemos a generar
+el código. Ya lo tenemos disponible para compilar en el TeamChaos.
+
+<div class="p"><!----></div>
+ <h2><a name="tth_sEc4">
+4</a>&nbsp;&nbsp;TODO</h2>
+
+<ul>
+<li> Realizar el trazador de estados para que se vea gráficamente qué estado está ejecutando
+    actualmente el perro.
+<div class="p"><!----></div>
+</li>
+
+<li> Opción para que aparezcan las variables privadas en una ventana cuando nos encontramos
+    en el editor. Pinchando en el nombre nos la pondría como texto en el editor.
+<div class="p"><!----></div>
+</li>
+
+<li> Opción para que aparezcan las conductas (bajo nivel) disponibles.
+<div class="p"><!----></div>
+</li>
+
+<li> Arreglar el árbol de la izquierda.
+<div class="p"><!----></div>
+</li>
+</ul>
+
+<div class="p"><!----></div>
+
+<br /><br /><hr /><small>File translated from
+T<sub><font size="-1">E</font></sub>X
+by <a href="http://hutchinson.belmont.ma.us/tth/">
+T<sub><font size="-1">T</font></sub>H</a>,
+version 3.68.<br />On 12 Jun 2005, 20:54.</small>
+</html>
