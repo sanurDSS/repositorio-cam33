@@ -1,0 +1,176 @@
+*
+{
+	margin: 0;
+	font-family: sans-serif;
+}
+
+p, label, a, table
+{
+	font-size: 10pt;
+}
+
+img
+{
+	border: 0;
+}
+
+table
+{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+h3
+{
+	color: #E77500;
+}
+
+a
+{
+	color: #F55B00;
+}
+
+a:hover
+{
+	color: #903800;
+}
+
+body
+{
+	background: url("fondoclaro.gif") #ddd;
+}
+
+#contenedor
+{
+	margin: auto;
+	min-width: 750px;
+	max-width: 1300px;
+	background: #fefefe;
+	border-bottom: 1px solid #222;
+	border-left: 1px solid #BBB;
+	border-right: 1px solid #BBB;
+	padding: 0 30px;
+	margin-bottom: 50px;
+}
+
+#cabecera
+{
+	position: relative;
+}
+
+#titulo h1 a
+{
+	background: url("tituloclaro.png") no-repeat;
+	display: block;
+	width: 536px;
+	height: 139px;
+	text-indent: -10000px;
+}
+
+#titulo h2
+{
+	display: none;
+}
+
+#busqueda
+{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+#busqueda label, #busqueda h3
+{
+	display: none;
+}
+
+#busqueda div
+{
+	display: inline;
+}
+
+#identificarse a, #busqueda a
+{
+	font-size: 8pt;
+}
+
+#identificarse input
+{
+	display: block;
+}
+
+#navegacion h3
+{
+	margin-top: 30px;
+}
+
+#navegacion
+{
+	float: left;
+	width: 250px;
+}
+
+#cuerpo
+{
+	margin-left: 250px;
+}
+
+#creditos, #rss, #w3, #estilos
+{
+	float: left;
+	width: 19%;
+	padding: 3%;
+	margin: 0;
+}
+
+#pie
+{
+	margin-top: 30px;
+	position: relative;
+	clear: both;
+	height: 200px;
+	border-top: 5px dotted #000;
+}
+
+#resultados td
+{
+	padding: 10px;
+	border: 1px solid #000;
+}
+
+#resultados tr.cabecera
+{
+	background: #ccc;
+}
+
+#paginacion
+{
+	text-align: center;
+}
+
+#portada .foto
+{
+	margin-bottom: 30px;
+}
+
+em
+{
+	font-weight: bold;
+}
+
+#cuerpo h3
+{
+	font-size: 20pt;
+	border-bottom: 1px solid #888;
+	margin-bottom: 20px;
+}
+
+#registrarse .columna1
+{
+	width: 250px;
+}
+
+#identificarse
+{
+	margin-bottom: 40px;
+}

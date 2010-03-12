@@ -1,0 +1,618 @@
+/*****************************************************
+Generales
+*****************************************************/
+*
+{
+	margin: 0;
+	font-family: sans-serif;
+}
+
+img
+{
+	border: 0;
+}
+
+p
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+table
+{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+body
+{
+	background: url("fondopie.gif") top;
+	color: #fff;
+}
+
+#contenedor
+{
+	background: url("fondo.gif");
+}
+
+#contenido
+{
+	background: url("cabecera.gif") repeat-x;
+}
+
+#cabecera, #pie_superior
+{
+	width: 970px;
+	margin: auto;
+}
+
+/*****************************************************
+Cabecera
+*****************************************************/
+#cabecera
+{
+	position: relative;
+}
+
+#titulo h1 a
+{
+	background: url("titulo.png") no-repeat;
+	display: block;
+	width: 536px;
+	height: 139px;
+	text-indent: -10000px;
+}
+
+#titulo h2
+{
+	display: none;
+}
+
+#busqueda
+{
+	background: url("busqueda.gif") no-repeat;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 190px;
+	height: 64px;
+	padding-top: 51px;
+}
+
+#busqueda form
+{
+	position: relative;
+}
+
+#busqueda input[type=text]
+{
+	background: none;
+	border: none;
+	width: 125px;
+	margin-left: 30px;
+	margin-right: 35px;
+	font-size: 9pt;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	font-weight: bold;
+}
+
+#busqueda input[type=submit]
+{
+	background: url("lupa.gif") no-repeat;
+	border: medium none;
+	height: 23px;
+	width: 25px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	text-indent: -10000px;
+}
+#busqueda input[type=submit]:hover
+{
+	background: url("lupa.gif") 0 -23px;
+}
+
+#busqueda h3, #busqueda label
+{
+	display: none;
+}
+
+#busqueda div
+{
+	display: inline;
+}
+
+#busqueda div span
+{
+	display: block;
+	text-align: right;
+	margin-top: 5px;
+	padding-right: 25px;
+}
+
+#busqueda div span a
+{
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	font-size: 8pt;
+	text-decoration: none;
+}
+
+#busqueda div span a:hover
+{
+	text-decoration: underline;
+}
+
+/*****************************************************
+Cuerpo
+*****************************************************/
+#cuerpo
+{
+	background: url("fondotexto.gif") repeat-y right;
+	padding-left: 320px;
+	width: 650px;
+	margin: auto;
+	margin-bottom: 30px;
+	color: #EAB8B8;
+	text-shadow: 1px 1px 1px #000;
+	font-size: 10pt;
+}
+
+#cuerpo a
+{
+	color: #B44343;
+	font-weight: bold;
+}
+
+#cuerpo a:hover
+{
+	color: #EAB8B8;
+}
+
+#cuerpo h3
+{
+	margin-bottom: 20px;
+	border-bottom: 1px solid #490A0A;/*#540202*/
+}
+
+
+@font-face
+{
+	font-family: "Kabel-Bold";
+	src: url("Kabel-Bold.otf") format("opentype");
+}
+
+#cuerpo h3 span
+{
+	display: block;
+	border-bottom: 1px solid #7B1B1B;
+	padding-bottom: 10px;
+	color: #EBE1D5;
+	font-size: 28px;
+	font-weight: normal;
+	font-family:"Kabel-Bold", "sans-serif";
+	text-shadow: 1px 1px 1px #000;
+}
+
+#cuerpo_superior
+{
+	background: url("superiortexto.gif") no-repeat right;
+	height: 20px;
+}
+
+#cuerpo_medio
+{
+	padding-left: 20px;
+	padding-right: 20px;
+	min-height: 300px;
+}
+
+#cuerpo_inferior
+{
+	background: url("inferiortexto.gif") no-repeat right;
+	height: 20px;
+}
+
+/*****************************************************
+Navegación
+*****************************************************/
+#navegacion
+{
+	width: 320px;
+	padding-right: 650px;
+	margin: auto;
+}
+
+#menu, #identificarse
+{
+	float: left;
+	width: 320px;
+}
+
+#navegacion h3
+{
+	display: none;
+}
+
+#menu
+{
+	margin-top: 20px;
+	font-size: 8pt;
+}
+
+#menu ul
+{
+	list-style: none;
+}
+
+#menu ul li
+{
+	width: 255px;
+	margin: 0;
+	margin-top: -10px;
+	margin-bottom: -10px;
+	margin-left: 30px;
+}
+
+#menu ul li:hover
+{
+	background: url('enlace.gif') no-repeat top left;
+}
+
+#menu a
+{
+	display: block;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 45px;
+	text-decoration: none;
+	color: #EAB8B8;
+	text-shadow: 1px 1px 0 #000;
+	font-weight: bold;
+	line-height: 20px;
+}
+
+#menu a:hover
+{
+	color: #a83333;
+	text-shadow: 1px 1px 0 #000;
+}
+
+#identificarse
+{
+	margin-top: 35px;
+	margin-bottom: 50px;
+}
+
+#identificarse form
+{
+	width: 177px;
+	margin: auto;
+}
+
+#identificarse label
+{
+	display: none;
+}
+
+#identificarse div
+{
+	margin-top: 10px;
+}
+
+#identificarse input[type="text"], #identificarse input[type="password"]
+{
+	height: 17px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border: 0;
+	font-size: 9pt;
+	color: #fff;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #000;
+}
+
+#identificarse input[type="text"]
+{
+	background: url("usuario.gif") no-repeat;
+	width: 147px;
+	padding-left: 25px;
+	padding-right: 5px;
+}
+
+#identificarse input[type="password"]
+{
+	background: url("contrasena.gif") no-repeat;
+	width: 112px;
+	padding-left: 25px;
+	padding-right: 3px;
+}
+
+#identificarse input[type="submit"]
+{
+	background: url("entrar.gif") no-repeat;
+	width: 37px;
+	height: 27px;
+	text-indent: -10000px;
+	border: 0;
+}
+
+#identificarse input[type="submit"]:hover
+{
+	background: url("entrarencima.gif") no-repeat;
+}
+
+#identificarse input{
+	float: left;
+}
+
+#identificarse div span a
+{
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	font-size: 8pt;
+	text-decoration: none;
+}
+
+#identificarse div span a:hover
+{
+	text-decoration: underline;
+}
+
+/*****************************************************
+Pie
+*****************************************************/
+#pie
+{
+	clear: both;
+	border-top: 1px solid #882b2b;
+	background: url("fondonegrosombreado.gif") repeat-x;
+}
+
+#pie_superior
+{
+	font-size: 10pt;
+	color: #CCBDAB;
+	text-shadow: 1px 1px 1px #000;
+	padding-top: 20px;
+}
+
+#pie_superior h3
+{
+	font-style: italic;
+	padding-bottom: 15px;
+}
+
+#pie_superior div a
+{
+	color: #ba1600;
+	text-decoration: none;
+}
+
+#pie_superior div a:hover
+{
+	text-decoration: underline;
+}
+
+#creditos, #rss, #w3
+{
+	width: 230px;
+	padding-left: 47px;
+	padding-right: 46px;
+	float: left;
+}
+
+#w3 .w3
+{
+	display: inline;
+}
+
+#pie_inferior
+{
+	clear: both;
+	text-align: center;
+	background: url("pie.gif") repeat-x;
+	padding: 10px;
+	padding-top: 40px;
+	color: #523e26;
+}
+
+#pie_inferior h3, #pie_inferior ul, #pie_inferior li
+{
+	display: inline;
+	font-size: 8pt;
+}
+
+#pie_inferior ul
+{
+	padding: 0;
+}
+
+#pie_inferior a
+{
+	text-decoration: none;
+	padding: 5px;
+	color: #52320e;
+	border: 1px solid transparent;
+}
+
+#pie_inferior a:hover
+{
+	border: 1px solid #9d713c;
+	background: #b98f5c;
+	border-radius: 5px;
+}
+
+/*****************************************************
+Portada
+*****************************************************/
+#portada .foto
+{
+	padding-bottom: 30px;
+	padding-top: 10px;
+	min-height: 100px;
+	position: relative;
+}
+
+#portada em
+{
+	font-style: normal;
+	font-weight: bold;
+}
+
+#portada h4
+{
+	font-size: 14pt;
+}
+
+#portada .imagen
+{
+	position: absolute;
+	top: 20px;
+	left: 0;
+}
+
+#portada .imagen
+{
+	max-width: 150px;
+	max-height: 100px;
+}
+
+#portada .informacion
+{
+	margin-left: 150px;
+}
+
+/*****************************************************
+Foto
+*****************************************************/
+#foto .columna1
+{
+	font-weight: bold;
+	width: 30%;
+	vertical-align: top;
+}
+
+/*****************************************************
+Buscar y registrarse
+*****************************************************/
+#buscar td, #registrarse td
+{
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+#registrarse .columna1
+{
+	vertical-align: top;
+}
+
+#registrarse h4
+{
+	padding-top: 5px;
+}
+
+/*#buscar form div
+{
+	margin-bottom: 15px;
+}
+
+#buscar label
+{
+	float: left;
+	width: 150px;
+	font-weight: bold;
+}
+
+#buscar form div
+{
+	clear: left;
+}*/
+
+/*****************************************************
+Resultados
+*****************************************************/
+#resultados tr.cabecera
+{
+	background: #ccc;
+}
+
+#resultados tr.cabecera td
+{
+	padding: 10px;
+	border-bottom: none !important;
+}
+
+#resultados tr.cabecera td a
+{
+	font-weight: bold;
+	color: #555;
+	text-shadow: 1px 1px 1px #fff;
+	text-decoration: none;
+}
+
+#resultados tr.cabecera td a:hover
+{
+	text-decoration: underline;
+}
+
+#resultados .ascendente
+{
+	background: url("ascendente.png") #333 right center no-repeat;
+}
+
+#resultados .descendente
+{
+	background: url("descendente.png") #333 right center no-repeat;
+}
+
+#resultados tr.cabecera td.ascendente a, #resultados tr.cabecera td.descendente a
+{
+	color: #fff;
+	text-shadow: none;
+}
+
+#resultados td
+{
+	border-bottom: 1px solid #999;
+}
+
+#resultados .miniatura, #resultados .fecha, #resultados .pais
+{
+	padding: 10px;
+	width: 1%;
+}
+
+#paginacion
+{
+	padding-top: 20px;
+	position: relative;
+	margin-bottom: 50px;
+}
+
+#paginacion a
+{
+	float: left;
+	display: block;
+	background: url("botonrojoencima.gif") repeat-x;
+	padding: 0 10px;
+	height: 20px;
+	margin-right: 5px;
+	border-right: 1px solid #490a0a;
+	border-left: 1px solid #490a0a;
+
+
+	font-weight: normal;
+	color: #D9CBBA;
+	height: 40px;
+	line-height: 41px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0 -1px 0 #333333;
+}
+
+#paginacion a:hover
+{
+	background: url("botonrojo.gif") repeat-x;
+}

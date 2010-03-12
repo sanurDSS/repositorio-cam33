@@ -1,0 +1,322 @@
+/*****************************************************
+Generales
+*****************************************************/
+*
+{
+	margin: 0;
+	font-family: sans-serif;
+}
+
+body
+{
+	background: url('cabecera.gif') repeat-x;
+}
+
+#contenedor
+{
+	margin-top: 80px;
+	background: url('fondo.gif');
+}
+
+p
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/*****************************************************
+Título
+*****************************************************/
+#titulo
+{
+	color: #ffffff;
+	text-shadow: 1px 1px 1px #000000;
+	text-indent: -10000px;
+}
+
+#titulo h1
+{
+	background: url('titulo.gif') no-repeat;
+	width: 980px;
+	height: 139px;
+	position: absolute;
+	top: 0;
+	font-size: 28pt;
+}
+
+#titulo h2
+{
+	position: absolute;
+	top: 55px;
+	font-weight: normal;
+	font-style: italic;
+	font-size: 14pt;
+}
+
+/*****************************************************
+Cuerpo
+*****************************************************/
+#intro, #apartados, #enlaces div
+{
+	width: 960px;
+	margin: auto;
+}
+
+#enlacesintra
+{
+	padding-left: 20px;
+	width: 940px;
+	margin: auto;
+}
+
+#intro
+{
+	margin-top: 140px;
+	background: url('superiortexto.gif') no-repeat right top;
+	padding-top: 20px;
+}
+
+#resumen, #comentario, #objetivos, #contenidos, #profesores, #bibliografia
+{
+	float: right;
+	width: 610px;
+	padding: 20px;
+	padding-top: 0px;
+	background: url('fondotexto.gif') repeat-y;
+	color: #EAB8B8;
+	text-shadow: 1px 1px 1px #000;
+	font-size: 10pt;
+}
+
+#resumen h3, #comentario h3, #objetivos h3, #contenidos h3, #profesores h3, #bibliografia h3
+{
+	color: #EBE1D5;
+	font-size: 20pt;
+}
+
+#resumen a, #comentario a, #objetivos a, #contenidos a, #profesores a, #bibliografia a
+{
+	color: #B44343;
+	font-weight: bold;
+}
+
+#resumen a:hover, #comentario a:hover, #objetivos a:hover, #contenidos a:hover, #profesores a:hover, #bibliografia a:hover
+{
+	color: #EAB8B8;
+}
+
+#apartados
+{
+	background: url('fondotexto.gif') repeat-y right;
+}
+
+#bibliografia
+{
+	float: none;
+	clear: both;
+	margin-left: auto;
+	margin-bottom: 40px;
+	background: url('inferiortexto.gif') no-repeat right bottom;
+}
+
+#intro ul, #apartados ul
+{
+	list-style: none;
+}
+
+#intro li, #apartados li
+{
+	background: url('li.png') no-repeat left top;
+	margin-left: -40px;
+	padding-left: 40px;
+}
+
+#intro li li, #apartados li li
+{
+	background: url('lili.png') no-repeat left top;
+	margin-left: -40px;
+	padding-left: 40px;
+}
+
+#apartados dt
+{
+	background: url('li.png') no-repeat;
+	padding-left: 40px;
+}
+
+#apartados dd
+{
+	padding-left: 40px;
+	margin-bottom: 10px;
+	font-style: italic;
+}
+
+/*****************************************************
+Menú
+*****************************************************/
+#enlacesintra
+{
+	margin-top: 30px;
+	font-size: 8pt;
+	position: relative;
+}
+
+#enlacesintra h3
+{
+	display: none;
+}
+
+#enlacesintra ul
+{
+	list-style: none;
+	position: absolute;
+}
+
+#enlacesintra ul li
+{
+	width: 220px;
+	padding-left: 45px;
+	margin: 0;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#enlacesintra ul li a
+{
+	display: block;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#enlacesintra ul li:hover
+{
+	background: url('enlace.gif') no-repeat top left;
+}
+
+#enlacesintra a
+{
+	text-decoration: none;
+	color: #EAB8B8;
+	text-shadow: 1px 1px 0 #000;
+	font-weight: bold;
+	line-height: 20px;
+}
+
+#enlacesintra a:hover
+{
+	color: #a83333;
+	text-shadow: 1px 1px 0 #000;
+}
+
+
+/*****************************************************
+Pie
+*****************************************************/
+#enlaces
+{
+	border-top: 1px solid #882b2b;
+	background: url('fondonegro.gif');
+}
+
+#enlaces #lhistorico, #enlaces #lrecursos
+{
+	margin-top: -120px;
+}
+
+#lselecciona, #lhistorico, #lrecursos
+{
+	height: 100px;
+}
+
+#lselecciona h3, #lselecciona ul
+{
+	width: 400px;
+}
+
+#lhistorico h3, #lhistorico ul
+{
+	padding-left: 400px;
+	width: 280px;
+}
+
+#lhistorico ul
+{
+	padding-left: 440px;
+}
+
+#lrecursos h3, #lrecursos ul
+{
+	padding-left: 680px;
+	width: 260px;
+}
+
+#lrecursos ul
+{
+	padding-left: 720px;
+}
+
+#enlaces div
+{
+	font-size: 10pt;
+	color: #CCBDAB;
+	text-shadow: 1px 1px 1px #000;
+	padding-top: 20px;
+}
+
+#enlaces div h3
+{
+	font-style: italic;
+}
+
+#enlaces div a
+{
+	color: #ba1600;
+	text-decoration: none;
+}
+
+#enlaces div a:hover
+{
+	text-decoration: underline;
+}
+
+#enlacesversiones
+{
+	clear: both;
+	font-size: 10pt;
+	background: url('pie.gif');
+	text-align: center;
+	padding: 10px;
+	padding-top: 40px;
+	color: #523e26;
+}
+
+#enlacesversiones ul
+{
+	padding: 0;
+}
+
+#enlacesversiones  h3, #enlacesversiones ul, #enlacesversiones ul li
+{
+	display: inline;
+	font-size: 8pt;
+}
+
+#enlacesversiones a
+{
+	text-decoration: none;
+	padding: 5px;
+	color: #52320e;
+	border: 1px solid transparent;
+}
+
+#enlacesversiones a:hover
+{
+	border: 1px solid #9d713c;
+	background: #b98f5c;
+	-moz-border-radius: 5px;
+}
+
+
+
+
+
