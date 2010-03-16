@@ -17,6 +17,14 @@ function baseSuperior($titulo)
 		<link type="text/css" rel="stylesheet" href="estilo/imprimible.css" media="print" />
 		<script src="javascript/formularios.js" type="text/javascript"></script>
 		<script src="javascript/ordenar.js" type="text/javascript"></script>
+		<script src="javascript/cookies.js" type="text/javascript"></script>
+		<script src="javascript/estilos.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			if (getCookie("estilo") != "")
+			{
+				cambiarEstilo('' + getCookie("estilo") + '');
+			}
+		</script>
 	</head>
 	<body>
 		<div id="contenedor">
@@ -108,8 +116,8 @@ function baseInferior()
 						<div id="estilos">
 							<h3><span>Selecciona un estilo:</span></h3>
 							<ul>
-								<li><a href="#">Estilo principal</a></li>
-								<li><a href="#">Estilo sencillo</a></li>
+								<li><a href="javascript: cambiarEstilo('Estilo principal');">Estilo principal</a></li>
+								<li><a href="javascript: cambiarEstilo('Estilo sencillo');">Estilo sencillo</a></li>
 							</ul>
 						</div>
 					</div>
