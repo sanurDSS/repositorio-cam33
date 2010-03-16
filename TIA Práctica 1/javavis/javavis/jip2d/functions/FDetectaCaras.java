@@ -54,18 +54,21 @@ public class FDetectaCaras extends JIPFunction
 		
 		// Binarizamos la imagen: 1 donde haya color de piel; 0 en otro caso.
 		FSegmentHSB fsh = new FSegmentHSB();
-		fsh.setParamValue("h", 0.01f);
-		fsh.setParamValue("herror", 0.02f);
-		fsh.setParamValue("s", 0.5f);
-		fsh.setParamValue("serror", 0.5f);
-		fsh.setParamValue("b", 0.5f);
+		fsh.setParamValue("h", 0.03f);
+		fsh.setParamValue("herror", 0.15f);
+		fsh.setParamValue("s", 0.24f);
+		fsh.setParamValue("serror", 0.10f);
+		fsh.setParamValue("b", 0.90f);
 		fsh.setParamValue("berror", 0.5f);
-		resultado = frtc.processImg(resultado);
+		resultado = fsh.processImg(resultado);
 		
 		// Reducimos el ruido de la imagen binaria.
 		FClousure fc = new FClousure();
-		fc.setParamValue("ee", "/home/cam33/Desktop/Images/ee.txt");
+		fc.setParamValue("ee", "/home/cristian/workspace/TIA Práctica 1/Images/ee.txt");
 		resultado = fc.processImg(resultado);
+		
+		// Seleccionamos las zonas candidatas.
+		FBlobs fb = new FBlobs();
 		
 		return resultado;
 	}
