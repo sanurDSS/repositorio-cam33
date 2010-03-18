@@ -1,5 +1,7 @@
 package javavis.jip2d.functions;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import javavis.base.ImageType; 
 import javavis.base.JIPException;
 import javavis.base.parameter.JIPParamList;
@@ -8,6 +10,7 @@ import javavis.jip2d.base.JIPFunction;
 import javavis.jip2d.base.JIPImage;
 import javavis.jip2d.base.bitmaps.JIPBmpColor;
 import javavis.jip2d.base.bitmaps.JIPImgBitmap;
+import javavis.jip2d.util.Blob;
 
 /**
 *Converts a COLOR image, to a BIT, BYTE, SHORT or FLOAT image.<BR>
@@ -43,6 +46,8 @@ public class FDetectaCaras extends JIPFunction
 		addParam(p1);*/
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
 	public JIPImage processImg(JIPImage img) throws JIPException
 	{
 		JIPImage resultado;
@@ -64,11 +69,31 @@ public class FDetectaCaras extends JIPFunction
 		
 		// Reducimos el ruido de la imagen binaria.
 		FClousure fc = new FClousure();
-		fc.setParamValue("ee", "/home/cristian/workspace/TIA Práctica 1/Images/ee.txt");
+		fc.setParamValue("ee", "Images/ee.txt");
 		resultado = fc.processImg(resultado);
 		
 		// Seleccionamos las zonas candidatas.
 		FBlobs fb = new FBlobs();
+		fb.processImg(resultado);
+		ArrayList<Blob> blobs = (ArrayList<Blob>) fb.getParamValueObj("blobs");
+		
+		Iterator<Blob> i = blobs.iterator();
+		while (i.hasNext())
+		{
+			Blob blob = i.next();
+			blob.calcEverything();
+			
+			if (blob.xsize * blob.ysize >= 400 &&
+					0.5f <= (blob.xsize / (float) blob.ysize) &&
+					1.5f >= (blob.xsize / (float) blob.ysize))
+			{
+				System.out.println("xsize: " + blob.xsize);
+				System.out.println("ysize: " + blob.ysize);
+				System.out.println("centro_x: " + blob.centro_x);
+				System.out.println("centro_y: " + blob.centro_y);
+				System.out.println("__________________________________________");
+			}
+		}
 		
 		return resultado;
 	}
