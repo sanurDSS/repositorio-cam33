@@ -10,6 +10,7 @@ import javavis.jip2d.base.JIPFunction;
 import javavis.jip2d.base.JIPImage;
 import javavis.jip2d.base.bitmaps.JIPBmpColor;
 import javavis.jip2d.base.bitmaps.JIPImgBitmap;
+import javavis.jip2d.base.geometrics.JIPGeomPoly;
 import javavis.jip2d.util.Blob;
 
 /**
@@ -26,14 +27,21 @@ import javavis.jip2d.util.Blob;
 public class FDetectaCaras extends JIPFunction
 {
 	private static final long serialVersionUID = -3289373731488957402L;
-
+	
 	public FDetectaCaras()
 	{
 		super();
 		name = "FDetectaCaras";
-		description = "Detecta las caras en una imagen..";
+		description = "Detecta las caras en una imagen y genera una imagen geométrica.";
 		groupFunc = FunctionGroup.Cristian;
 
+		//TODO
+		// Parámetros para elegir la localización de la foto: interior, exterior, soleado, nublado, oscuro, iluminado, ...
+		
+		// Parámetros para seleccionar el elemento estructurante.
+		
+		// Parámetros para filtrar los blobs: tamaño, aspect ratio, porcentaje de valores a 1.
+		
 		/*JIPParamList p1 = new JIPParamList("gray", false, true);
 		String []paux = new String[4];
 		paux[0]="BYTE";
@@ -42,20 +50,23 @@ public class FDetectaCaras extends JIPFunction
 		paux[3]="FLOAT";
 		p1.setDefault(paux);
 		p1.setDescription("Type of result image");
-
 		addParam(p1);*/
+		
+		JIPParamList o1 = new JIPParamList("blobs", false, false);
+		addParam(o1);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public JIPImage processImg(JIPImage img) throws JIPException
 	{
-		JIPImage resultado;
+		JIPGeomPoly resultado = new JIPGeomPoly(img.getWidth(), img.getHeight());
+		JIPImage imgAux = img.clone();
 		
 		// Convertimos la imagen RGB a color.
 		FRGBToColor frtc = new FRGBToColor();
 		frtc.setParamValue("format", "HSB");
-		resultado = frtc.processImg(img);
+		imgAux = frtc.processImg(imgAux);
 		
 		// Binarizamos la imagen: 1 donde haya color de piel; 0 en otro caso.
 		FSegmentHSB fsh = new FSegmentHSB();
@@ -65,18 +76,18 @@ public class FDetectaCaras extends JIPFunction
 		fsh.setParamValue("serror", 0.10f);
 		fsh.setParamValue("b", 0.90f);
 		fsh.setParamValue("berror", 0.5f);
-		resultado = fsh.processImg(resultado);
+		imgAux = fsh.processImg(imgAux);
 		
 		// Reducimos el ruido de la imagen binaria.
 		FClousure fc = new FClousure();
 		fc.setParamValue("ee", "Images/ee.txt");
-		resultado = fc.processImg(resultado);
+		imgAux = fc.processImg(imgAux);
 		
-		// Seleccionamos las zonas candidatas.
+		// Añadimos las zonas candidatas a la imagen geométrica.
+		ArrayList<Blob> caras = new ArrayList<Blob>();
 		FBlobs fb = new FBlobs();
-		fb.processImg(resultado);
+		fb.processImg(imgAux);
 		ArrayList<Blob> blobs = (ArrayList<Blob>) fb.getParamValueObj("blobs");
-		
 		Iterator<Blob> i = blobs.iterator();
 		while (i.hasNext())
 		{
@@ -87,13 +98,30 @@ public class FDetectaCaras extends JIPFunction
 					0.5f <= (blob.xsize / (float) blob.ysize) &&
 					1.5f >= (blob.xsize / (float) blob.ysize))
 			{
-				System.out.println("xsize: " + blob.xsize);
-				System.out.println("ysize: " + blob.ysize);
-				System.out.println("centro_x: " + blob.centro_x);
-				System.out.println("centro_y: " + blob.centro_y);
-				System.out.println("__________________________________________");
+				if (true) // TODO: se comprueba que hay un alto porcentaje de valores a 1
+				{
+					/*System.out.println("xsize: " + blob.xsize);
+					System.out.println("ysize: " + blob.ysize);
+					System.out.println("centro_x: " + blob.centro_x);
+					System.out.println("centro_y: " + blob.centro_y);
+					System.out.println("__________________________________________");*/
+					
+					caras.add(blob);
+					
+					ArrayList<Integer> cara = new ArrayList<Integer>();
+					cara.add(blob.centro_x - blob.xsize/2);
+					cara.add(blob.centro_y - blob.ysize/2);
+					cara.add(blob.centro_x + blob.xsize/2);
+					cara.add(blob.centro_y - blob.ysize/2);
+					cara.add(blob.centro_x + blob.xsize/2);
+					cara.add(blob.centro_y + blob.ysize/2);
+					cara.add(blob.centro_x - blob.xsize/2);
+					cara.add(blob.centro_y + blob.ysize/2);
+					resultado.addPoly(cara);
+				}
 			}
 		}
+		setParamValue("blobs", caras);
 		
 		return resultado;
 	}
