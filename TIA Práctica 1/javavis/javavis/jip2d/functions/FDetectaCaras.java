@@ -5,6 +5,7 @@ import java.util.Iterator;
 import javavis.base.ImageType; 
 import javavis.base.JIPException;
 import javavis.base.parameter.JIPParamList;
+import javavis.base.parameter.JIPParamObject;
 import javavis.jip2d.base.FunctionGroup;
 import javavis.jip2d.base.JIPFunction;
 import javavis.jip2d.base.JIPImage;
@@ -52,7 +53,7 @@ public class FDetectaCaras extends JIPFunction
 		p1.setDescription("Type of result image");
 		addParam(p1);*/
 		
-		JIPParamList o1 = new JIPParamList("blobs", false, false);
+		JIPParamObject o1 = new JIPParamObject("blobs", false, false);
 		addParam(o1);
 	}
 
