@@ -34,6 +34,56 @@ for ($i = 0; $i < 5; $i++)
 							<a href="#">Anterior</a>
 							<a href="#">Siguiente</a>
 						</div>
+<?php
+$usuarios = ENUsuario::obtenerTodos();
+foreach ($usuarios as $i)
+{
+?>
+						<p><?php echo $i->toString(); ?></p>
+<?php
+}
+?>
+						<hr />
+<?php
+$albumes = ENAlbum::obtenerTodos();
+foreach ($albumes as $i)
+{
+?>
+						<p><?php echo $i->toString(); ?></p>
+<?php
+}
+
+
+/*$nuevo = new ENAlbum;
+$nuevo->setTitulo("otro album mas que falta filtrarCadena");
+$nuevo->setDescripcion("creado desde la EN");
+$nuevo->setFecha("2009/10/25");
+$nuevo->setPais("Francia");
+$nuevo->setUsuario("antonio");
+$nuevo->guardar();*/
+
+?>
+						<hr />
+<?php
+$fotos = ENFoto::obtenerTodos("antonio");
+foreach ($fotos as $i)
+{
+?>
+						<p><?php echo $i->toString(); ?></p>
+<?php
+}
+
+$fotico = ENFoto::obtenerPorId(3);
+echo $fotico->toString();
+
+$nueva = new ENFoto;
+$nueva->setTitulo("me cago en cr.9");
+$nueva->setDescripcion("polladongaaa...");
+$nueva->setFecha("2007/06/19");
+$nueva->setPais("Chile");
+$nueva->setIdAlbum(3);
+$nueva->guardar();
+?>
 					</div>
 <?php
 baseInferior();

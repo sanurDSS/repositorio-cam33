@@ -4,7 +4,7 @@ baseSuperior("Registrarse");
 ?>
 					<div id="registrarse">
 						<h3><span>Datos del nuevo usuario</span></h3>
-						<form action="registrarse.php" method="post" enctype="multipart/form-data" onsubmit="return validarRegistro(this);">
+						<form action="operarregistro.php" method="post" enctype="multipart/form-data" onsubmit="return validarRegistro(this);">
 							<table>
 								<tr>
 									<td colspan="2"><h4>Datos personales</h4></td>
@@ -72,11 +72,23 @@ for ($i = 1901; $i <= 2010; $i++)
 								</tr>
 								<tr>
 									<td class="columna1">País:</td>
-									<td class="columna2"><input type="text" value="¿select con ajax?" name="pais" /></td>
+									<td class="columna2">
+										<select name="dia">
+<?php
+$paises = ENPais::obtenerTodos();
+foreach ($paises as $i)
+{
+?>
+											<option <?php if ($i->getId() == 1) echo 'selected="selected" '; ?>value="<?php echo $i->getId(); ?>"><?php echo $i->getNombre(); ?></option>
+<?php
+}
+?>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="columna1">Ciudad:</td>
-									<td class="columna2"><input type="text" value="¿select con ajax?" name="ciudad" /></td>
+									<td class="columna2"><input type="text" value="" name="ciudad" /></td>
 								</tr>
 								<tr>
 									<td class="columna1">Foto:</td>
@@ -148,11 +160,23 @@ for ($i = 2; $i <= 100; $i++)
 								</tr>
 								<tr>
 									<td class="columna1">País:</td>
-									<td class="columna2"><input type="text" value="¿select con ajax?" name="pais2" /></td>
+									<td class="columna2">
+										<select name="dia">
+<?php
+$paises = ENPais::obtenerTodos();
+foreach ($paises as $i)
+{
+?>
+											<option <?php if ($i->getId() == 1) echo 'selected="selected" '; ?>value="<?php echo $i->getId(); ?>"><?php echo $i->getNombre(); ?></option>
+<?php
+}
+?>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="columna1">Ciudad:</td>
-									<td class="columna2"><input type="text" value="¿select con ajax?" name="ciudad2" /></td>
+									<td class="columna2"><input type="text" value="" name="ciudad2" /></td>
 								</tr>
 								<tr>
 									<td colspan="2"></td>

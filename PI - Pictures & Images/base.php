@@ -1,4 +1,7 @@
 <?php
+
+require_once("minilibreria.php");
+
 /**
  *
  * @param String $titulo Título (<title>) que tendrá la página.
