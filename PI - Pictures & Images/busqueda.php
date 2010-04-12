@@ -76,7 +76,7 @@ else
 	}
 	else
 	{
-		if (fecha != "")
+		if ($fecha != "")
 		{
 			echo "								<br />\n";
 			echo "								($segmento del $dia de $mes del $ano)</p>\n";

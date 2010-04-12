@@ -668,3 +668,62 @@ Resultados
 {
 	background: url("botonrojo.gif") repeat-x;
 }
+
+/*****************************************************
+Mensajes
+*****************************************************/
+
+#mensajes
+{
+	text-align: center;
+	font-size: 10pt;
+	margin: auto;
+	margin-bottom: 10px;
+	
+	background: #fff;
+	border: 2px solid #aaa;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+#mensajes table
+{
+	text-align: center;
+	vertical-align: middle;
+	margin: auto;
+}
+
+#mensajes table tr
+{
+	display: inline;
+}
+
+#mensajes table.exito
+{
+	color: #080;
+}
+
+#mensajes table.info
+{
+	color: #00e;
+}
+
+#mensajes table.aviso
+{
+	color: #b80;
+}
+
+#mensajes table.error
+{
+	color: #e00;
+}
+
+#mensajes table tr td.columnaizquierda
+{
+	text-align: right;
+}
+
+#mensajes table tr td.columnaderecha
+{
+	text-align: left;
+}

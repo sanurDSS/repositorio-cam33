@@ -14,28 +14,28 @@
 	// Se comprueban los parámetros.
 	if (ENUsuario::existePorNombre($nombre))
 	{
-		echo "YA EXISTE EL USUARIO";
+		header("location: registrarse.php?error=Ya existe un usuario con el nombre $nombre");
 		exit();
 	}
 	else
 	{
 		if ($contrasena != $contrasena2)
 		{
-			echo "LAS CONTRASEÑAS NO COINCIDEN";
+			header("location: registrarse.php?error=Las contraseñas no coinciden");
 			exit();
 		}
 		else
 		{
 			if ($fecha == "")
 			{
-				echo "LA FECHA NO ES VÁLIDA";
+				header("location: registrarse.php?error=La fecha no es válida");
 				exit();
 			}
 			else
 			{
 				if (ENPais::obtenerPorId($pais) == null)
 				{
-					echo "PAÍS INCORRECTO $pais";
+					header("location: registrarse.php?error=El país introducido no es válido");
 					exit();
 				}
 			}
@@ -57,7 +57,4 @@
 
 	echo $nuevo->toString();
 	header("location: index.php");
-	// si se crea bien, se reenvia al usuairo a algun sitio con EXITO
-
-	// si hay error en algun punto, se redirige con ERROR
 ?>

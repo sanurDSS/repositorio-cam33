@@ -155,7 +155,7 @@ class ENFoto
 			if ($usuario != "")
 				$sentencia = "$sentencia and u.nombre = '$usuario'";
 
-			$sentencia = "$sentencia order by f.id";
+			$sentencia = "$sentencia order by f.id desc";
 			$resultado = mysql_query($sentencia, BD::conectar());
 
 			if ($resultado)

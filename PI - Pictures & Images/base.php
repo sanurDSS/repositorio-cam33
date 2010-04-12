@@ -46,6 +46,8 @@ function baseSuperior($titulo)
 							<div><span><a href="buscar.php">Búsqueda avanzada</a></span></div>
 						</form>
 					</div>
+
+					<?php include 'mensajes.php'; ?>
 				</div>
 
 				<div id="navegacion">
@@ -90,6 +92,7 @@ if (isset($_SESSION["usuario"]))
 							<li><a href="perfil.php">Mis datos personales</a></li>
 							<li><a href="crearalbum.php">Crear un álbum</a></li>
 							<li><a href="albumes.php">Ver mis álbumes</a></li>
+							<li><a href="darmedebaja.php">Darme de baja</a></li>
 							<li><a href="cerrarsesion.php">Cerrar sesión</a></li>
 						</ul>
 					</div>
