@@ -59,7 +59,7 @@ function baseSuperior($titulo)
 
 <?php
 
-if (isset($_SESSION["usuario"]))
+if (!isset($_SESSION["usuario"]))
 {
 	// Si no hay ninguna sesión abierta, intentamos abrir una desde las cookies.
 	if (isset($_COOKIE["nombre"]) && isset($_COOKIE["contrasena"]))
