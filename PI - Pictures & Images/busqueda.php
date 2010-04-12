@@ -105,7 +105,7 @@ if (count($fotos) > 0)
 	{
 ?>
 								<tr class="foto">
-									<td class="miniatura"><a href="foto.jpg"><img src="miniatura.jpg" alt="<?php echo $i->getTitulo(); ?>" /></a></td>
+									<td class="miniatura"><a href="fotos/<?php echo $i->getId(); ?>.jpg"><img src="fotos/m1<?php echo $i->getId(); ?>.jpg" alt="<?php echo $i->getTitulo(); ?>" /></a></td>
 									<td class="titulo"><a href="foto.php?id=<?php echo $i->getId(); ?>"><?php echo $i->getTitulo(); ?></a></td>
 									<td class="fecha"><?php echo cambiarFormatoFecha($i->getFecha()); ?></td>
 									<td class="pais"><?php echo $i->getPais(); ?></td>
