@@ -47,12 +47,12 @@ function validarRegistro(formulario)
 	// Comprobamos que la dirección de correo electrónico es correcta.
 	expReg = new RegExp("^[a-zA-Z]+([\\.-]?[a-zA-Z0-9]+)*@[a-zA-Z]+([\\.-]?[a-zA-Z0-9]+)*(\\.[a-zA-Z0-9]{2,4})+$");
 	if (!expReg.test(formulario.correo_electronico.value))
-		alerta = alerta + "- La dirección de correo electrónico no es válida.";
+		alerta = alerta + "- La dirección de correo electrónico no es válida.\n\n";
 
 	// Comprobamos que la fecha de nacimiento es correcta.
 	var fecha = new Date(parseInt(formulario.ano.value), parseInt(formulario.mes.value - 1), parseInt(formulario.dia.value));
 	if (fecha.getDate() != parseInt(formulario.dia.value) || parseInt(formulario.mes.value - 1) != fecha.getMonth() || parseInt(formulario.ano.value) != fecha.getFullYear())
-		aleta = alerta + "- La fecha introducida no es válida.\n\n";
+		alerta = alerta + "- La fecha introducida no es válida.\n\n";
 
 	// Si se ha concatenado algún error, se muestra el mensaje y se aborta el "submit" del formulario devolviendo falso.
 	if (alerta != "")
@@ -63,6 +63,125 @@ function validarRegistro(formulario)
 	else
 	{
 		return true;
+	}
+}
+
+function validarAlbum(formulario)
+{
+	var alerta = "";
+
+	// Comprobamos que hay título y descripción.
+	if (formulario.titulo.value.length == 0 || formulario.descripcion.value.length == 0)
+		alerta = alerta + "- Debe introducir un título y una descripción.\n\n";
+
+	// Comprobamos que hay un país seleccionado.
+	if (formulario.pais.value.length == 0)
+		alerta = alerta + "- Debe seleccionar un país.\n\n";
+
+	// Comprobamos que la fecha es correcta.
+	var fecha = new Date(parseInt(formulario.ano.value), parseInt(formulario.mes.value - 1), parseInt(formulario.dia.value));
+	if (fecha.getDate() != parseInt(formulario.dia.value) || parseInt(formulario.mes.value - 1) != fecha.getMonth() || parseInt(formulario.ano.value) != fecha.getFullYear())
+		alerta = alerta + "- La fecha introducida no es válida.\n\n";
+
+	// Si se ha concatenado algún error, se muestra el mensaje y se aborta el "submit" del formulario devolviendo falso.
+	if (alerta != "")
+	{
+		alert(alerta);
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+function nuevoAjax()
+{
+	var xmlhttp=false;
+ 	try
+ 	{
+ 		xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+ 	}
+ 	catch (e)
+ 	{
+ 		try
+ 		{
+ 			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+ 		}
+ 		catch (E) {
+ 			xmlhttp = false;
+ 		}
+  	}
+
+	if (!xmlhttp && typeof XMLHttpRequest!='undefined')
+	{
+ 		xmlhttp = new XMLHttpRequest();
+	}
+
+	return xmlhttp;
+}
+
+
+function confirmarEliminarAlbum()
+{
+	return confirm("Se eliminarán todas las fotos del álbum y no se podrán recuperar.\n¿Desea continuar?")
+}
+
+function eliminarAlbum(id)
+{
+	if (confirmarEliminarAlbum())
+	{
+		ajax=nuevoAjax();
+		ajax.open("POST", "eliminaralbum.php",true);
+		ajax.onreadystatechange = function()
+		{
+			if (ajax.readyState==4)
+			{
+				// Aquí deberá comprobarse si la petición AJAX ha sido correcta.
+				if(ajax.responseText!="OK")
+				{
+					alert ("No se ha podido eliminar el álbum.\n");
+				}
+				else
+				{
+					document.getElementById('album'+id).style.display = "none";
+				}
+			}
+		}
+		ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		ajax.send("id="+id);
+	}
+}
+
+function confirmarEliminarFoto()
+{
+	return confirm("Se eliminará la foto y no se podrá recuperar.\n¿Desea continuar?")
+}
+
+function eliminarFoto(id)
+{
+	if (confirmarEliminarFoto())
+	{
+		ajax=nuevoAjax();
+		ajax.open("POST", "eliminarfoto.php",true);
+		ajax.onreadystatechange = function()
+		{
+			if (ajax.readyState==4)
+			{
+				// Aquí deberá comprobarse si la petición AJAX ha sido correcta.
+				if(ajax.responseText!="OK")
+				{
+					alert ("No se ha podido eliminar la foto.\n");
+				}
+				else
+				{
+					document.getElementById('foto'+id).style.display = "none";
+					document.getElementById('cantidad').firstChild.textContent = document.getElementById('cantidad').firstChild.textContent - 1;
+				}
+			}
+		}
+		ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		ajax.send("id="+id);
 	}
 }
 

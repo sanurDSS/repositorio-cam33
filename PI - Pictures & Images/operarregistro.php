@@ -7,35 +7,37 @@
 	$contrasena2 = $_POST["contrasena2"];
 	$email = $_POST["correo_electronico"];
 	$sexo = ($_POST["sexo"] == "hombre") ? "hombre" : "mujer";
-	$fecha = (checkdate($_POST["mes"], $_POST["dia"], $_POST["ano"])) ? $_POST["ano"]."-".rellenar($_POST["mes"], "0", 2)."-".rellenar($_POST["dia"], "0", 2) : "";
+	$fecha = "";
+	if (is_numeric($_POST["dia"]) && is_numeric($_POST["mes"]) && is_numeric($_POST["ano"]))
+		$fecha = (checkdate($_POST["mes"], $_POST["dia"], $_POST["ano"])) ? $_POST["ano"]."-".rellenar($_POST["mes"], "0", 2)."-".rellenar($_POST["dia"], "0", 2) : "";
 	$pais = $_POST["pais"];
 	$ciudad = $_POST["ciudad"];
 
 	// Se comprueban los parámetros.
 	if (ENUsuario::existePorNombre($nombre))
 	{
-		header("location: registrarse.php?error=Ya existe un usuario con el nombre $nombre");
+		header("location: registrarse.php?error=Ya existe un usuario con el nombre $nombre.");
 		exit();
 	}
 	else
 	{
 		if ($contrasena != $contrasena2)
 		{
-			header("location: registrarse.php?error=Las contraseñas no coinciden");
+			header("location: registrarse.php?error=Las contraseñas no coinciden.");
 			exit();
 		}
 		else
 		{
 			if ($fecha == "")
 			{
-				header("location: registrarse.php?error=La fecha no es válida");
+				header("location: registrarse.php?error=La fecha no es válida.");
 				exit();
 			}
 			else
 			{
 				if (ENPais::obtenerPorId($pais) == null)
 				{
-					header("location: registrarse.php?error=El país introducido no es válido");
+					header("location: registrarse.php?error=El país introducido no es válido.");
 					exit();
 				}
 			}
@@ -54,7 +56,7 @@
 	if ($_FILES["foto"] != null)
 		$nuevo->setAvatar($_FILES["foto"]);
 
+	$_SESSION["usuario"] = serialize($nuevo);
 
-	echo $nuevo->toString();
-	header("location: index.php");
+	header("location: index.php?exito=Usuario registrado correctamente.");
 ?>

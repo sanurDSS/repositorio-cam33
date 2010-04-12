@@ -84,11 +84,13 @@ else
 	}
 }
 
+?>
+							</p>
+<?php
 // Mostramos los resultados si hay al menos 1.
 if (count($fotos) > 0)
 {
 ?>
-							</p>
 							<table id="tablaresultados">
 								<tr class="cabecera">
 									<td class="miniatura"><a href="javascript: ordenarTabla('tablaresultados', 0);">Miniatura</a></td>

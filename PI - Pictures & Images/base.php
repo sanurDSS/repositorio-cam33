@@ -2,6 +2,22 @@
 
 require_once("minilibreria.php");
 
+if (!isset($_SESSION["usuario"]))
+{
+	// Si no hay ninguna sesión abierta, intentamos abrir una desde las cookies.
+	if (isset($_COOKIE["nombre"]) && isset($_COOKIE["contrasena"]))
+	{
+		$usuario = ENUsuario::obtenerPorNombre($_COOKIE["nombre"]);
+		if ($usuario != null)
+		{
+			if ($usuario->getContrasena() == $_COOKIE["contrasena"])
+			{
+				$_SESSION["usuario"] = serialize($usuario);
+			}
+		}
+	}
+}
+
 /**
  *
  * @param String $titulo Título (<title>) que tendrá la página.
@@ -61,22 +77,6 @@ function baseSuperior($titulo)
 
 <?php
 
-if (!isset($_SESSION["usuario"]))
-{
-	// Si no hay ninguna sesión abierta, intentamos abrir una desde las cookies.
-	if (isset($_COOKIE["nombre"]) && isset($_COOKIE["contrasena"]))
-	{
-		$usuario = ENUsuario::obtenerPorNombre($_COOKIE["nombre"]);
-		if ($usuario != null)
-		{
-			if ($usuario->getContrasena() == $_COOKIE["contrasena"])
-			{
-				$_SESSION["usuario"] = serialize($usuario);
-			}
-		}
-	}
-}
-
 if (isset($_SESSION["usuario"]))
 {
 	$usuario = unserialize($_SESSION["usuario"]);
@@ -90,8 +90,8 @@ if (isset($_SESSION["usuario"]))
 
 						<ul>
 							<li><a href="perfil.php">Mis datos personales</a></li>
-							<li><a href="crearalbum.php">Crear un álbum</a></li>
 							<li><a href="albumes.php">Ver mis álbumes</a></li>
+							<li><a href="crearalbum.php">Crear un álbum</a></li>
 							<li><a href="darmedebaja.php">Darme de baja</a></li>
 							<li><a href="cerrarsesion.php">Cerrar sesión</a></li>
 						</ul>

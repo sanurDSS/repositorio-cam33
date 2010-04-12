@@ -224,10 +224,16 @@ Navegación
 	margin: auto;
 }
 
-#menu, #identificarse, #avatar
+#menu, #identificarse
 {
 	float: left;
 	width: 320px;
+}
+
+#avatar
+{
+	float: left;
+	width: 245px;
 }
 
 #navegacion h3
@@ -283,6 +289,7 @@ Navegación
 {
 	color: #E7BB2A;
 	margin-top: 25px;
+	margin-bottom: 35px;
 	margin-left: 75px;
 }
 
@@ -545,6 +552,72 @@ Foto
 	width: 30%;
 	vertical-align: top;
 }
+
+/*****************************************************
+Álbum
+*****************************************************/
+#album .columna1
+{
+	font-weight: bold;
+	width: 30%;
+	vertical-align: top;
+}
+
+#album #fotos
+{
+	margin-top: 15px;
+}
+
+#album .foto
+{
+	float: left;
+	position: relative;
+}
+
+#album .foto img
+{
+	border: 3px solid transparent;
+	background: transparent;
+	padding-bottom: 20px;
+}
+
+#album .foto img:hover
+{
+	border: 3px solid #ff0;
+	background: #ff0;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+#album form, #album form div, #album form div input
+{
+	display: inline;
+}
+
+#album input
+{
+	margin-top: 10px;
+}
+
+#album .papelera
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#album .papelera img
+{
+	padding-bottom: 0;
+}
+
+#album .papelera img:hover
+{
+	padding-bottom: 0;
+	background: #f00;
+	border-color: #f00;
+}
+
 
 /*****************************************************
 Buscar y registrarse

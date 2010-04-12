@@ -365,7 +365,6 @@ class ENAlbum
 		try
 		{
 			$conexion = BD::conectar();
-
 			$sentencia = "delete from albumes where id = ".$id;
 			$resultado = mysql_query($sentencia, $conexion);
 			if ($resultado)
@@ -385,6 +384,21 @@ class ENAlbum
 		}
 
 		return $borrado;
+	}
+
+	public function getFotos()
+	{
+		$fotosUsuario = ENFoto::obtenerTodos($this->usuario);
+		$fotosAlbum = array();
+		$contador = 0;
+		foreach ($fotosUsuario as $i)
+		{
+			if ($i->getIdAlbum() == $this->id)
+			{
+				$fotosAlbum[$contador++] = $i;
+			}
+		}
+		return $fotosAlbum;
 	}
 }
 ?>

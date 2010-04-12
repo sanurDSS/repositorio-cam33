@@ -94,6 +94,17 @@ insert into albumes (titulo, descripcion, fecha, id_pais, id_usuario)
 values ('Mi primer álbum', 'el primer album que he creado', '2000/10/30', 6, 1);
 insert into albumes (titulo, descripcion, fecha, id_pais, id_usuario)
 values ('Mi segundo albumcico', 'este fue en otro sitio disitnto a italia', '2010/10/30', 7, 1);
+insert into albumes (titulo, descripcion, fecha, id_pais, id_usuario)
+values ('Mi tercer albumcico', 'este fue en otro sitio disitnto a italia', '2010/10/30', 8, 1);
+insert into albumes (titulo, descripcion, fecha, id_pais, id_usuario)
+values ('Mi cuarto albumcico', 'este fue en otro sitio disitnto a italia', '2010/10/30', 9, 1);
+insert into albumes (titulo, descripcion, fecha, id_pais, id_usuario)
+values ('Mi quinto albumcico', 'este fue en otro sitio disitnto a italia', '2010/10/30', 10, 1);
+insert into albumes (titulo, descripcion, fecha, id_pais, id_usuario)
+values ('Mi sexto albumcico', 'este fue en otro sitio disitnto a italia', '2010/10/30', 11, 1);
+insert into albumes (titulo, descripcion, fecha, id_pais, id_usuario)
+values ('Mi septimo albumcico', 'este fue en otro sitio disitnto a italia', '2010/10/30', 12, 1);
+
 
 insert into albumes (titulo, descripcion, fecha, id_pais, id_usuario)
 values ('Mi primer albumcico de antonio', 'este fue en otro sitio disitnto a italia', '2002/05/19', 9, 2);
