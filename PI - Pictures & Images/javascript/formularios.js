@@ -95,6 +95,39 @@ function validarAlbum(formulario)
 	}
 }
 
+function validarFoto(formulario)
+{
+	var alerta = "";
+
+	// Comprobamos que hay título y descripción.
+	if (formulario.titulo.value.length == 0 || formulario.descripcion.value.length == 0)
+		alerta = alerta + "- Debe introducir un título y una descripción.\n\n";
+
+	// Comprobamos que hay un país seleccionado.
+	if (formulario.pais.value.length == 0)
+		alerta = alerta + "- Debe seleccionar un país.\n\n";
+
+	// Comprobamos que la fecha es correcta.
+	var fecha = new Date(parseInt(formulario.ano.value), parseInt(formulario.mes.value - 1), parseInt(formulario.dia.value));
+	if (fecha.getDate() != parseInt(formulario.dia.value) || parseInt(formulario.mes.value - 1) != fecha.getMonth() || parseInt(formulario.ano.value) != fecha.getFullYear())
+		alerta = alerta + "- La fecha introducida no es válida.\n\n";
+
+	// Comprobamos que se ha introducido una imagen.
+	if (formulario.foto.value.length == 0)
+		alerta = alerta + "- No se ha introducido una imagen.\n\n";
+
+	// Si se ha concatenado algún error, se muestra el mensaje y se aborta el "submit" del formulario devolviendo falso.
+	if (alerta != "")
+	{
+		alert(alerta);
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
 function nuevoAjax()
 {
 	var xmlhttp=false;

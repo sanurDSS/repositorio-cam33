@@ -80,7 +80,7 @@ function baseSuperior($titulo)
 if (isset($_SESSION["usuario"]))
 {
 	$usuario = unserialize($_SESSION["usuario"]);
-	$ruta = "avatares/m1".$usuario->getId().".jpg";
+	$ruta = "avatares/m0".$usuario->getId().".jpg";
 	if (!file_exists($ruta))
 		$ruta = "avatares/sinimagen.jpg";
 ?>

@@ -95,7 +95,7 @@ foreach ($paises as $i)
 									<td class="columna2"><input type="text" value="" name="ciudad" /></td>
 								</tr>
 								<tr>
-									<td class="columna1">Foto:</td>
+									<td class="columna1">Foto (JPG):</td>
 									<td class="columna2"><input type="file" value="" name="foto" /></td>
 								</tr>
 								<tr>
@@ -165,7 +165,7 @@ for ($i = 2; $i <= 100; $i++)
 								<tr>
 									<td class="columna1">País:</td>
 									<td class="columna2">
-										<select name="dia">
+										<select name="pais2">
 <?php
 $paises = ENPais::obtenerTodos();
 foreach ($paises as $i)

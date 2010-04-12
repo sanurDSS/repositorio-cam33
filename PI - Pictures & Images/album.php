@@ -61,7 +61,7 @@ if ($propio)
 ?>
 							<tr>
 								<td class="columna1" colspan="2">
-									<form action="insertarfoto.php" method="post">
+									<form action="anadirfoto.php" method="get">
 										<div>
 											<input type="submit" value="Añadir foto al álbum"/>
 											<input type="hidden" name="id" value="<?php echo $album->getId(); ?>"/>
@@ -93,7 +93,7 @@ if (count($fotos) > 0)
 	{
 ?>
 								<div id="foto<?php echo $i->getId(); ?>" class="foto">
-									<a href="foto.php?id=<?php echo $i->getId(); ?>"><img src="miniatura.jpg" alt="<?php echo $i->getTitulo(); ?>, <?php echo cambiarFormatoFecha($i->getFecha()); ?>, <?php echo $i->getPais(); ?>" title="<?php echo $i->getTitulo(); ?>, <?php echo cambiarFormatoFecha($i->getFecha()); ?>, <?php echo $i->getPais(); ?>" /></a>
+									<a href="foto.php?id=<?php echo $i->getId(); ?>"><img src="fotos/m1<?php echo $i->getId(); ?>.jpg" alt="<?php echo $i->getTitulo(); ?>, <?php echo cambiarFormatoFecha($i->getFecha()); ?>, <?php echo $i->getPais(); ?>" title="<?php echo $i->getTitulo(); ?>, <?php echo cambiarFormatoFecha($i->getFecha()); ?>, <?php echo $i->getPais(); ?>" /></a>
 <?php
 if ($propio)
 {

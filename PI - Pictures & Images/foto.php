@@ -26,7 +26,7 @@ baseSuperior("Foto #".$foto->getId());
 						<h3><span>Foto: <?php echo $foto->getTitulo(); ?></span></h3>
 						<table>
 							<tr>
-								<td colspan="2"><a href="foto.jpg"><img src="foto.jpg" alt="<?php echo $foto->getTitulo(); ?>" /></a></td>
+								<td colspan="2"><a href="fotos/<?php echo $foto->getId(); ?>.jpg"><img src="fotos/m5<?php echo $foto->getId(); ?>.jpg" alt="<?php echo $foto->getTitulo(); ?>" /></a></td>
 							</tr>
 							<tr>
 								<td class="columna1">Título:</td>
@@ -38,7 +38,7 @@ baseSuperior("Foto #".$foto->getId());
 							</tr>
 							<tr>
 								<td class="columna1">Fecha:</td>
-								<td class="columna2">18/12/2001</td>
+								<td class="columna2"><?php echo cambiarFormatoFecha($foto->getFecha()); ?></td>
 							</tr>
 							<tr>
 								<td class="columna1">País:</td>

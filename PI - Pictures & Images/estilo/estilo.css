@@ -508,7 +508,7 @@ Portada
 *****************************************************/
 #portada .foto
 {
-	padding-bottom: 30px;
+	padding-bottom: 10px;
 	padding-top: 10px;
 	min-height: 100px;
 	position: relative;
@@ -540,7 +540,7 @@ Portada
 
 #portada .informacion
 {
-	margin-left: 150px;
+	margin-left: 120px;
 }
 
 /*****************************************************

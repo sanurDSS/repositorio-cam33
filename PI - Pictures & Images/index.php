@@ -14,7 +14,7 @@ for ($i = 0; $i < $cantidad; $i++)
 	$foto = $fotos[$i];
 ?>
 							<div class="foto">
-								<div class="imagen"><a href="fotos/<?php echo $foto->getId(); ?>.jpg"><img src="miniatura.jpg" alt="<?php echo $foto->getTitulo(); ?>" title="<?php echo $foto->getTitulo(); ?>" /></a></div>
+								<div class="imagen"><a href="fotos/<?php echo $foto->getId(); ?>.jpg"><img src="fotos/m1<?php echo $foto->getId(); ?>.jpg" alt="<?php echo $foto->getTitulo(); ?>" title="<?php echo $foto->getTitulo(); ?>" /></a></div>
 								<div class="informacion">
 									<h4><a href="foto.php?id=<?php echo $foto->getId(); ?>"><?php echo $foto->getTitulo(); ?></a></h4>
 									<p><em>Descripción:</em> <?php echo $foto->getDescripcion(); ?></p>

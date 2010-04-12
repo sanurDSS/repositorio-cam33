@@ -8,15 +8,35 @@ if (isset($_SESSION["usuario"]))
 }
 else
 {
-	header("location: index.php?aviso=Debe estar identificado para crear un álbum.");
+	header("location: index.php?aviso=Debe estar identificado para añadir una foto.");
 	exit();
 }
 
-baseSuperior("Crear un nuevo álbum");
+$album = null;
+if (isset($_GET["id"]))
+{
+	if (is_numeric($_GET["id"]))
+		$album = ENAlbum::obtenerPorId($_GET["id"]);
+}
+if ($album == null)
+{
+	header("location: index.php?aviso=No se encuentra el álbum para añadir la foto.");
+	exit();
+}
+else
+{
+	if ($usuario->getNombre() != $album->getUsuario())
+	{
+		header("location: index.php?error=No puedes insertar una foto en un álbum ajeno.");
+		exit();
+	}
+}
+
+baseSuperior("Anadir una nueva foto al álbum #".$album->getId());
 ?>
 					<div id="registrarse">
-						<h3><span>Crear un nuevo álbum</span></h3>
-						<form action="operaralbum.php" method="post" onsubmit="return validarAlbum(this);">
+						<h3><span>Anadir una nueva foto al álbum #<?php echo $album->getId(); ?></span></h3>
+						<form action="operarfoto.php" method="post" enctype="multipart/form-data" onsubmit="return validarFoto(this);">
 							<table>
 								<tr>
 									<td class="columna1">Título:</td>
@@ -86,11 +106,15 @@ foreach ($paises as $i)
 									</td>
 								</tr>
 								<tr>
+									<td class="columna1">Foto (JPG):</td>
+									<td class="columna2"><input type="file" value="" name="foto" /></td>
+								</tr>
+								<tr>
 									<td colspan="2"></td>
 								</tr>
 								<tr>
 									<td class="columna1"></td>
-									<td class="columna2"><input type="submit" value="Crear álbum" /></td>
+									<td class="columna2"><input type="submit" value="Subir foto" /><input type="hidden" value="<?php echo $album->getId(); ?>" name="id" /></td>
 								</tr>
 							</table>
 						</form>

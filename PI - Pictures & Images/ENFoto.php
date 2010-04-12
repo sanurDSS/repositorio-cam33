@@ -368,7 +368,7 @@ class ENFoto
 						if ($resultado)
 						{
 							// Obtenemos el identificador asignado a la foto recién creado.
-							$sentencia = "select id, fecha_registro from usuarios where nombre = '".$this->nombre."'";
+							$sentencia = "select max(id) from fotos";
 							$resultado = mysql_query($sentencia, $conexion);
 
 							if ($resultado)
@@ -377,12 +377,8 @@ class ENFoto
 								if ($fila)
 								{
 									// Asignamos el identificador a la foto.
-									if ($error == false)
-									{
-										$this->id = $fila[0];
-										$this->fecha_registro = $fila[1];
-										$guardado = true;
-									}
+									$this->id = $fila[0];
+									$guardado = true;
 								}
 							}
 							else
@@ -486,6 +482,7 @@ class ENFoto
 			$rutaMiniatura2 = "fotos/m2$this->id.jpg";
 			$rutaMiniatura3 = "fotos/m3$this->id.jpg";
 			$rutaMiniatura4 = "fotos/m4$this->id.jpg";
+			$rutaMiniatura5 = "fotos/m5$this->id.jpg";
 
 			// Hay que intentar borrar las anteriores. No importa si falla.
 			borrarFichero($rutaFoto);
@@ -493,6 +490,7 @@ class ENFoto
 			borrarFichero($rutaMiniatura2);
 			borrarFichero($rutaMiniatura3);
 			borrarFichero($rutaMiniatura4);
+			borrarFichero($rutaMiniatura5);
 
 			// Luego hay que copiar el fichero de la imagen a la ruta de la foto.
 			if (@move_uploaded_file($httpPostFile['tmp_name'], $rutaFoto))
@@ -502,32 +500,39 @@ class ENFoto
 					$miniatura=new thumbnail($rutaFoto);
 					//$miniatura->size_width(100);
 					//$miniatura->size_height(100);
-					$miniatura->size_auto(150);
+					$miniatura->size_auto(100);
 					$miniatura->jpeg_quality(100);
 					$miniatura->save($rutaMiniatura1);
 
 					$miniatura=new thumbnail($rutaFoto);
 					//$miniatura->size_width(200);
 					//$miniatura->size_height(200);
-					$miniatura->size_auto(250);
+					$miniatura->size_auto(200);
 					$miniatura->jpeg_quality(100);
 					$miniatura->save($rutaMiniatura2);
 
 					$miniatura=new thumbnail($rutaFoto);
 					//$miniatura->size_width(300);
 					//$miniatura->size_height(300);
-					$miniatura->size_auto(350);
+					$miniatura->size_auto(300);
 					$miniatura->jpeg_quality(100);
 					$miniatura->save($rutaMiniatura3);
 
 					$miniatura=new thumbnail($rutaFoto);
 					//$miniatura->size_width(400);
 					//$miniatura->size_height(400);
-					$miniatura->size_auto(450);
+					$miniatura->size_auto(400);
 					$miniatura->jpeg_quality(100);
 					$miniatura->save($rutaMiniatura4);
 
-					$this->nombre_original = $httpPostFile['tmp_name'];
+					$miniatura=new thumbnail($rutaFoto);
+					//$miniatura->size_width(500);
+					//$miniatura->size_height(500);
+					$miniatura->size_auto(500);
+					$miniatura->jpeg_quality(100);
+					$miniatura->save($rutaMiniatura5);
+
+					$this->nombre_original = $httpPostFile['name'];
 					$creada = true;
 				}
 			}
