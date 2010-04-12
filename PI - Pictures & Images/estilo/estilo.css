@@ -224,7 +224,7 @@ Navegación
 	margin: auto;
 }
 
-#menu, #identificarse
+#menu, #identificarse, #avatar
 {
 	float: left;
 	width: 320px;
@@ -250,8 +250,8 @@ Navegación
 {
 	width: 255px;
 	margin: 0;
-	margin-top: -10px;
-	margin-bottom: -10px;
+	/*margin-top: 10px;
+	margin-bottom: 10px;*/
 	margin-left: 30px;
 }
 
@@ -276,6 +276,52 @@ Navegación
 #menu a:hover
 {
 	color: #a83333;
+	text-shadow: 1px 1px 0 #000;
+}
+
+#avatar
+{
+	color: #E7BB2A;
+	margin-top: 25px;
+	margin-left: 75px;
+}
+
+#avatar img
+{
+	max-height: 60px;
+	max-width: 60px;
+	border: 1px solid #000;
+	margin-right: 10px;
+}
+
+#avatar p
+{
+	padding-left: 5px;
+	margin-left: 5px;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 #000;
+}
+
+#avatar ul
+{
+	padding-top: 10px;
+	clear: both;
+	font-size: 14pt;
+	text-shadow: 1px 1px 0 #000;
+}
+
+#avatar a
+{
+	font-size: 8pt;
+	text-decoration: none;
+	color: #E7BB2A;
+	text-shadow: 1px 1px 0 #000;
+	font-weight: bold;
+}
+
+#avatar a:hover
+{
+	color: #FFFC89;
 	text-shadow: 1px 1px 0 #000;
 }
 
@@ -343,11 +389,17 @@ Navegación
 	background: url("entrarencima.gif") no-repeat;
 }
 
-#identificarse input{
+#identificarse input
+{
 	float: left;
 }
 
-#identificarse div span a
+#identificarse input[type="checkbox"]
+{
+	margin-right: 5px;
+}
+
+#identificarse div span, #identificarse div span a
 {
 	color: #fff;
 	text-shadow: 1px 1px 1px #000;

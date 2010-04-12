@@ -1,4 +1,6 @@
 <?php
+	session_start();
+
 	require_once 'BD.php';
 	BD::espeficarDatos("localhost", "root", "8520", "pi");
 	require_once 'ENAlbum.php';
@@ -59,5 +61,16 @@
 				return false;
 		}
 		return false;
+	}
+
+	/**
+	 * Cambia el formato de la fecha.
+	 * @param string $fecha Fecha con un formato YYYY-MM-DD.
+	 * @return string Fecha con el formato DD/MM/YYYY.
+	 */
+	function cambiarFormatoFecha($fecha)
+	{
+		$fecha = split("-", $fecha);
+		return $fecha[2]."/".$fecha[1]."/".$fecha[0];
 	}
 ?>

@@ -41,7 +41,7 @@ function baseSuperior($titulo)
 					<div id="busqueda">
 						<h3><span>Busca</span></h3>
 						<form action="busqueda.php" method="get">
-							<div><label>Búsqueda:</label><input type="text" value="" name="busqueda" /></div>
+							<div><label>Búsqueda:</label><input type="text" value="" name="titulo" /></div>
 							<div><label></label><input type="submit" value="Buscar" /></div>
 							<div><span><a href="buscar.php">Búsqueda avanzada</a></span></div>
 						</form>
@@ -54,21 +54,63 @@ function baseSuperior($titulo)
 						<ul>
 							<li><a href="index.php">Inicio</a></li>
 							<li><a href="buscar.php">Búsqueda avanzada</a></li>
-							<li><a href="#">Panel de control</a></li>
-							<li><a href="#">Crear un álbum</a></li>
-							<li><a href="#">Añadir fotografía</a></li>
 						</ul>
 					</div>
 
+<?php
+
+if (isset($_SESSION["usuario"]))
+{
+	// Si no hay ninguna sesión abierta, intentamos abrir una desde las cookies.
+	if (isset($_COOKIE["nombre"]) && isset($_COOKIE["contrasena"]))
+	{
+		$usuario = ENUsuario::obtenerPorNombre($_COOKIE["nombre"]);
+		if ($usuario != null)
+		{
+			if ($usuario->getContrasena() == $_COOKIE["contrasena"])
+			{
+				$_SESSION["usuario"] = serialize($usuario);
+			}
+		}
+	}
+}
+
+if (isset($_SESSION["usuario"]))
+{
+	$usuario = unserialize($_SESSION["usuario"]);
+	$ruta = "avatares/m1".$usuario->getId().".jpg";
+	if (!file_exists($ruta))
+		$ruta = "avatares/sinimagen.jpg";
+?>
+					<div id="avatar">
+						<img src="<?php echo $ruta; ?>" alt="Avatar de <?php echo $usuario->getNombre(); ?>" />
+						<p><?php echo $usuario->getNombre(); ?></p>
+
+						<ul>
+							<li><a href="perfil.php">Mis datos personales</a></li>
+							<li><a href="crearalbum.php">Crear un álbum</a></li>
+							<li><a href="albumes.php">Ver mis álbumes</a></li>
+							<li><a href="cerrarsesion.php">Cerrar sesión</a></li>
+						</ul>
+					</div>
+<?php
+}
+else
+{
+?>
 					<div id="identificarse">
 						<h3><span>Identifícate</span></h3>
-						<form action="index.php" method="post" onsubmit="return validarIdentificacion(this);">
+						<form action="iniciarsesion.php" method="post" onsubmit="return validarIdentificacion(this);">
 							<div><label>Usuario:</label><input type="text" value="" name="nombre_usuario" /></div>
 							<div><label>Contraseña:</label><input type="password" value="" name="contrasena" /></div>
 							<div><label></label><input type="submit" value="Entrar" /></div>
+							<div><label></label><input type="checkbox" value="on" name="recordar" /> <span>Recordarme en este equipo</span></div>
 							<div><span><a href="registrarse.php">Regístrate</a></span></div>
 						</form>
 					</div>
+<?php
+}
+?>
 				</div>
 
 				<div id="cuerpo">

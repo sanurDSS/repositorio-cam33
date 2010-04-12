@@ -48,14 +48,18 @@ for ($i = 1; $i <= 31; $i++)
 										</select>
 										<select name="mes">
 											<option selected="selected" value=""></option>
-<?php
-for ($i = 1; $i <= 12; $i++)
-{
-?>
-											<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-<?php
-}
-?>
+											<option value="1">enero</option>
+											<option value="2">febrero</option>
+											<option value="3">marzo</option>
+											<option value="4">abril</option>
+											<option value="5">mayo</option>
+											<option value="6">junio</option>
+											<option value="7">julio</option>
+											<option value="8">agosto</option>
+											<option value="9">septiembre</option>
+											<option value="10">octubre</option>
+											<option value="11">noviembre</option>
+											<option value="12">diciembre</option>
 										</select>
 										<select name="ano">
 											<option selected="selected" value=""></option>
@@ -73,7 +77,7 @@ for ($i = 1901; $i <= 2010; $i++)
 								<tr>
 									<td class="columna1">País:</td>
 									<td class="columna2">
-										<select name="dia">
+										<select name="pais">
 <?php
 $paises = ENPais::obtenerTodos();
 foreach ($paises as $i)

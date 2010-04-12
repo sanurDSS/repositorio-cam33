@@ -111,10 +111,7 @@ class ENPais
 
 		try
 		{
-			$sentencia = "select u.id, u.nombre, u.contrasena, u.email, u.sexo, u.fecha_nacimiento, u.fecha_registro, ciudad, p.nombre";
-			$sentencia = "$sentencia from paises u, paises p";
-			$sentencia = "$sentencia where u.id_pais = p.id and u.nombre = '$nombre'";
-			$sentencia = "$sentencia order by u.nombre";
+			$sentencia = "select id, nombre from paises where nombre = '$nombre'";
 			$resultado = mysql_query($sentencia, BD::conectar());
 
 			if ($resultado)
@@ -125,7 +122,7 @@ class ENPais
 					$pais = self::obtenerDatos($fila);
 					if ($pais == NULL)
 					{
-						echo "<ENPais::obtenerPorNombre()> Usuario nulo $nombre";
+						echo "<ENPais::obtenerPorNombre()> País nulo $nombre";
 					}
 				}
 
@@ -157,10 +154,7 @@ class ENPais
 
 		try
 		{
-			$sentencia = "select u.id, u.nombre, u.contrasena, u.email, u.sexo, u.fecha_nacimiento, u.fecha_registro, ciudad, p.nombre";
-			$sentencia = "$sentencia from paises u, paises p";
-			$sentencia = "$sentencia where u.id_pais = p.id and u.id = '$id'";
-			$sentencia = "$sentencia order by u.nombre";
+			$sentencia = "select id, nombre from paises where id = '$id'";
 			$resultado = mysql_query($sentencia, BD::conectar());
 
 			if ($resultado)
@@ -171,7 +165,7 @@ class ENPais
 					$pais = self::obtenerDatos($fila);
 					if ($pais == NULL)
 					{
-						echo "<ENPais::obtenerPorId()> Usuario nulo $nombre";
+						echo "<ENPais::obtenerPorId()> País nulo $id";
 					}
 				}
 

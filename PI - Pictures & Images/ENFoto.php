@@ -192,6 +192,77 @@ class ENFoto
 	}
 
 	/**
+	 * Obtiene todos las fotos que hay en la base de datos.
+	 * @return array Devuelve una lista con todas las fotos de la base de datos. Si hay algun error, devuelve NULL.
+	 */
+	public static function obtenerBusqueda($titulo, $fecha, $antes, $pais)
+	{
+		$titulo = filtrarCadena($titulo);
+		$fecha = filtrarCadena($fecha);
+		$lista = NULL;
+
+		try
+		{
+			$sentencia = "select f.id, f.titulo, f.descripcion, f.nombre_original, f.fecha, f.fecha_registro, p.nombre, f.id_album, u.nombre from fotos f, usuarios u, paises p, albumes a";
+			$sentencia = "$sentencia where f.id_pais = p.id and f.id_album = a.id and a.id_usuario = u.id";
+			$sentencia = "$sentencia and (f.titulo like '%$titulo%')";
+
+			if (is_numeric($pais) && ENPais::obtenerPorId($pais) != null)
+			{
+				$sentencia = "$sentencia and p.id = '$pais'";
+			}
+
+			$orden = "asc";
+			if ($fecha != "")
+			{
+				if ($antes == true)
+				{
+					$sentencia = "$sentencia and f.fecha <= '$fecha'";
+					$orden = "desc";
+				}
+				else
+				{
+					$sentencia = "$sentencia and f.fecha >= '$fecha'";
+				}
+			}
+
+			$sentencia = "$sentencia order by f.fecha $orden";
+			$resultado = mysql_query($sentencia, BD::conectar());
+
+			if ($resultado)
+			{
+				$lista = array();
+				$contador = 0;
+				while ($fila = mysql_fetch_array($resultado))
+				{
+					$foto = self::obtenerDatos($fila);
+					if ($foto != NULL)
+					{
+						$lista[$contador++] = $foto;
+					}
+					else
+					{
+						echo "<ENFoto::obtenerTodos()> Foto nula nº $contador";
+					}
+				}
+
+				BD::desconectar();
+			}
+			else
+			{
+				echo "<ENFoto::obtenerTodos()>".mysql_error();
+			}
+		}
+		catch (Exception $e)
+		{
+			$lista = NULL;
+			echo "<ENFoto::obtenerTodos() ".$e->getMessage();
+		}
+
+		return $lista;
+	}
+
+	/**
 	 * Obtiene una foto desde la base de datos a partir de su identificador.
 	 * @param int $id Identificador de la foto que se va a obtener.
 	 * @return ENFoto Devuelve las fotos con todos sus atributos extraidos desde la base de datos. Devuelve NULL si ocurrió algún error.
