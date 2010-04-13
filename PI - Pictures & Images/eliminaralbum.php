@@ -8,6 +8,11 @@ if ($usuario != null && $album != null)
 {
 	if ($usuario->getNombre() == $album->getUsuario())
 	{
+		$fotos = $album->getFotos();
+		foreach ($fotos as $i)
+		{
+			$i->borrarFoto();
+		}
 		$album->borrar();
 
 		if ($_POST["ajax"] == "no")

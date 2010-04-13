@@ -79,7 +79,13 @@
 	$nuevo->setPais(ENPais::obtenerPorId($pais)->getNombre());
 	$nuevo->setIdAlbum($album->getId());
 	$nuevo->guardar();
-	$nuevo->setFoto($_FILES["foto"]);
+	if (!$nuevo->setFoto($_FILES["foto"]))
+	{
+		$nuevo->borrarFoto();
+		$nuevo->borrar();
+		header("location: anadirfoto.php?id=".$album->getId()."&error=No se pudo crear la foto porque tiene un formato incorrecto. Debe ser JPG.");
+		exit();
+	}
 
 	header("location: album.php?id=".$album->getId()."&exito=Foto subida correctamente.");
 ?>

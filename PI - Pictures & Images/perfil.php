@@ -60,6 +60,10 @@ baseSuperior($cabeza);
 								<td class="columna2"><?php echo $usuario->getPais(); ?></td>
 							</tr>
 							<tr>
+								<td class="columna1">Ciudad:</td>
+								<td class="columna2"><?php echo $usuario->getCiudad(); ?></td>
+							</tr>
+							<tr>
 								<td class="columna1">Álbumes de fotos:</td>
 								<td class="columna2"><?php echo count($usuario->obtenerAlbumes()); ?> (<a href="albumes.php?id=<?php echo $usuario->getId(); ?>">ver álbumes</a>)</td>
 							</tr>

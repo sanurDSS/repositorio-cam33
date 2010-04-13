@@ -663,49 +663,56 @@ class ENUsuario
 			{
 				if (@chmod($rutaFoto, 0777))
 				{
-					$miniatura=new thumbnail($rutaFoto);
+					$miniatura=@new thumbnail($rutaFoto);
 					//$miniatura->size_width(60);
 					//$miniatura->size_height(60);
 					$miniatura->size_auto(60);
 					$miniatura->jpeg_quality(100);
-					$miniatura->save($rutaMiniatura0);
+					@$miniatura->save($rutaMiniatura0);
 
-					$miniatura=new thumbnail($rutaFoto);
+					$miniatura=@new thumbnail($rutaFoto);
 					//$miniatura->size_width(100);
 					//$miniatura->size_height(100);
 					$miniatura->size_auto(100);
 					$miniatura->jpeg_quality(100);
-					$miniatura->save($rutaMiniatura1);
+					@$miniatura->save($rutaMiniatura1);
 
-					$miniatura=new thumbnail($rutaFoto);
+					$miniatura=@new thumbnail($rutaFoto);
 					//$miniatura->size_width(200);
 					//$miniatura->size_height(200);
 					$miniatura->size_auto(200);
 					$miniatura->jpeg_quality(100);
-					$miniatura->save($rutaMiniatura2);
+					@$miniatura->save($rutaMiniatura2);
 
-					$miniatura=new thumbnail($rutaFoto);
+					$miniatura=@new thumbnail($rutaFoto);
 					//$miniatura->size_width(300);
 					//$miniatura->size_height(300);
 					$miniatura->size_auto(300);
 					$miniatura->jpeg_quality(100);
-					$miniatura->save($rutaMiniatura3);
+					@$miniatura->save($rutaMiniatura3);
 
-					$miniatura=new thumbnail($rutaFoto);
+					$miniatura=@new thumbnail($rutaFoto);
 					//$miniatura->size_width(400);
 					//$miniatura->size_height(400);
 					$miniatura->size_auto(400);
 					$miniatura->jpeg_quality(100);
-					$miniatura->save($rutaMiniatura4);
+					@$miniatura->save($rutaMiniatura4);
 
-					$miniatura=new thumbnail($rutaFoto);
+					$miniatura=@new thumbnail($rutaFoto);
 					//$miniatura->size_width(500);
 					//$miniatura->size_height(500);
 					$miniatura->size_auto(500);
 					$miniatura->jpeg_quality(100);
-					$miniatura->save($rutaMiniatura5);
+					@$miniatura->save($rutaMiniatura5);
 
 					$creada = true;
+					$creada = $creada && file_exists($rutaFoto);
+					$creada = $creada && file_exists($rutaMiniatura0);
+					$creada = $creada && file_exists($rutaMiniatura1);
+					$creada = $creada && file_exists($rutaMiniatura2);
+					$creada = $creada && file_exists($rutaMiniatura3);
+					$creada = $creada && file_exists($rutaMiniatura4);
+					$creada = $creada && file_exists($rutaMiniatura5);
 				}
 			}
 		}
@@ -714,16 +721,25 @@ class ENUsuario
 	}
 
 	/**
-	 * Obtiene la ruta del avatar del usuario.
-	 * @return string Devuevle la ruta del avatar ("" si no tiene avatar).
+	 * Borra las imágenes y miniaturas del avatar del usuario.
 	 */
-	public function getAvatar()
+	public function borrarAvatar()
 	{
-		$ruta = "avatares/m1$this->id.jpg";
-		if (file_exists($ruta))
-			return $ruta;
-		else
-			return "";
+		$rutaFoto = "avatares/$this->id.jpg";
+		$rutaMiniatura0 = "avatares/m0$this->id.jpg";
+		$rutaMiniatura1 = "avatares/m1$this->id.jpg";
+		$rutaMiniatura2 = "avatares/m2$this->id.jpg";
+		$rutaMiniatura3 = "avatares/m3$this->id.jpg";
+		$rutaMiniatura4 = "avatares/m4$this->id.jpg";
+		$rutaMiniatura5 = "avatares/m5$this->id.jpg";
+
+		borrarFichero($rutaFoto);
+		borrarFichero($rutaMiniatura0);
+		borrarFichero($rutaMiniatura1);
+		borrarFichero($rutaMiniatura2);
+		borrarFichero($rutaMiniatura3);
+		borrarFichero($rutaMiniatura4);
+		borrarFichero($rutaMiniatura5);
 	}
 }
 ?>

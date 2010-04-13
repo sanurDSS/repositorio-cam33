@@ -82,6 +82,14 @@ insert into paises (nombre) values ('Escocia');
 insert into paises (nombre) values ('Suiza');
 insert into paises (nombre) values ('Suecia');
 insert into paises (nombre) values ('Australia');
+insert into paises (nombre) values ('Bolivia');
+insert into paises (nombre) values ('Irak');
+insert into paises (nombre) values ('Perú');
+insert into paises (nombre) values ('Cuba');
+insert into paises (nombre) values ('Países Bajos');
+insert into paises (nombre) values ('Polonia');
+insert into paises (nombre) values ('República Checa');
+insert into paises (nombre) values ('Andorra');
 insert into paises (nombre) values ('Tailandia');
 
 insert into usuarios (nombre, contrasena, email, sexo, fecha_nacimiento, fecha_registro, ciudad, id_pais)

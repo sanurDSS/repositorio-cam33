@@ -497,48 +497,78 @@ class ENFoto
 			{
 				if (@chmod($rutaFoto, 0777))
 				{
-					$miniatura=new thumbnail($rutaFoto);
+					$miniatura=@new thumbnail($rutaFoto);
 					//$miniatura->size_width(100);
 					//$miniatura->size_height(100);
 					$miniatura->size_auto(100);
 					$miniatura->jpeg_quality(100);
-					$miniatura->save($rutaMiniatura1);
+					@$miniatura->save($rutaMiniatura1);
 
-					$miniatura=new thumbnail($rutaFoto);
+					$miniatura=@new thumbnail($rutaFoto);
 					//$miniatura->size_width(200);
 					//$miniatura->size_height(200);
 					$miniatura->size_auto(200);
 					$miniatura->jpeg_quality(100);
-					$miniatura->save($rutaMiniatura2);
+					@$miniatura->save($rutaMiniatura2);
 
-					$miniatura=new thumbnail($rutaFoto);
+					$miniatura=@new thumbnail($rutaFoto);
 					//$miniatura->size_width(300);
 					//$miniatura->size_height(300);
 					$miniatura->size_auto(300);
 					$miniatura->jpeg_quality(100);
-					$miniatura->save($rutaMiniatura3);
+					@$miniatura->save($rutaMiniatura3);
 
-					$miniatura=new thumbnail($rutaFoto);
+					$miniatura=@new thumbnail($rutaFoto);
 					//$miniatura->size_width(400);
 					//$miniatura->size_height(400);
 					$miniatura->size_auto(400);
 					$miniatura->jpeg_quality(100);
-					$miniatura->save($rutaMiniatura4);
+					@$miniatura->save($rutaMiniatura4);
 
-					$miniatura=new thumbnail($rutaFoto);
+					$miniatura=@new thumbnail($rutaFoto);
 					//$miniatura->size_width(500);
 					//$miniatura->size_height(500);
 					$miniatura->size_auto(500);
 					$miniatura->jpeg_quality(100);
-					$miniatura->save($rutaMiniatura5);
+					@$miniatura->save($rutaMiniatura5);
 
 					$this->nombre_original = $httpPostFile['name'];
+					
 					$creada = true;
+					$creada = $creada && file_exists($rutaFoto);
+					$creada = $creada && file_exists($rutaMiniatura0);
+					$creada = $creada && file_exists($rutaMiniatura1);
+					$creada = $creada && file_exists($rutaMiniatura2);
+					$creada = $creada && file_exists($rutaMiniatura3);
+					$creada = $creada && file_exists($rutaMiniatura4);
+					$creada = $creada && file_exists($rutaMiniatura5);
 				}
 			}
 		}
 
 		return $creada;
+	}
+
+	/**
+	 * Borra el fichero y las miniaturas de la foto.
+	 */
+	public function borrarFoto()
+	{
+		// Establecemos las rutas de las fotos y las miniaturas.
+		$rutaFoto = "fotos/$this->id.jpg";
+		$rutaMiniatura1 = "fotos/m1$this->id.jpg";
+		$rutaMiniatura2 = "fotos/m2$this->id.jpg";
+		$rutaMiniatura3 = "fotos/m3$this->id.jpg";
+		$rutaMiniatura4 = "fotos/m4$this->id.jpg";
+		$rutaMiniatura5 = "fotos/m5$this->id.jpg";
+
+		// Hay que intentar borrar las anteriores. No importa si falla.
+		borrarFichero($rutaFoto);
+		borrarFichero($rutaMiniatura1);
+		borrarFichero($rutaMiniatura2);
+		borrarFichero($rutaMiniatura3);
+		borrarFichero($rutaMiniatura4);
+		borrarFichero($rutaMiniatura5);
 	}
 }
 ?>

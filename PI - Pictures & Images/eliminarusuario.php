@@ -8,6 +8,17 @@ if ($usuario != null)
 {
 	if ($usuario->getContrasena() == $contrasena)
 	{
+		$usuario->borrarAvatar();
+
+		$albumes = $usuario->obtenerAlbumes();
+		foreach ($albumes as $i)
+		{
+			$fotos = $i->getFotos();
+			foreach ($fotos as $j)
+			{
+				$j->borrarFoto();
+			}
+		}
 		$usuario->borrar();
 		$_SESSION["usuario"] = null;
 		header("location: index.php?exito=El usuario ha sido eliminado correctamente.");

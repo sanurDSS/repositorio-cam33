@@ -53,10 +53,17 @@
 	$nuevo->setSexo($sexo);
 	$nuevo->setFechaNacimiento($fecha);
 	$nuevo->guardar();
+	$creada = true;
 	if ($_FILES["foto"] != null)
-		$nuevo->setAvatar($_FILES["foto"]);
+		if (!$nuevo->setAvatar($_FILES["foto"]))
+		{
+			$creada = false;
+		}
 
 	$_SESSION["usuario"] = serialize($nuevo);
 
-	header("location: index.php?exito=Usuario registrado correctamente.");
+	if ($creada)
+		header("location: index.php?exito=Usuario registrado correctamente.");
+	else
+		header("location: index.php?exito=Usuario registrado correctamente.&aviso=El usuario se ha creado sin ningún avatar porque el formato no era JPG.");
 ?>
