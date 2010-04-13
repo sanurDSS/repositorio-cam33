@@ -75,7 +75,7 @@ for ($i = 1901; $i <= 2010; $i++)
 									</td>
 								</tr>
 								<tr>
-									<td class="columna1">País:</td>
+									<td class="columna1">País*:</td>
 									<td class="columna2">
 										<select name="pais">
 <?php

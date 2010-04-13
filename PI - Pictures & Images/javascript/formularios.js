@@ -54,6 +54,10 @@ function validarRegistro(formulario)
 	if (fecha.getDate() != parseInt(formulario.dia.value) || parseInt(formulario.mes.value - 1) != fecha.getMonth() || parseInt(formulario.ano.value) != fecha.getFullYear())
 		alerta = alerta + "- La fecha introducida no es válida.\n\n";
 
+	// Comprobamos que hay un país seleccionado.
+	if (formulario.pais.value.length == 0)
+		alerta = alerta + "- Debe seleccionar un país.\n\n";
+
 	// Si se ha concatenado algún error, se muestra el mensaje y se aborta el "submit" del formulario devolviendo falso.
 	if (alerta != "")
 	{

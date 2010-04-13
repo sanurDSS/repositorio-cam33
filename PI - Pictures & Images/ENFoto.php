@@ -536,7 +536,6 @@ class ENFoto
 					
 					$creada = true;
 					$creada = $creada && file_exists($rutaFoto);
-					$creada = $creada && file_exists($rutaMiniatura0);
 					$creada = $creada && file_exists($rutaMiniatura1);
 					$creada = $creada && file_exists($rutaMiniatura2);
 					$creada = $creada && file_exists($rutaMiniatura3);

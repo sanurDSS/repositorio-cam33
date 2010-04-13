@@ -39,15 +39,15 @@ baseSuperior("Anadir una nueva foto al álbum #".$album->getId());
 						<form action="operarfoto.php" method="post" enctype="multipart/form-data" onsubmit="return validarFoto(this);">
 							<table>
 								<tr>
-									<td class="columna1">Título:</td>
+									<td class="columna1">Título*:</td>
 									<td class="columna2"><input type="text" value="" name="titulo" /></td>
 								</tr>
 								<tr>
-									<td class="columna1">Descripción:</td>
+									<td class="columna1">Descripción*:</td>
 									<td class="columna2"><textarea cols="25" rows="4" name="descripcion"></textarea></td>
 								</tr>
 								<tr>
-									<td class="columna1">Fecha:</td>
+									<td class="columna1">Fecha*:</td>
 									<td class="columna2">
 										<select name="dia">
 											<option selected="selected" value=""></option>
@@ -89,7 +89,7 @@ for ($i = 1901; $i <= 2010; $i++)
 									</td>
 								</tr>
 								<tr>
-									<td class="columna1">País:</td>
+									<td class="columna1">País*:</td>
 									<td class="columna2">
 										<select name="pais">
 											<option selected="selected" value=""></option>
@@ -106,7 +106,7 @@ foreach ($paises as $i)
 									</td>
 								</tr>
 								<tr>
-									<td class="columna1">Foto (JPG):</td>
+									<td class="columna1">Foto (JPG)*:</td>
 									<td class="columna2"><input type="file" value="" name="foto" /></td>
 								</tr>
 								<tr>
