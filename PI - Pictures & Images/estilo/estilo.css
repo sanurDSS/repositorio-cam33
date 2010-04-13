@@ -556,6 +556,21 @@ Foto
 /*****************************************************
 Álbum
 *****************************************************/
+#perfil .columna1
+{
+	font-weight: bold;
+	width: 30%;
+	vertical-align: top;
+}
+
+#perfil input
+{
+	margin-top: 10px;
+}
+
+/*****************************************************
+Álbum
+*****************************************************/
 #album .columna1
 {
 	font-weight: bold;
@@ -566,12 +581,21 @@ Foto
 #album #fotos
 {
 	margin-top: 15px;
+	margin-bottom: 10px;
 }
 
 #album .foto
 {
 	float: left;
 	position: relative;
+	width: 110px;
+	height: 110px;
+	text-align: center;
+}
+
+#album .foto a
+{
+	margin: auto;
 }
 
 #album .foto img

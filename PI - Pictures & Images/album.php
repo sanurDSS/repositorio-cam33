@@ -105,10 +105,12 @@ if ($propio)
 								</div>
 <?php
 	}
+?>
+							<div style="clear: both;"></div>
+<?php
 }
 ?>
 						</div>
-						<div style="clear: both;"></div>
 					</div>
 <?php
 baseInferior();
