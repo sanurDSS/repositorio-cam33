@@ -11,6 +11,7 @@ import javavis.base.parameter.JIPParamObject;
 import javavis.jip2d.base.FunctionGroup;
 import javavis.jip2d.base.JIPFunction;
 import javavis.jip2d.base.JIPImage;
+import javavis.jip2d.base.bitmaps.JIPBmpBit;
 import javavis.jip2d.base.bitmaps.JIPBmpColor;
 import javavis.jip2d.base.bitmaps.JIPImgBitmap;
 import javavis.jip2d.base.geometrics.JIPGeomPoly;
@@ -58,11 +59,11 @@ public class FDetectaCaras extends JIPFunction
 		// Parámetros para la segmentación HSB.
 		JIPParamFloat p1 = new JIPParamFloat("h", false, true);
 		p1.setDescription("Hue value");
-		p1.setDefault(0.03f);
+		p1.setDefault(0.025f);
 		addParam(p1);
 		JIPParamFloat p2 = new JIPParamFloat("herror", false, true);
 		p2.setDescription("Margin of hue error");
-		p2.setDefault(0.15f);
+		p2.setDefault(0.055f);
 		addParam(p2);
 		JIPParamFloat p3 = new JIPParamFloat("s", false, true);
 		p3.setDescription("Saturation value");
@@ -150,11 +151,22 @@ public class FDetectaCaras extends JIPFunction
 			Blob blob = i.next();
 			blob.calcEverything();
 			
-			if (blob.xsize * blob.ysize >= 400 &&
-					0.5f <= (blob.xsize / (float) blob.ysize) &&
-					1.5f >= (blob.xsize / (float) blob.ysize))
+			// Se comprueba que tenga un tamaño y relación adecuada.
+			if (blob.xsize * blob.ysize >= 1600 &&
+					0.50f <= (blob.xsize / (float) blob.ysize) &&
+					1.40f >= (blob.xsize / (float) blob.ysize))
 			{
-				if (true) // TODO: se comprueba que hay un alto porcentaje de valores a 1
+				// Se comprueba que hay un alto porcentaje de valores a 1.
+				int pixelesBlancos = 0;
+				int pixelesTotales = blob.xsize * blob.ysize;
+				JIPBmpBit imgBit = (JIPBmpBit) imgAux;
+				for (int j = blob.minx; j <= blob.maxx; j++)
+					for (int k = blob.miny; k <= blob.maxy; k++)
+					{
+						if (imgBit.getPixelBool(j, k))
+							pixelesBlancos++;
+					}
+				if (pixelesBlancos/(float) pixelesTotales > 0.4f)
 				{
 					/*System.out.println("xsize: " + blob.xsize);
 					System.out.println("ysize: " + blob.ysize);
@@ -165,14 +177,14 @@ public class FDetectaCaras extends JIPFunction
 					caras.add(blob);
 					
 					ArrayList<Integer> cara = new ArrayList<Integer>();
-					cara.add(blob.centro_x - blob.xsize/2);
-					cara.add(blob.centro_y - blob.ysize/2);
-					cara.add(blob.centro_x + blob.xsize/2);
-					cara.add(blob.centro_y - blob.ysize/2);
-					cara.add(blob.centro_x + blob.xsize/2);
-					cara.add(blob.centro_y + blob.ysize/2);
-					cara.add(blob.centro_x - blob.xsize/2);
-					cara.add(blob.centro_y + blob.ysize/2);
+					cara.add(blob.minx);
+					cara.add(blob.miny);
+					cara.add(blob.maxx);
+					cara.add(blob.miny);
+					cara.add(blob.maxx);
+					cara.add(blob.maxy);
+					cara.add(blob.minx);
+					cara.add(blob.maxy);
 					resultado.addPoly(cara);
 				}
 			}
