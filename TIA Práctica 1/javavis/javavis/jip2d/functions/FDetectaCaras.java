@@ -5,6 +5,7 @@ import java.util.Iterator;
 import javavis.base.JIPException;
 import javavis.base.parameter.JIPParamFile;
 import javavis.base.parameter.JIPParamFloat;
+import javavis.base.parameter.JIPParamInt;
 import javavis.base.parameter.JIPParamList;
 import javavis.base.parameter.JIPParamObject;
 import javavis.jip2d.base.FunctionGroup;
@@ -29,9 +30,9 @@ public class FDetectaCaras extends JIPFunction
 		description = "Detecta las caras en una imagen y genera una imagen geométrica.";
 		groupFunc = FunctionGroup.Cristian;
 
-		// TODO: Cosas pendientes en la fase 1.
+		// TODO: Cosas optativas en la fase 1.
 		// Añadir parámetros para elegir la localización de la foto: interior, exterior, soleado, nublado, oscuro, iluminado, ...
-		// Añadir parámetros para filtrar los blobs: tamaño, aspect ratio, porcentaje de valores a 1.
+		// Utilizar otros métodos.
 		// Establecer otros elementos estructurantes por defecto.
 		
 		// Parámetros para la segmentación HSB.
@@ -66,16 +67,31 @@ public class FDetectaCaras extends JIPFunction
 		p7.setDescription("Estructurant Element");
 		addParam(p7);
 		
-		// Parámetro para decidir hasta dónde ejecutar.
-		JIPParamList p8 = new JIPParamList("fase", false, true);
-		String []p8aux = new String[4];
-		p8aux[0] = "Convertir a HSB";
-		p8aux[1] = "Segmentar HSB";
-		p8aux[2] = "Cierre morfológico";
-		p8aux[3] = "Completo";
-		p8.setDefault(p8aux);
-		p8.setDescription("Hasta dónde ejecutar el algoritmo");
+		// Parámetros para el filtrado y selección de blobs.
+		// Añadir parámetros para filtrar los blobs: tamaño, aspect ratio, porcentaje de valores a 1.
+		JIPParamInt p8 = new JIPParamInt("tamano", false, true);
+		p8.setDefault(1600);
+		p8.setDescription("Mínimo tamaño del blob en píxeles");
 		addParam(p8);
+		JIPParamFloat p9 = new JIPParamFloat("margen", false, true);
+		p9.setDefault(0.50f);
+		p9.setDescription("Margen permitido a la relación entre alto y ancho del blob (1 - margen <= aspect_ratio <= 1 + margen)");
+		addParam(p9);
+		JIPParamInt p10 = new JIPParamInt("porcentaje", false, true);
+		p10.setDefault(40);
+		p10.setDescription("Porcentaje de píxeles con valor 1 en el blob");
+		addParam(p10);
+		
+		// Parámetro para decidir hasta dónde ejecutar.
+		JIPParamList p11 = new JIPParamList("fase", false, true);
+		String []p11aux = new String[4];
+		p11aux[0] = "Completo";
+		p11aux[1] = "Convertir a HSB";
+		p11aux[2] = "Segmentar HSB";
+		p11aux[3] = "Cierre morfológico";
+		p11.setDefault(p11aux);
+		p11.setDescription("Hasta dónde ejecutar el algoritmo");
+		addParam(p11);
 		
 		// Parámetro de salida con los blobs.
 		JIPParamObject o1 = new JIPParamObject("blobs", false, false);
@@ -120,6 +136,7 @@ public class FDetectaCaras extends JIPFunction
 		
 		// Añadimos las zonas candidatas a la imagen geométrica.
 		ArrayList<Blob> caras = new ArrayList<Blob>();
+		setParamValue("blobs", caras);
 		FBlobs fb = new FBlobs();
 		fb.processImg(imgAux);
 		ArrayList<Blob> blobs = (ArrayList<Blob>) fb.getParamValueObj("blobs");
@@ -130,9 +147,9 @@ public class FDetectaCaras extends JIPFunction
 			blob.calcEverything();
 			
 			// Se comprueba que tenga un tamaño y relación adecuada.
-			if (blob.xsize * blob.ysize >= 1600 &&
-					0.50f <= (blob.xsize / (float) blob.ysize) &&
-					1.40f >= (blob.xsize / (float) blob.ysize))
+			if (blob.xsize * blob.ysize >= getParamValueInt("tamano") &&
+					1 - getParamValueFloat("margen") <= (blob.xsize / (float) blob.ysize) &&
+					1 + getParamValueFloat("margen") >= (blob.xsize / (float) blob.ysize))
 			{
 				// Se comprueba que hay un alto porcentaje de valores a 1.
 				int pixelesBlancos = 0;
@@ -144,7 +161,7 @@ public class FDetectaCaras extends JIPFunction
 						if (imgBit.getPixelBool(j, k))
 							pixelesBlancos++;
 					}
-				if (pixelesBlancos/(float) pixelesTotales > 0.4f)
+				if (pixelesBlancos/(float) pixelesTotales > getParamValueInt("porcentaje")/100.0f)
 				{
 					// Llegados a este punto se añade el blob a la lista de caras y se dibuja el rectángulo en la imagen geométrica.
 					caras.add(blob);
@@ -161,7 +178,6 @@ public class FDetectaCaras extends JIPFunction
 				}
 			}
 		}
-		setParamValue("blobs", caras);
 		
 		return resultado;
 	}
