@@ -155,6 +155,8 @@ public class Gui2D extends JPanel implements ActionListener {
         add(tb,BorderLayout.NORTH);
         add(spane,BorderLayout.CENTER);
         add(infoBottom,BorderLayout.SOUTH);
+        
+		infoGeom.setVisible(false);
 	}
 
     protected void addButtonsFunctions(JPanel jp){
@@ -334,6 +336,49 @@ public class Gui2D extends JPanel implements ActionListener {
 			}
 		});
 		t.add(changeViewButton);
+		
+		button = new JButton(Commons.getIcon("undo.jpg"));
+		button.setBorderPainted(false);
+		button.setToolTipText(prop.getProperty("Undo"));
+		final Gui2D este = this;
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					JIPSequence auxSeq = getLastSequence();
+					if (auxSeq != null) {
+						canvas.setSequence(auxSeq);
+						canvas.setBackGround(null);
+						canvas.outView();
+						canvas.changeToFrame(canvas.getFrameNum());
+						infoBottom.assocSequence(canvas.getSequence());
+						repaint();
+					} else
+						new Dialog(este).information(prop.getProperty("MessageUndo"), prop.getProperty("Error"));
+				}catch (JIPException ex) {logger.error(ex);}
+			}
+		});
+		
+		t.add(button);
+		button = new JButton(Commons.getIcon("redo.jpg"));
+		button.setBorderPainted(false);
+		button.setToolTipText(prop.getProperty("Redo"));
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JIPSequence auxSeq = getNextSequence();
+				if (auxSeq != null) {
+					try {
+						canvas.setSequence(auxSeq);
+						canvas.setBackGround(null);
+						canvas.outView();
+						canvas.changeToFrame(canvas.getFrameNum());
+						infoBottom.assocSequence(canvas.getSequence());
+						repaint();
+					}catch (JIPException ex) {logger.error(ex);}
+				} else
+					new Dialog(este).information(prop.getProperty("MessageRedo"), prop.getProperty("Error"));
+			}
+		});
+		t.add(button);
 	}
 
 	/**

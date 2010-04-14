@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javavis.base.ImageType; 
 import javavis.base.JIPException;
+import javavis.base.parameter.JIPParamFile;
+import javavis.base.parameter.JIPParamFloat;
 import javavis.base.parameter.JIPParamList;
 import javavis.base.parameter.JIPParamObject;
 import javavis.jip2d.base.FunctionGroup;
@@ -53,6 +55,50 @@ public class FDetectaCaras extends JIPFunction
 		p1.setDescription("Type of result image");
 		addParam(p1);*/
 		
+		// Parámetros para la segmentación HSB.
+		JIPParamFloat p1 = new JIPParamFloat("h", false, true);
+		p1.setDescription("Hue value");
+		p1.setDefault(0.03f);
+		addParam(p1);
+		JIPParamFloat p2 = new JIPParamFloat("herror", false, true);
+		p2.setDescription("Margin of hue error");
+		p2.setDefault(0.15f);
+		addParam(p2);
+		JIPParamFloat p3 = new JIPParamFloat("s", false, true);
+		p3.setDescription("Saturation value");
+		p3.setDefault(0.24f);
+		addParam(p3);
+		JIPParamFloat p4 = new JIPParamFloat("serror", false, true);
+		p4.setDescription("Margin of saturation error");
+		p4.setDefault(0.10f);
+		addParam(p4);
+		JIPParamFloat p5 = new JIPParamFloat("b", false, true);
+		p5.setDescription("Brightness value");
+		p5.setDefault(0.90f);
+		addParam(p5);
+		JIPParamFloat p6 = new JIPParamFloat("berror", false, true);
+		p6.setDescription("Margin of brightness error");
+		p6.setDefault(0.5f);
+		addParam(p6);
+		
+		// Parámetros para el cierre morfológico.
+		JIPParamFile p7 = new JIPParamFile("ee", false, true);
+		p7.setDefault("Images/ee.txt");
+		p7.setDescription("Estructurant Element");
+		addParam(p7);
+		
+		// Parámetro para decidir hasta dónde ejecutar.
+		JIPParamList p8 = new JIPParamList("fase", false, true);
+		String []p8aux = new String[4];
+		p8aux[0] = "RGB a HSB";
+		p8aux[1] = "Segmentar HSB";
+		p8aux[2] = "Cierre morfológico";
+		p8aux[3] = "Completo";
+		p8.setDefault(p8aux);
+		p8.setDescription("Hasta dónde ejecutar el algoritmo");
+		addParam(p8);
+		
+		// Parámetro de salida con los blobs.
 		JIPParamObject o1 = new JIPParamObject("blobs", false, false);
 		addParam(o1);
 	}
@@ -69,20 +115,29 @@ public class FDetectaCaras extends JIPFunction
 		frtc.setParamValue("format", "HSB");
 		imgAux = frtc.processImg(imgAux);
 		
+		if (getParamValueString("fase").equals("RGB a HSB"))
+			return imgAux;
+		
 		// Binarizamos la imagen: 1 donde haya color de piel; 0 en otro caso.
 		FSegmentHSB fsh = new FSegmentHSB();
-		fsh.setParamValue("h", 0.03f);
-		fsh.setParamValue("herror", 0.15f);
-		fsh.setParamValue("s", 0.24f);
-		fsh.setParamValue("serror", 0.10f);
-		fsh.setParamValue("b", 0.90f);
-		fsh.setParamValue("berror", 0.5f);
+		fsh.setParamValue("h", getParamValueFloat("h"));
+		fsh.setParamValue("herror", getParamValueFloat("herror"));
+		fsh.setParamValue("s", getParamValueFloat("s"));
+		fsh.setParamValue("serror", getParamValueFloat("serror"));
+		fsh.setParamValue("b", getParamValueFloat("b"));
+		fsh.setParamValue("berror", getParamValueFloat("berror"));
 		imgAux = fsh.processImg(imgAux);
+		
+		if (getParamValueString("fase").equals("Segmentar HSB"))
+			return imgAux;
 		
 		// Reducimos el ruido de la imagen binaria.
 		FClousure fc = new FClousure();
-		fc.setParamValue("ee", "Images/ee.txt");
+		fc.setParamValue("ee", getParamValueString("ee"));
 		imgAux = fc.processImg(imgAux);
+		
+		if (getParamValueString("fase").equals("Cierre morfológico"))
+			return imgAux;
 		
 		// Añadimos las zonas candidatas a la imagen geométrica.
 		ArrayList<Blob> caras = new ArrayList<Blob>();

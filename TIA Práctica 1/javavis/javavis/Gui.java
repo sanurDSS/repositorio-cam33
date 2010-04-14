@@ -107,7 +107,7 @@ public class Gui extends JFrame implements ChangeListener {
         getContentPane().add(tabPane, BorderLayout.CENTER);
 
 		setIconImage(Commons.getIcon("vg.gif").getImage());
-        setSize(800,600);
+        setSize(960,800);
 	}
 
 	public void stateChanged(ChangeEvent e) {
