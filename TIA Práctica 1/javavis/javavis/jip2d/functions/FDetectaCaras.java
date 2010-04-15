@@ -32,7 +32,7 @@ public class FDetectaCaras extends JIPFunction
 
 		// TODO: Cosas optativas en la fase 1.
 		// Añadir parámetros para elegir la localización de la foto: interior, exterior, soleado, nublado, oscuro, iluminado, ...
-		// Utilizar otros métodos.
+		// Utilizar otros métodos para detectar caras.
 		// Establecer otros elementos estructurantes por defecto.
 		
 		// Parámetros para la segmentación HSB.
@@ -75,7 +75,7 @@ public class FDetectaCaras extends JIPFunction
 		addParam(p8);
 		JIPParamFloat p9 = new JIPParamFloat("margen", false, true);
 		p9.setDefault(0.50f);
-		p9.setDescription("Margen permitido a la relación entre alto y ancho del blob (1 - margen <= aspect_ratio <= 1 + margen)");
+		p9.setDescription("Margen permitido a la relación entre ancho y alto del blob (1 - margen <= ancho/alto <= 1 + margen)");
 		addParam(p9);
 		JIPParamInt p10 = new JIPParamInt("porcentaje", false, true);
 		p10.setDefault(40);
@@ -106,30 +106,30 @@ public class FDetectaCaras extends JIPFunction
 		JIPImage imgAux = img.clone();
 		
 		// Convertimos la imagen RGB a color.
-		FRGBToColor frtc = new FRGBToColor();
-		frtc.setParamValue("format", "HSB");
-		imgAux = frtc.processImg(imgAux);
+		FRGBToColor fRGBToColor = new FRGBToColor();
+		fRGBToColor.setParamValue("format", "HSB");
+		imgAux = fRGBToColor.processImg(imgAux);
 		
 		if (getParamValueString("fase").equals("Convertir a HSB"))
 			return imgAux;
 		
 		// Binarizamos la imagen: 1 donde haya color de piel; 0 en otro caso.
-		FSegmentHSB fsh = new FSegmentHSB();
-		fsh.setParamValue("h", getParamValueFloat("h"));
-		fsh.setParamValue("herror", getParamValueFloat("herror"));
-		fsh.setParamValue("s", getParamValueFloat("s"));
-		fsh.setParamValue("serror", getParamValueFloat("serror"));
-		fsh.setParamValue("b", getParamValueFloat("b"));
-		fsh.setParamValue("berror", getParamValueFloat("berror"));
-		imgAux = fsh.processImg(imgAux);
+		FSegmentHSB fSegmentHSB = new FSegmentHSB();
+		fSegmentHSB.setParamValue("h", getParamValueFloat("h"));
+		fSegmentHSB.setParamValue("herror", getParamValueFloat("herror"));
+		fSegmentHSB.setParamValue("s", getParamValueFloat("s"));
+		fSegmentHSB.setParamValue("serror", getParamValueFloat("serror"));
+		fSegmentHSB.setParamValue("b", getParamValueFloat("b"));
+		fSegmentHSB.setParamValue("berror", getParamValueFloat("berror"));
+		imgAux = fSegmentHSB.processImg(imgAux);
 		
 		if (getParamValueString("fase").equals("Segmentar HSB"))
 			return imgAux;
 		
 		// Reducimos el ruido de la imagen binaria.
-		FClousure fc = new FClousure();
-		fc.setParamValue("ee", getParamValueString("ee"));
-		imgAux = fc.processImg(imgAux);
+		FClousure fClousure = new FClousure();
+		fClousure.setParamValue("ee", getParamValueString("ee"));
+		imgAux = fClousure.processImg(imgAux);
 		
 		if (getParamValueString("fase").equals("Cierre morfológico"))
 			return imgAux;
@@ -137,9 +137,9 @@ public class FDetectaCaras extends JIPFunction
 		// Añadimos las zonas candidatas a la imagen geométrica.
 		ArrayList<Blob> caras = new ArrayList<Blob>();
 		setParamValue("blobs", caras);
-		FBlobs fb = new FBlobs();
-		fb.processImg(imgAux);
-		ArrayList<Blob> blobs = (ArrayList<Blob>) fb.getParamValueObj("blobs");
+		FBlobs fBlobs = new FBlobs();
+		fBlobs.processImg(imgAux);
+		ArrayList<Blob> blobs = (ArrayList<Blob>) fBlobs.getParamValueObj("blobs");
 		Iterator<Blob> i = blobs.iterator();
 		while (i.hasNext())
 		{

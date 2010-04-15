@@ -555,7 +555,7 @@ public final class JIPToolkit {
 				/*else if (g.is3dPresent() &&
 						chooseFile.getFileFilter() instanceof JIP3DImageFilter) {
 					g.getTabPane().setSelectedIndex(Gui.INDEX3D);
-					//Arreglar, crear los métodos
+					//Arreglar, crear los mï¿½todos
 					if (g.getG3d().isSaved() ||
 						new Dialog(g).confirm(prop.getProperty("FileNotSaved")+
 							prop.getProperty("Sure"), prop.getProperty("Exit")))
@@ -564,7 +564,7 @@ public final class JIPToolkit {
 			}
 		} else {
 			if (chooseFile.showSaveDialog(g) == JFileChooser.APPROVE_OPTION)
-				; // TODO: falta los métodos de salvar
+				; // TODO: falta los mï¿½todos de salvar
 		}
 	}
 
@@ -595,6 +595,7 @@ public final class JIPToolkit {
 			gui.getG3d().endMenuContent();
 
 		if ( !gui.getG2d().isSaved() ){
+			System.exit(0);
 			gui.getTabPane().setSelectedIndex(Gui.INDEX2D);
 			if (new Dialog(gui).confirm(prop.getProperty("FileNotSaved")+
 						prop.getProperty("Sure"), prop.getProperty("Exit")))
