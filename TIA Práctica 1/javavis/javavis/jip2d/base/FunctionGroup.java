@@ -6,6 +6,6 @@ package javavis.jip2d.base;
  * set of function with similar functionality
  */
 public enum FunctionGroup {
-	Cristian, Transform, Adjustment, Convolution, Manipulation, Geometry,
+	Transform, Adjustment, Convolution, Manipulation, Geometry,
 	Edges, FeatureExtract, Math_morph, Applic, ImageBD, RingProjection, Pca, Others
 }

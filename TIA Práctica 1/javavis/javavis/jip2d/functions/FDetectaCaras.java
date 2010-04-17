@@ -1,5 +1,6 @@
 package javavis.jip2d.functions;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javavis.base.JIPException;
@@ -17,7 +18,23 @@ import javavis.jip2d.util.Blob;
 
 /**
  * Detecta las caras en una imagen y genera una imagen geométrica.
- * @author cristian
+ * <br />
+ * <h2>Parámetros de entrada</h2>
+ * <ul>
+ * <li><b>imagen:</b> Imagen sobre la que se aplicará el algoritmo para detectar las caras.</li>
+ * <li><b>hsb:</b> Color HSB de la piel y margen de error permitido para el tipo de piel que se quiere detectar.</li>
+ * <li><b>cierre morfológico:</b> Referencia al fichero con el elemento estructurante para el cierre morfológico.</li>
+ * <li><b>tamaño:</b> Tamaño mínimo que tienen las caras de la imagen.</li>
+ * <li><b>aspect ratio:</b> Relación alto/ancho que pueden tener las caras.</li>
+ * <li><b>porcentaje color de piel:</b> Indica el porcentaje que debe tener la cara con color de piel (para tratar bigotes, barba y otros aspectos).</li>
+ * </ul>
+ * 
+ * <h2>Parámetros de salida</h2>
+ * <ul>
+ * <li><b>blobs:</b> Se devuelve una lista de Blobs con la información referente a las caras detectadas sobre la imagen.</li>
+ * <li><b>retorno:</b> Se devuelve una imagen geométrica con rectángulos en las posiciones donde se han detectado caras.</li>
+ * </ul>
+ * @author Cristian Aguilera Martínez
  */
 public class FDetectaCaras extends JIPFunction
 {
@@ -28,12 +45,7 @@ public class FDetectaCaras extends JIPFunction
 		super();
 		name = "FDetectaCaras";
 		description = "Detecta las caras en una imagen y genera una imagen geométrica.";
-		groupFunc = FunctionGroup.Cristian;
-
-		// TODO: Cosas optativas en la fase 1.
-		// Añadir parámetros para elegir la localización de la foto: interior, exterior, soleado, nublado, oscuro, iluminado, ...
-		// Utilizar otros métodos para detectar caras.
-		// Establecer otros elementos estructurantes por defecto.
+		groupFunc = FunctionGroup.Applic;
 		
 		// Parámetros para la segmentación HSB.
 		JIPParamFloat p1 = new JIPParamFloat("h", false, true);
@@ -64,13 +76,12 @@ public class FDetectaCaras extends JIPFunction
 		// Parámetros para el cierre morfológico.
 		JIPParamFile p7 = new JIPParamFile("ee", false, true);
 		p7.setDefault("Images/ee.txt");
-		p7.setDescription("Estructurant Element");
+		p7.setDescription("Estructurant Element (para cierre morfológico)");
 		addParam(p7);
 		
-		// Parámetros para el filtrado y selección de blobs.
-		// Añadir parámetros para filtrar los blobs: tamaño, aspect ratio, porcentaje de valores a 1.
+		// Parámetros para el filtrado y selección de blobs: tamaño, aspect ratio, porcentaje de valores a 1.
 		JIPParamInt p8 = new JIPParamInt("tamano", false, true);
-		p8.setDefault(1600);
+		p8.setDefault(2000);
 		p8.setDescription("Mínimo tamaño del blob en píxeles");
 		addParam(p8);
 		JIPParamFloat p9 = new JIPParamFloat("margen", false, true);
@@ -103,6 +114,12 @@ public class FDetectaCaras extends JIPFunction
 	public JIPImage processImg(JIPImage img) throws JIPException
 	{
 		JIPGeomPoly resultado = new JIPGeomPoly(img.getWidth(), img.getHeight());
+		ArrayList<Color> colors = new ArrayList<Color>();
+		colors.add(new Color(255, 0, 0));
+		colors.add(new Color(255, 0, 0));
+		colors.add(new Color(255, 0, 0));
+		colors.add(new Color(255, 0, 0));
+		resultado.setColors(colors);
 		JIPImage imgAux = img.clone();
 		
 		// Convertimos la imagen RGB a color.
