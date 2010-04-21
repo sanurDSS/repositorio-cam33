@@ -42,8 +42,6 @@ fclose($fichero);
 // Elegimos al azar uno de los identificadores.
 $id_foto = $id_fotos[rand(0, count($id_fotos) - 1)];
 
-echo $id_foto."<br />";
-
 // Obtenemos la foto y la mostramos si realmente existe la foto con ese identificador.
 $foto = ENFoto::obtenerPorId($id_foto);
 if ($foto != null)
