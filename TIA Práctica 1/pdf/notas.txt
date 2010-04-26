@@ -1,0 +1,65 @@
+para llamar a otras funciones realmente hay que crear otro objeto que tiene metodos para meterle parametros
+
+en vez de processImg
+
+JIPSequence processSeq(JIPSequence seq) throw JIPException
+con sus metodos correspondientes y tal... que del palo la asignatura
+
+hay que poner @Override, al igual que en processImg también se ponia
+
+
+
+cosas de la practica:
+
+FDetectaCaras
+·Transformar HSB -> FRGBToColor -> FSegmentHSB
+·Cierre morfologico (dilataciones + erosion) -> FClosoure
+·Segmentar -> FBlobs -> Array   Blob -> alto, ancho, total pixeles, array, (x, y, centro)
+·Detectar falsos positivos -> tamaño blob, relacion altoxancho, proporción pixels a "1"
+(se eliminan los pequeños o algo asi)
+·Resyultad -> imagen geométrica
+   parámetro de salida > arraylist blobs sí son cara
+
+
+
+ee.txt (elemento estructurante)
+
+
+
+
+
+
+
+
+
+
+___________________________________________________________________
+
+
+FPracVision <- ProcessSeq
+1º FColorToGray
+2º Resta en valor absoluto
+3º Segmentar la imagen <- umbral
+4º Cierre morfológico
+5º FBlobs
+6º Recortar zonas movimiento
+7º Almacenar los resultados
+8º % [] % [] (el cuadrado sigue la cara)
+
+
+Una opción (pero con optativa):
+Si la distancia entre las caras es pequeña (umbral), podré decir que es la misma.
+
+-Xms128M y -Xmx512M para la memoria virtual de java
+Run -> Run configurations/open run dialog > Pestaña Arguments > VM arguments
+
+
+
+
+
+
+
+
+getParamValueObject para extraer el Object con los Blobs
+calcEveryThing
+
