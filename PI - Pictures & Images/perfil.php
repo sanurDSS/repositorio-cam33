@@ -71,7 +71,7 @@ baseSuperior($cabeza);
 if ($propio)
 {
 ?>
-							<tr>
+							<!--<tr>
 								<td class="columna1" colspan="2">
 									<form action="modificarperfil.php" method="get">
 										<div>
@@ -79,7 +79,7 @@ if ($propio)
 										</div>
 									</form>
 								</td>
-							</tr>
+							</tr>-->
 <?php
 }
 ?>
