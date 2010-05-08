@@ -4,6 +4,7 @@ package tia;
  * @author dviejo
  *
  */
-public class Hiperplano {
+public class Hiperplano
+{
 
 }

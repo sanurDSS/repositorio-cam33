@@ -1,5 +1,6 @@
 package tia;
 
-public class AdaBoost {
+public class AdaBoost
+{
 	
 }

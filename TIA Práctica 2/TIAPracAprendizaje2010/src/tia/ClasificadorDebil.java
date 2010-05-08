@@ -1,4 +1,6 @@
 package tia;
 
-public class ClasificadorDebil {
+public class ClasificadorDebil
+{
+	
 }
