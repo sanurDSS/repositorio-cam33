@@ -23,8 +23,8 @@ public class Main
 	private int NUM_CANDIDATOS;
 	private int NUM_CLASIFICADORES;
 	private boolean VERBOSE;
-	private List<ClasificadorDebil> clasificadores;
-	private ArrayList<Cara> listaAprendizaje;
+
+	private ArrayList<Cara> listaEntrenamiento;
 	private ArrayList<Cara> listaTest;
 
 	public Main()
@@ -41,77 +41,93 @@ public class Main
 		int cont;
 		System.out.println("TIA. Practica de aprendizaje 2010");
 
+		// Cargamos todas las imágenes de las caras en la lista.
 		getFileNames(rutaDir);
-		listaAprendizaje = new ArrayList<Cara>();
+		listaEntrenamiento = new ArrayList<Cara>();
 		for (cont = 0; cont < files.length; cont++)
 		{
 			if (!files[cont].isDirectory())
 			{
-				listaAprendizaje.add(new Cara(files[cont]));
+				listaEntrenamiento.add(new Cara(files[cont]));
 			}
 		}
 		
 		// Se reordena aleatoriamente la lista de caras.
-		Collections.shuffle(listaAprendizaje);
+		Collections.shuffle(listaEntrenamiento);
 	
 		// Se divide entre un conjunto de aprendizaje y un conjunto de test.
 		listaTest = new ArrayList<Cara>();
-		int totalCaras = listaAprendizaje.size();
+		int totalCaras = listaEntrenamiento.size();
 		for (int i = 0; i < totalCaras * testRate; i++)
 		{
-			listaTest.add(listaAprendizaje.remove(0));
+			listaTest.add(listaEntrenamiento.remove(0));
 		}
 		
 		// Inicializamos los pesos del conjunto de entrenamiento.
-		for (Cara i : listaAprendizaje)
-			i.setProbabilidad(1.0/listaAprendizaje.size());
+		for (Cara i : listaEntrenamiento)
+			i.setProbabilidad(1.0/listaEntrenamiento.size());
+		
+		System.out.println("Clasificadores débiles: " + NUM_CLASIFICADORES);
+		System.out.println("Candidatos aleatorios:  " + NUM_CANDIDATOS);
 		
 		// Buscamos T clasificadores débiles para formar un clasificador fuerte.
 		ClasificadorFuerte clasificadorFuerte = new ClasificadorFuerte();
 		for (int i = 0; i < NUM_CLASIFICADORES; i++)
 		{
-			// 1. Generamos aleatoriamente múltiples clasificadores y escogemos el que mejor resultados dé.
-			ClasificadorDebil candidato = null;
-			double errorMinimo = Double.MAX_VALUE;
+			// 1. Generamos aleatoriamente múltiples clasificadores y escogemos el que mejor candidato.
+			ClasificadorDebil clasificador = null;
 			for (int j = 0; j < NUM_CANDIDATOS; j++)
 			{
-				ClasificadorDebil candidatoAux = new ClasificadorDebil();
-				candidatoAux.entrenaClasificador(listaAprendizaje);
-				if (candidatoAux.getError() < errorMinimo)
-				{
-					errorMinimo = candidatoAux.getError();
-					candidato = candidatoAux;
-				}
+				ClasificadorDebil candidato = new ClasificadorDebil();
+				candidato.entrenaClasificador(listaEntrenamiento);
+				if (clasificador == null || candidato.getError() < clasificador.getError())
+					clasificador = candidato;
 			}
-			clasificadorFuerte.addClasificadorDebil(candidato);
+			clasificadorFuerte.addClasificadorDebil(clasificador);
 			
-			// 2. Obtenemos el valor de confianza del clasificado.
-			double valorConfianza = candidato.getValorConfianza();
+			// 2. Obtenemos el valor de confianza del clasificador.
+			double valorConfianza = clasificador.getValorConfianza();
 
 			// 3. Se actualizan los pesos.
-			for (Cara j : listaAprendizaje)
+			double Z = 0;
+			for (Cara j : listaEntrenamiento)
+				Z += j.getProbabilidad();
+			Z = Z / listaEntrenamiento.size();
+			for (Cara j : listaEntrenamiento)
 			{
-				if (candidato.h(j.getData()) != j.getTipo())
-					j.setProbabilidad(j.getProbabilidad() * Math.pow(Math.E, valorConfianza));
+				double A;
+				if (clasificador.h(j.getData()) != j.getTipo())
+					A = Math.pow(Math.E, valorConfianza);
 				else
-					j.setProbabilidad(j.getProbabilidad() * Math.pow(Math.E, -valorConfianza));
+					A = Math.pow(Math.E, -valorConfianza);
+				j.setProbabilidad(j.getProbabilidad() * A / Z);
 			}
 			
 			// 4. Se finaliza la búsqueda si se obtiene el 100% de aciertos con el clasificador.
 			int aciertos = 0;
-			for (Cara j : listaAprendizaje)
+			for (Cara j : listaEntrenamiento)
 			{
 				if (clasificadorFuerte.H(j.getData()) == j.getTipo())
 					aciertos++;
 			}
-			if (aciertos == listaAprendizaje.size())
+			if (aciertos == listaEntrenamiento.size())
 				i = NUM_CLASIFICADORES;
 		}
 		
 		// Evaluamos el error de entrenamiento.
-		
+		double aciertosEntrenamiento = 0;
+		for (Cara j : listaEntrenamiento)
+			if (clasificadorFuerte.H(j.getData()) == j.getTipo())
+				aciertosEntrenamiento++;
+
 		// Evaluamos el error de test.
+		double aciertosTest = 0;
+		for (Cara j : listaTest)
+			if (clasificadorFuerte.H(j.getData()) == j.getTipo())
+				aciertosTest++;
 		
+		System.out.println("Entrenamiento: " + (100*aciertosEntrenamiento/listaEntrenamiento.size()) + "%");
+		System.out.println("Test:          " + (100*aciertosTest/listaTest.size()) + "%");
 	}
 
 	public void setRuta(String r)

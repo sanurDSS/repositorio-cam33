@@ -23,7 +23,7 @@ public class Hiperplano
 			coeficientes[i] = Math.random() * ((Math.random() < 0.5) ? -1 : 1);
 		}
 		
-		// Calculamos aleatoriamente un punto en el espacio (dentro de los límites) para obtener el valor del término independiente.
+		// Calculamos aleatoriamente un punto en el espacio (dentro de los límites 0-255) para obtener el valor del término independiente.
 		for (int i = 0; i < DIMENSIONES; i++)
 		{
 			terminoIndependiente -= coeficientes[i] * (((int) (Math.random() * 1000)) % (MAX_VALUE + 1));
@@ -44,10 +44,6 @@ public class Hiperplano
 			resultado += coeficientes[i] * p[i];
 		}
 		
-		if (resultado + terminoIndependiente > 0)
-			return 1;
-		else
-			return -1;
-		//return resultado + terminoIndependiente;
+		return resultado + terminoIndependiente;
 	}
 }

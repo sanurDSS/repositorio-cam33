@@ -27,9 +27,10 @@ public class ClasificadorDebil
 	
 	public void entrenaClasificador(ArrayList<Cara> conjuntoEntrenamiento)
 	{
+		error = 0;
 		for (Cara i : conjuntoEntrenamiento)
 		{
-			if (hiperplano.h(i.getData()) != i.getTipo())
+			if (h(i.getData()) != i.getTipo())
 				error += i.getProbabilidad();
 		}
 		valorConfianza = 0.5 * Math.log10((1 - error) / error);
@@ -37,6 +38,9 @@ public class ClasificadorDebil
 	
 	public double h(int[] p)
 	{
-		return hiperplano.h(p);
+		if (hiperplano.h(p) < 0)
+			return -1;
+		else
+			return 1;
 	}
 }
