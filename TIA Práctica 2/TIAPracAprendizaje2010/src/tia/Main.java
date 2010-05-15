@@ -5,6 +5,8 @@ package tia;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -48,10 +50,68 @@ public class Main
 				listaAprendizaje.add(new Cara(files[cont]));
 			}
 		}
-		System.out.println(listaAprendizaje.size() + " imágenes encontradas");
+		
+		// Se reordena aleatoriamente la lista de caras.
+		Collections.shuffle(listaAprendizaje);
+	
+		// Se divide entre un conjunto de aprendizaje y un conjunto de test.
+		listaTest = new ArrayList<Cara>();
+		int totalCaras = listaAprendizaje.size();
+		for (int i = 0; i < totalCaras * testRate; i++)
+		{
+			listaTest.add(listaAprendizaje.remove(0));
+		}
+		
+		// Inicializamos los pesos del conjunto de entrenamiento.
+		for (Cara i : listaAprendizaje)
+			i.setProbabilidad(1.0/listaAprendizaje.size());
+		
+		// Buscamos T clasificadores débiles para formar un clasificador fuerte.
+		ClasificadorFuerte clasificadorFuerte = new ClasificadorFuerte();
+		for (int i = 0; i < NUM_CLASIFICADORES; i++)
+		{
+			// 1. Generamos aleatoriamente múltiples clasificadores y escogemos el que mejor resultados dé.
+			ClasificadorDebil candidato = null;
+			double errorMinimo = Double.MAX_VALUE;
+			for (int j = 0; j < NUM_CANDIDATOS; j++)
+			{
+				ClasificadorDebil candidatoAux = new ClasificadorDebil();
+				candidatoAux.entrenaClasificador(listaAprendizaje);
+				if (candidatoAux.getError() < errorMinimo)
+				{
+					errorMinimo = candidatoAux.getError();
+					candidato = candidatoAux;
+				}
+			}
+			clasificadorFuerte.addClasificadorDebil(candidato);
+			
+			// 2. Obtenemos el valor de confianza del clasificado.
+			double valorConfianza = candidato.getValorConfianza();
 
-		//TODO Añadir el código de la práctica
-
+			// 3. Se actualizan los pesos.
+			for (Cara j : listaAprendizaje)
+			{
+				if (candidato.h(j.getData()) != j.getTipo())
+					j.setProbabilidad(j.getProbabilidad() * Math.pow(Math.E, valorConfianza));
+				else
+					j.setProbabilidad(j.getProbabilidad() * Math.pow(Math.E, -valorConfianza));
+			}
+			
+			// 4. Se finaliza la búsqueda si se obtiene el 100% de aciertos con el clasificador.
+			int aciertos = 0;
+			for (Cara j : listaAprendizaje)
+			{
+				if (clasificadorFuerte.H(j.getData()) == j.getTipo())
+					aciertos++;
+			}
+			if (aciertos == listaAprendizaje.size())
+				i = NUM_CLASIFICADORES;
+		}
+		
+		// Evaluamos el error de entrenamiento.
+		
+		// Evaluamos el error de test.
+		
 	}
 
 	public void setRuta(String r)
