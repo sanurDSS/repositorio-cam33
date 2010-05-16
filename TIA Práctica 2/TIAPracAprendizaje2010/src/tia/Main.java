@@ -33,13 +33,12 @@ public class Main
 		testRate = 0.1;
 		NUM_CANDIDATOS = 1000;
 		NUM_CLASIFICADORES = 20;
-		VERBOSE = false;
 	}
 
 	public void Init()
 	{
 		int cont;
-		System.out.println("TIA. Practica de aprendizaje 2010");
+		//System.out.println("TIA. Practica de aprendizaje 2010");
 
 		// Cargamos todas las imágenes de las caras en la lista.
 		getFileNames(rutaDir);
@@ -63,71 +62,27 @@ public class Main
 			listaTest.add(listaEntrenamiento.remove(0));
 		}
 		
-		// Inicializamos los pesos del conjunto de entrenamiento.
-		for (Cara i : listaEntrenamiento)
-			i.setProbabilidad(1.0/listaEntrenamiento.size());
-		
 		System.out.println("Clasificadores débiles: " + NUM_CLASIFICADORES);
 		System.out.println("Candidatos aleatorios:  " + NUM_CANDIDATOS);
+		System.out.println("-----------------------------------------------");
 		
-		// Buscamos T clasificadores débiles para formar un clasificador fuerte.
-		ClasificadorFuerte clasificadorFuerte = new ClasificadorFuerte();
-		for (int i = 0; i < NUM_CLASIFICADORES; i++)
-		{
-			// 1. Generamos aleatoriamente múltiples clasificadores y escogemos el que mejor candidato.
-			ClasificadorDebil clasificador = null;
-			for (int j = 0; j < NUM_CANDIDATOS; j++)
-			{
-				ClasificadorDebil candidato = new ClasificadorDebil();
-				candidato.entrenaClasificador(listaEntrenamiento);
-				if (clasificador == null || candidato.getError() < clasificador.getError())
-					clasificador = candidato;
-			}
-			clasificadorFuerte.addClasificadorDebil(clasificador);
-			
-			// 2. Obtenemos el valor de confianza del clasificador.
-			double valorConfianza = clasificador.getValorConfianza();
-
-			// 3. Se actualizan los pesos.
-			double Z = 0;
-			for (Cara j : listaEntrenamiento)
-				Z += j.getProbabilidad();
-			Z = Z / listaEntrenamiento.size();
-			for (Cara j : listaEntrenamiento)
-			{
-				double A;
-				if (clasificador.h(j.getData()) != j.getTipo())
-					A = Math.pow(Math.E, valorConfianza);
-				else
-					A = Math.pow(Math.E, -valorConfianza);
-				j.setProbabilidad(j.getProbabilidad() * A / Z);
-			}
-			
-			// 4. Se finaliza la búsqueda si se obtiene el 100% de aciertos con el clasificador.
-			int aciertos = 0;
-			for (Cara j : listaEntrenamiento)
-			{
-				if (clasificadorFuerte.H(j.getData()) == j.getTipo())
-					aciertos++;
-			}
-			if (aciertos == listaEntrenamiento.size())
-				i = NUM_CLASIFICADORES;
-		}
+		// Aplicamos el algoritmo AdaBoost para obtener un clasificador.
+		ClasificadorFuerte clasificadorFuerte = AdaBoost.runAlgorithm(NUM_CLASIFICADORES, NUM_CANDIDATOS, listaEntrenamiento);
 		
 		// Evaluamos el error de entrenamiento.
-		double aciertosEntrenamiento = 0;
+		int aciertosEntrenamiento = 0;
 		for (Cara j : listaEntrenamiento)
-			if (clasificadorFuerte.H(j.getData()) == j.getTipo())
+			if (clasificadorFuerte.H(j) == j.getTipo())
 				aciertosEntrenamiento++;
 
 		// Evaluamos el error de test.
-		double aciertosTest = 0;
+		int aciertosTest = 0;
 		for (Cara j : listaTest)
-			if (clasificadorFuerte.H(j.getData()) == j.getTipo())
+			if (clasificadorFuerte.H(j) == j.getTipo())
 				aciertosTest++;
 		
-		System.out.println("Entrenamiento: " + (100*aciertosEntrenamiento/listaEntrenamiento.size()) + "%");
-		System.out.println("Test:          " + (100*aciertosTest/listaTest.size()) + "%");
+		System.out.println("Entrenamiento: " + " " + aciertosEntrenamiento + "/" + listaEntrenamiento.size() + " (" + (100.0*aciertosEntrenamiento/listaEntrenamiento.size()) + "%)");
+		System.out.println("Test:          " + " " + aciertosTest + "/" + listaTest.size() + " (" + (100.0*aciertosTest/listaTest.size()) + "%)");
 	}
 
 	public void setRuta(String r)
@@ -148,11 +103,6 @@ public class Main
 	public void setNumClasificadores(int c)
 	{
 		NUM_CLASIFICADORES = c;
-	}
-
-	public void setVerbose(boolean v)
-	{
-		VERBOSE = v;
 	}
 
 	private void getFileNames(String ruta)
@@ -206,7 +156,7 @@ public class Main
 						paso = 2;
 						break;
 					case 'v':
-						programa.setVerbose(true);
+						programa.VERBOSE = true;
 						paso = 1;
 						break;
 					default:
@@ -226,7 +176,7 @@ public class Main
 		else
 		{
 			System.err.println("Lista de parametros incorrecta");
-			System.err.println("Uso: java Main -d ruta [-t testrate] [-T maxT] [-c numClasificadores] [-v]");
+			System.err.println("Uso: java Main -d ruta [-t testrate] [-T maxT] [-c numClasificadores]");
 		}
 
 	}
