@@ -22,6 +22,7 @@ public class Main
 	private double testRate;
 	private int NUM_CANDIDATOS;
 	private int NUM_CLASIFICADORES;
+	private boolean PERCEPTRON_SIMPLE;
 	private boolean VERBOSE;
 
 	private ArrayList<Cara> listaEntrenamiento;
@@ -33,6 +34,8 @@ public class Main
 		testRate = 0.1;
 		NUM_CANDIDATOS = 1000;
 		NUM_CLASIFICADORES = 20;
+		PERCEPTRON_SIMPLE = false;
+		VERBOSE = false;
 	}
 
 	public void Init()
@@ -67,7 +70,7 @@ public class Main
 		System.out.println("-----------------------------------------------");
 		
 		// Aplicamos el algoritmo AdaBoost para obtener un clasificador.
-		ClasificadorFuerte clasificadorFuerte = AdaBoost.runAlgorithm(NUM_CLASIFICADORES, NUM_CANDIDATOS, listaEntrenamiento);
+		ClasificadorFuerte clasificadorFuerte = AdaBoost.ejecutarAlgoritmo(NUM_CLASIFICADORES, NUM_CANDIDATOS, listaEntrenamiento, PERCEPTRON_SIMPLE);
 		
 		// Evaluamos el error de entrenamiento.
 		int aciertosEntrenamiento = 0;
@@ -159,6 +162,21 @@ public class Main
 						programa.VERBOSE = true;
 						paso = 1;
 						break;
+					case 'n':
+						programa.PERCEPTRON_SIMPLE = true;
+						PerceptronSimple.CONSTANTE_APRENDIZAJE = Double.parseDouble(args[cont + 1]);
+						paso = 2;
+						break;
+					case 'i':
+						programa.PERCEPTRON_SIMPLE = true;
+						PerceptronSimple.MAX_ITERACIONES = Integer.parseInt(args[cont + 1]);
+						paso = 2;
+						break;
+					case 'o':
+						programa.PERCEPTRON_SIMPLE = true;
+						PerceptronSimple.TASA_ACIERTO_OBJETIVO = Double.parseDouble(args[cont + 1]);
+						paso = 2;
+						break;
 					default:
 						maluso = true;
 				}
@@ -176,7 +194,7 @@ public class Main
 		else
 		{
 			System.err.println("Lista de parametros incorrecta");
-			System.err.println("Uso: java Main -d ruta [-t testrate] [-T maxT] [-c numClasificadores]");
+			System.err.println("Uso: java Main -d ruta [-t testrate] [-T maxT] [-c numClasificadores] [-n constanteAprendizaje] [-i iteracionesReglaDelta] [-o tasaAciertoObjetivo]");
 		}
 
 	}

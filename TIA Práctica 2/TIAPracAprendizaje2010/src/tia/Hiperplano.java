@@ -2,9 +2,9 @@ package tia;
 
 public class Hiperplano
 {
-	private static final int DIMENSIONES = 3087;
-	private static final int MIN_VALUE = 0;
-	private static final int MAX_VALUE = 255;
+	public static final int DIMENSIONES = 3087;
+	public static final int MIN_VALUE = 0;
+	public static final int MAX_VALUE = 255;
 	
 	private double coeficientes[];
 	private double terminoIndependiente;
@@ -39,10 +39,20 @@ public class Hiperplano
 	}
 	
 	/**
+	 * Obtiene el array de coeficientes del vector normal del hiperplano.
+	 * Dado que se devuelve una referencia, permite modificar los elementos del vector.
+	 * @return Devuelve una referencia al vector de coeficientes de la normal del hiperplano.
+	 */
+	public double[] getCoeficientes()
+	{
+		return coeficientes;
+	}
+	
+	/**
 	 * Evalúa un punto en el plano.
 	 * Genera el resultado de comprobar a qué lado del hiperplano queda el punto.
 	 * @param punto Punto con tantas dimensiones como el plano.
-	 * @return Devuelve 0 si el punto está contenido en el plano. Un valor positivo si está por encima o negativo si está por debajo del plano.
+	 * @return Devuelve 0 si el punto está contenido en el hiperplano. Un valor positivo si está por encima o negativo si está por debajo del hiperplano.
 	 */
 	public double evaluar(int[] punto)
 	{

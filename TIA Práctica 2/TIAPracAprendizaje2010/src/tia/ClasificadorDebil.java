@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class ClasificadorDebil
 {
-	private Hiperplano hiperplano;
-	private double error;
-	private double valorConfianza;
+	protected Hiperplano hiperplano;
+	protected double error;
+	protected double valorConfianza;
 	
 	/**
 	 * Constructor por defecto que genera un clasificador con un hiperplano aleatorio.
@@ -39,8 +39,9 @@ public class ClasificadorDebil
 	}
 	
 	/**
-	 * 
-	 * @param conjuntoEntrenamiento
+	 * Entrena el clasificador según los pesos de las caras más próximas a la frontera (las caras más controvertidas).
+	 * Establece además el error y el valor de confianza del clasificador débil.
+	 * @param conjuntoEntrenamiento Conjunto de caras sobre las que se entrena el clasificador.
 	 */
 	public void entrenaClasificador(ArrayList<Cara> conjuntoEntrenamiento)
 	{
