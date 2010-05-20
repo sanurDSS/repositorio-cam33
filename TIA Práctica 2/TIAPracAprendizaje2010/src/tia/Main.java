@@ -4,6 +4,7 @@
 package tia;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -65,10 +66,13 @@ public class Main
 		
 		System.out.println("Clasificadores débiles: " + NUM_CLASIFICADORES);
 		System.out.println("Candidatos aleatorios:  " + NUM_CANDIDATOS);
+		System.out.println("Test rate:  " + testRate);
+		System.out.println("Usando PERCEPTRÓN: " + PERCEPTRON_SIMPLE);
 		System.out.println("-----------------------------------------------");
 		
 		// Aplicamos el algoritmo AdaBoost para obtener un clasificador.
 		ClasificadorFuerte clasificadorFuerte = AdaBoost.ejecutarAlgoritmo(NUM_CLASIFICADORES, NUM_CANDIDATOS, listaEntrenamiento, PERCEPTRON_SIMPLE);
+		System.out.println("-----------------------------------------------");
 		
 		// Evaluamos el error de entrenamiento.
 		int aciertosEntrenamiento = 0;
@@ -84,6 +88,30 @@ public class Main
 		
 		System.out.println("Entrenamiento: " + " " + aciertosEntrenamiento + "/" + listaEntrenamiento.size() + " (" + (100.0*aciertosEntrenamiento/listaEntrenamiento.size()) + "%)");
 		System.out.println("Test:          " + " " + aciertosTest + "/" + listaTest.size() + " (" + (100.0*aciertosTest/listaTest.size()) + "%)");
+		
+		if (VERBOSE)
+		{
+			// Salida para las gráficas.
+			DecimalFormat formateador = new DecimalFormat ("#########.##");
+			System.out.println("\n----- Error de entrenamiento -----");
+			for (int i = 0; i < NUM_CLASIFICADORES; i++)
+			{
+				int fallos = 0;
+				for (Cara j : listaEntrenamiento)
+					if (clasificadorFuerte.H(j, i) != j.getTipo())
+						fallos++;
+				System.out.println(formateador.format((100.0 * fallos / listaEntrenamiento.size())));
+			}
+			System.out.println("\n----- Error de test -----");
+			for (int i = 0; i < NUM_CLASIFICADORES; i++)
+			{
+				int fallos = 0;
+				for (Cara j : listaTest)
+					if (clasificadorFuerte.H(j, i) != j.getTipo())
+						fallos++;
+				System.out.println(formateador.format((100.0 * fallos / listaTest.size())));
+			}
+		}
 	}
 
 	public void setRuta(String r)
