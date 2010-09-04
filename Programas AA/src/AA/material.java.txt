@@ -1,0 +1,660 @@
+static class HashMap2<K1, K2, V>
+{
+	private HashMap<Par, V> tabla;
+
+	public HashMap2()
+	{
+		tabla = new HashMap<Par, V>();
+	}
+
+	public HashMap2(int initialCapacity)
+	{
+		tabla = new HashMap<Par, V>(initialCapacity);
+	}
+
+	public HashMap2(int initialCapacity, float loadFactor)
+	{
+		tabla = new HashMap<Par, V>(initialCapacity, loadFactor);
+	}
+
+	public V get(K1 key1, K2 key2)
+	{
+		return tabla.get(new Par(key1, key2));
+	}
+
+	public V remove(K1 key1, K2 key2)
+	{
+		return tabla.remove(new Par(key1, key2));
+	}
+
+	public V put(K1 key1, K2 key2, V value)
+	{
+		return tabla.put(new Par(key1, key2), value);
+	}
+
+	public boolean containsKey(K1 key1, K2 key2)
+	{
+		return tabla.containsKey(new Par(key1, key2));
+	}
+
+	public boolean containsValue(V value)
+	{
+		return tabla.containsValue(value);
+	}
+
+	public boolean isEmpty()
+	{
+		return tabla.isEmpty();
+	}
+
+	public int size()
+	{
+		return tabla.size();
+	}
+
+	public void clear()
+	{
+		tabla.clear();
+	}
+
+	@Override
+	public HashMap2<K1, K2, V> clone()
+	{
+		HashMap2<K1, K2, V> copia = new HashMap2<K1, K2, V>();
+		//copia.tabla = (HashMap<Par, V>) tabla.clone();
+		copia.tabla = new HashMap<Par, V>(tabla);
+		return copia;
+	}
+
+	public Collection<V> values()
+	{
+		return tabla.values();
+	}
+
+	private static class Par
+	{
+		private Object objeto1;
+		private Object objeto2;
+
+		public Par(Object objeto1, Object objeto2)
+		{
+			this.objeto1 = objeto1;
+			this.objeto2 = objeto2;
+		}
+
+		@Override
+		public boolean equals(Object otroPar)
+		{
+			if (otroPar instanceof Par)
+			{
+				Par par = (Par) otroPar;
+				return objeto1.equals(par.objeto1) && objeto2.equals(par.objeto2);
+			}
+			return false;
+		}
+
+		@Override
+		public int hashCode()
+		{
+			int resultado = 17 * 37 + objeto1.hashCode();
+			resultado = 37 * resultado + objeto2.hashCode();
+			return resultado;
+		}
+
+		@Override
+		public String toString()
+		{
+			return "<" + objeto1.toString() + ", " + objeto2.toString() + ">";
+		}
+	}
+}
+
+static class HashMap3b<K1, K2, K3, V>
+{
+	private HashMap<Par, V> tabla;
+
+	public HashMap3b()
+	{
+		tabla = new HashMap<Par, V>();
+	}
+
+	public HashMap3b(int initialCapacity)
+	{
+		tabla = new HashMap<Par, V>(initialCapacity);
+	}
+
+	public HashMap3b(int initialCapacity, float loadFactor)
+	{
+		tabla = new HashMap<Par, V>(initialCapacity, loadFactor);
+	}
+
+	public V get(K1 key1, K2 key2, K3 key3)
+	{
+		return tabla.get(new Par(key1, key2, key3));
+	}
+
+	public V remove(K1 key1, K2 key2, K3 key3)
+	{
+		return tabla.remove(new Par(key1, key2, key3));
+	}
+
+	public V put(K1 key1, K2 key2, K3 key3, V value)
+	{
+		return tabla.put(new Par(key1, key2, key3), value);
+	}
+
+	public boolean containsKey(K1 key1, K2 key2, K3 key3)
+	{
+		return tabla.containsKey(new Par(key1, key2, key3));
+	}
+
+	public boolean containsValue(V value)
+	{
+		return tabla.containsValue(value);
+	}
+
+	public boolean isEmpty()
+	{
+		return tabla.isEmpty();
+	}
+
+	public int size()
+	{
+		return tabla.size();
+	}
+
+	public void clear()
+	{
+		tabla.clear();
+	}
+
+	@Override
+	public HashMap3b<K1, K2, K3, V> clone()
+	{
+		HashMap3b<K1, K2, K3, V> copia = new HashMap3b<K1, K2, K3, V>();
+		//copia.tabla = (HashMap<Par, V>) tabla.clone();
+		copia.tabla = new HashMap<Par, V>(tabla);
+		return copia;
+	}
+
+	public Collection<V> values()
+	{
+		return tabla.values();
+	}
+
+	private static class Par
+	{
+		private Object objeto1;
+		private Object objeto2;
+		private Object objeto3;
+
+		public Par(Object objeto1, Object objeto2, Object objeto3)
+		{
+			this.objeto1 = objeto1;
+			this.objeto2 = objeto2;
+			this.objeto3 = objeto3;
+		}
+
+		@Override
+		public boolean equals(Object otroPar)
+		{
+			if (otroPar instanceof Par)
+			{
+				Par par = (Par) otroPar;
+				return objeto1.equals(par.objeto1) && objeto2.equals(par.objeto2) && objeto3.equals(par.objeto3);
+			}
+			return false;
+		}
+
+		@Override
+		public int hashCode()
+		{
+			int resultado = 17 * 37 + objeto1.hashCode();
+			resultado = 37 * resultado + objeto2.hashCode();
+			resultado = 37 * resultado + objeto3.hashCode();
+			return resultado;
+		}
+
+		@Override
+		public String toString()
+		{
+			return "<" + objeto1.toString() + ", " + objeto2.toString() + ", " + objeto3.toString() + ">";
+		}
+	}
+}
+
+static class HashMap3<K1, K2, K3, V>
+{
+	private HashMap<K1, HashMap<K2, HashMap<K3, V>>> table;
+	private int size;
+
+	public HashMap3()
+	{
+		table = new HashMap<K1, HashMap<K2, HashMap<K3, V>>>();
+		size = 0;
+	}
+
+	public V put(K1 key1, K2 key2, K3 key3, V value)
+	{
+		HashMap<K1, HashMap<K2, HashMap<K3, V>>> table1 = table;
+		HashMap<K2, HashMap<K3, V>> table2 = null;
+		HashMap<K3, V> table3 = null;
+
+		if (!table1.containsKey(key1))
+		{
+			table2 = new HashMap<K2, HashMap<K3, V>>();
+			table1.put(key1, table2);
+		}
+		else
+		{
+			table2 = table1.get(key1);
+		}
+
+		if (!table2.containsKey(key2))
+		{
+			table3 = new HashMap<K3, V>();
+			table2.put(key2, table3);
+		}
+		else
+		{
+			table3 = table2.get(key2);
+		}
+
+		V previous = table3.put(key3, value);
+		if (previous == null)
+		{
+			size++;
+		}
+		return previous;
+	}
+
+	public V get(K1 key1, K2 key2, K3 key3)
+	{
+		HashMap<K1, HashMap<K2, HashMap<K3, V>>> table1 = table;
+		HashMap<K2, HashMap<K3, V>> table2 = null;
+		HashMap<K3, V> table3 = null;
+
+		if (table1.containsKey(key1))
+		{
+			table2 = table1.get(key1);
+			if (table2.containsKey(key2))
+			{
+				table3 = table2.get(key2);
+				return table3.get(key3);
+			}
+		}
+
+		return null;
+	}
+
+	public boolean containsKey(K1 key1, K2 key2, K3 key3)
+	{
+		return get(key1, key2, key3) != null;
+	}
+
+	public int size()
+	{
+		return size;
+	}
+
+	public boolean isEmpty()
+	{
+		return size == 0;
+	}
+
+	public V remove(K1 key1, K2 key2, K3 key3)
+	{
+		HashMap<K1, HashMap<K2, HashMap<K3, V>>> table1 = table;
+		HashMap<K2, HashMap<K3, V>> table2 = null;
+		HashMap<K3, V> table3 = null;
+
+		if (table1.containsKey(key1))
+		{
+			table2 = table1.get(key1);
+			if (table2.containsKey(key2))
+			{
+				table3 = table2.get(key2);
+				V value = table3.remove(key3);
+				if (value != null)
+				{
+					size--;
+				}
+				return value;
+			}
+		}
+
+		return null;
+	}
+}
+
+static class HashMap4<K1, K2, K3, K4, V>
+{
+	private HashMap<Par, V> tabla;
+
+	public HashMap4()
+	{
+		tabla = new HashMap<Par, V>();
+	}
+
+	public HashMap4(int initialCapacity)
+	{
+		tabla = new HashMap<Par, V>(initialCapacity);
+	}
+
+	public HashMap4(int initialCapacity, float loadFactor)
+	{
+		tabla = new HashMap<Par, V>(initialCapacity, loadFactor);
+	}
+
+	public V get(K1 key1, K2 key2, K3 key3, K4 key4)
+	{
+		return tabla.get(new Par(key1, key2, key3, key4));
+	}
+
+	public V remove(K1 key1, K2 key2, K3 key3, K4 key4)
+	{
+		return tabla.remove(new Par(key1, key2, key3, key4));
+	}
+
+	public V put(K1 key1, K2 key2, K3 key3, K4 key4, V value)
+	{
+		return tabla.put(new Par(key1, key2, key3, key4), value);
+	}
+
+	public boolean containsKey(K1 key1, K2 key2, K3 key3, K4 key4)
+	{
+		return tabla.containsKey(new Par(key1, key2, key3, key4));
+	}
+
+	public boolean containsValue(V value)
+	{
+		return tabla.containsValue(value);
+	}
+
+	public boolean isEmpty()
+	{
+		return tabla.isEmpty();
+	}
+
+	public int size()
+	{
+		return tabla.size();
+	}
+
+	public void clear()
+	{
+		tabla.clear();
+	}
+
+	@Override
+	public HashMap4<K1, K2, K3, K4, V> clone()
+	{
+		HashMap4<K1, K2, K3, K4, V> copia = new HashMap4<K1, K2, K3, K4, V>();
+		//copia.tabla = (HashMap<Par, V>) tabla.clone();
+		copia.tabla = new HashMap<Par, V>(tabla);
+		return copia;
+	}
+
+	public Collection<V> values()
+	{
+		return tabla.values();
+	}
+
+	private static class Par
+	{
+		private Object objeto1;
+		private Object objeto2;
+		private Object objeto3;
+		private Object objeto4;
+
+		public Par(Object objeto1, Object objeto2, Object objeto3, Object objeto4)
+		{
+			this.objeto1 = objeto1;
+			this.objeto2 = objeto2;
+			this.objeto3 = objeto3;
+			this.objeto4 = objeto4;
+		}
+
+		@Override
+		public boolean equals(Object otroPar)
+		{
+			if (otroPar instanceof Par)
+			{
+				Par par = (Par) otroPar;
+				return objeto1.equals(par.objeto1) && objeto2.equals(par.objeto2) && objeto3.equals(par.objeto3) && objeto4.equals(par.objeto4);
+			}
+			return false;
+		}
+
+		@Override
+		public int hashCode()
+		{
+			int resultado = 17 * 37 + objeto1.hashCode();
+			resultado = 37 * resultado + objeto2.hashCode();
+			resultado = 37 * resultado + objeto3.hashCode();
+			resultado = 37 * resultado + objeto4.hashCode();
+			return resultado;
+		}
+
+		@Override
+		public String toString()
+		{
+			return "<" + objeto1.toString() + ", " + objeto2.toString() + ", " + objeto3.toString() + ", " + objeto4.toString() + ">";
+		}
+	}
+}
+
+static void quicksort(int[] vector, int primero, int ultimo)
+{
+	int i = primero, j = ultimo;
+	int pivote = (vector[primero] + vector[ultimo]) / 2;
+	int auxiliar;
+
+	do
+	{
+		while (vector[i] > pivote)
+		{
+			i++;
+		}
+		while (vector[j] < pivote)
+		{
+			j--;
+		}
+
+		if (i <= j)
+		{
+			auxiliar = vector[j];
+			vector[j] = vector[i];
+			vector[i] = auxiliar;
+			i++;
+			j--;
+		}
+
+	}
+	while (i <= j);
+
+	if (primero < j)
+	{
+		quicksort(vector, primero, j);
+	}
+	if (ultimo > i)
+	{
+		quicksort(vector, i, ultimo);
+	}
+}
+
+static class Nodo implements Comparable<Nodo>
+{
+	/**
+	 * Obtiene una solución cercana a la solución óptima aplicando un algoritmo voraz.
+	 * @return Devuelve una solución buena.
+	 */
+	public static Nodo voraz()
+	{
+		return null;
+	}
+
+	/**
+	 * Obtiene la solución óptima aplicando un algoritmo de ramificación y poda.
+	 * @param mejorSolucionInicial Solución desde la que parte el algoritmo. Puede resolverse con un algoritmo voraz.
+	 * @return Devuelve la solución óptima al problema.
+	 */
+	public static Nodo RyP(Nodo mejorSolucionInicial)
+	{
+		Nodo mejorSolucion = mejorSolucionInicial;
+		PriorityQueue<Nodo> nodosVivos = new PriorityQueue<Nodo>();
+		nodosVivos.add(new Nodo());
+
+		//int nodos, podas, cambios;
+		//nodos = podas = cambios = 0;
+
+		while (!nodosVivos.isEmpty())
+		{
+			Nodo nodoActual = nodosVivos.poll();
+
+			//nodos++;
+			//System.out.println("-> " + nodoActual.toString());
+
+			if (nodoActual.esCompleto())
+			{
+				if (nodoActual.esFactible() && (mejorSolucion == null || nodoActual.esAceptable(mejorSolucion)))
+				{
+					//System.out.println("-> " + nodoActual.toString());
+					//cambios++;
+					mejorSolucion = nodoActual;
+				}
+			}
+			else
+			{
+				Iterator<Nodo> i = nodoActual.generarHijos().iterator();
+				while (i.hasNext())
+				{
+					Nodo hijo = i.next();
+					if (mejorSolucion == null || hijo.esAceptable(mejorSolucion))
+					{
+						nodosVivos.add(hijo);
+					}
+					//else
+					//{
+						//podas++;
+					//}
+				}
+			}
+		}
+
+		/*System.out.println("Nodos: " + nodos);
+		System.out.println("Podas: " + podas);
+		System.out.println("Cambios: " + cambios);*/
+
+		return mejorSolucion;
+	}
+
+	public static int N;
+	public static int[] w;
+
+	public int k;
+	public int[] estado;
+
+	public int cota;
+
+	/**
+	 * Constructor por defecto.
+	 * Inicializa el nodo con sus valores por defecto.
+	 */
+	public Nodo()
+	{
+		k = 0;
+		cota = 0;
+		estado = new int[N];
+		calcularCotas();
+	}
+
+	/**
+	 * Constructor de copia.
+	 */
+	public Nodo(Nodo nodo)
+	{
+		k = nodo.k;
+		cota = nodo.cota;
+		estado = nodo.estado.clone();
+	}
+
+	/**
+	 * Comprueba si el nodo es un nodo completo o todavía puede volver a
+	 * expandirse.
+	 * @return Devuelve verdadero si el nodo está completo.
+	 */
+	public boolean esCompleto()
+	{
+		return k == N;
+	}
+
+	/**
+	 * Expande el nodo generando sus posibles hijos. Sólo si el nodo es un nodo
+	 * incompleto.
+	 * Sólo se generan los hijos que puedan llegar a ser factibles.
+	 * @return Devuelve una lista con los nodos hijos del nodo.
+	 */
+	public ArrayList<Nodo> generarHijos()
+	{
+		ArrayList<Nodo> hijos = new ArrayList<Nodo>();
+
+		
+
+		return hijos;
+	}
+
+	/**
+	 * Comprueba si el nodo es factible o no.
+	 * En muchos problemas este método no tiene sentido y debería devolver true.
+	 * @return Devuelve verdadero si el nodos es factible.
+	 */
+	public boolean esFactible()
+	{
+		return true;
+	}
+
+	/**
+	 * Comprueba si el nodo que invocó el método es potencialmente mejor que
+	 * otro nodo de referencia.
+	 * @param nodo Nodo con el que se va a comprobar si el nodo es aceptable.
+	 * @return Devuelve verdadero si el nodo invocante es mejor nodo.
+	 */
+	public boolean esAceptable(Nodo nodo)
+	{
+		return cota < nodo.cota;
+	}
+
+	/**
+	 * Compara dos nodos según sus cota optimista y su cota pesimista.
+	 * @param nodo Nodo con el que se va a comparar.
+	 * @return Devuelve verdadero
+	 */
+	public int compareTo(Nodo nodo)
+	{
+		//return cotaOptimista - nodo.cotaOptimista;
+		//return cotaPesimista - nodo.cotaPesimista;
+		return - k + nodo.k;
+		//return calories - nodo.calories;
+		//return cota - nodo.cota;
+	}
+
+	public void calcularCotas()
+	{
+		cota = cota;
+		for (int i = k; i < N; i++)
+		{
+		
+		}		
+	}
+
+	/**
+	 * Obtiene la solución en formato alfanumérico.
+	 * @return un String con la asignación de tareas a cada máquina y su valor de cota
+	 */
+	@Override
+	public String toString()
+	{
+		return "vacio";
+	}
+}

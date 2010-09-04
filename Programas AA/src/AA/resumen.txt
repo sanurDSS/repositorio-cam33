@@ -1,0 +1,164 @@
+Resumen de ejercicicios
+
+_______________________________________________________________________________
+P01. Corte de una barra
+-------------------------------------------------------------------------------
+Se aplica un algoritmo de divide y vencerás. Se parte la barra y se generan
+dos nuevas llamadas con los 2 trozos de la barra hasta que la barra tenga un
+único trozo. Se puede decidir entre varios puntos de corte.
+
+Se utiliza PD con 2 claves.
+_______________________________________________________________________________
+
+
+
+_______________________________________________________________________________
+P02. Super rebajas
+-------------------------------------------------------------------------------
+Clásico problema de la mochila pero con varias mochilas. En el problema clásico
+son necesarios dos parámetros: uno que indique qué elemento se va a evaluar y
+otro que indique la capacidad restante de la mochila. En este caso hace falta
+un vector con la capacidad de cada mochila. En cada llamada recursiva se decide
+si introducir el elemento en alguna mochila o no. Hay, por tanto, K+1 llamadas
+recursivas, siendo K el número de mochilas (+1 por si no se mete en ninguna).
+
+Se utiliza PD con 2 claves, pero la segunda clave es el vector de mochilas.
+Hace falta una clase que permita definir el equals y el hashCode.
+Esos métodos deberían tener en cuenta que el orden de las capacidades de las
+mochilas no afecta, por lo que 2 mochilas con las capacidades 10 y 15 son
+equivalentes a dos mochilas 15 y 10.
+
+Otra opción válida es usar RyP con 3 parámetros. Es decir, se añade un tercer
+parámetro que lleva la cuenta de los objetos introducidos en el lote. Así,
+puede guardarse el máximo y podar los que no sean prometedores. Se puede hacer
+un voraz que escoja todos los elementos que quepan en alguna mochila. Y la
+función de cota sería parecida al voraz, salvo que no se podría descontar la
+capacidad de las mochilas, ya que no se puede quedar fuera la solución.
+Sin embargo, con RyP con 3 parámetros se consigues peores tiempos que en el
+caso anterior.
+
+Una posible forma (que no he probado), sería introducir PD con 3 claves al
+algoritmo con RyP.
+_______________________________________________________________________________
+
+
+
+_______________________________________________________________________________
+P03. Reparto de tareas
+-------------------------------------------------------------------------------
+Se puede hacer un algoritmo voraz que asigne cada tarea comprobando que, justo
+después de asignarla, el tiempo es mínimo. Es decir, se asigna cada tarea
+a la máquina menos saturada, pero de manera que al asignarla, al diferencia de
+trabajo sea mínimo.
+
+Por ejemplo, si tenemos 1 tarea que en M1 cuesta 100 y en M2 cuesta 200 y
+tenemos que M1 tiene un trabajo de 100 y M2 un trabajo de 99, no asignaremos la
+tare a M2 (aunque esté menos saturada); la asignaremos a M1 porque así la
+diferencia posterior es menor.
+
+Para obtener la función de cota se suman todos los elementos restantes y se
+contabiliza cuánto tardarían en completarse suponiendo que se ejecutan en la
+máquina que menos tarda en resolverlos. Con ese tiempo mínimo obtenido, se
+reparte a las máqunias equitativamente, de manera que la diferencia entre ellas
+sea mínima. Es decir, como si hubiera muchas tareas de tiempo 1.
+_______________________________________________________________________________
+
+
+
+_______________________________________________________________________________
+P04. Poda ideal
+-------------------------------------------------------------------------------
+Se crea una clase Arbol que lee y almacena la cadena, para que sea más fácil
+operar con las ramas (aunque no haría falta, puesto que dado un nodo raíz, se
+puede alcanzar cualqueir nodo hijo según la correspondencia que se indica).
+Esa clase Arbol debe tener sobrecargado el método equals y hashCode porque se
+va a utilizar PD para resolver el algoritmo.
+
+La función recursiva recibe 2 parámetros. El primero es el número de elementos
+que finalmente tendrá el árbol. El segundo es el árbol (clase Arbol).
+
+En cada llamada a la función se ejecutarán muchas llamadas recursivas. Por
+ejemplo, si N = 10, significa que el árbol restante tendrá 10 nodos y hay que
+maximizar la suma de esos nodos.
+
+Para una llamada con los parámetros (N, Árbol), debe cumplirse que:
+
+N = cantidad_nodos_hijo_izquierda + cantidad_nodos_hijo_derecha - 1
+
+Se resta 1 porque el nodo del árbol se tiene que contar.
+Por lo tanto, habrá que lanzar muchas llamadas recursivas que vayan dando todas
+las posibles cantidades de nodos a cada rama
+
+0     N-1
+1     N-2
+2     N-3
+...
+N-1   0
+_______________________________________________________________________________
+
+
+
+_______________________________________________________________________________
+P05. Memorias de traducción
+-------------------------------------------------------------------------------
+Se calcula el mínimo número de segmentos en los que puede dividirse una frase.
+
+012345
+001011
+
+Significa que desde la palabra 2 a la 4 se puede traducir.
+También se puede traducir desde la 2 hasta la 5.
+
+012345
+111000 La palabra 0 y las frases 0-1 y 0-2.
+010000 Sólo se puede traducir la palabra 1.
+001001 La palabra 2 y la frase de 2 a 5.
+000100 Sólo la palabra 3.
+000010 Sólo la palabra 4.
+000001 Sólo la palabra 5.
+
+La mejor opción sería traducir desde 0-1 y 2-5.
+Como se ha visto, cada palabra se puede traducir individualmente, es decir,
+las diagonal de la matriz es siempre 1, y a la izquierda de la diagonal es 0.
+
+Consiste en recorrer las filas y propagar llamadas recursivas suponiendo
+todas las posibles traducciones que tenga la fila. Se utiliza PD con
+una única clave.
+
+N filas (implica N columnas)
+
+int best(int k)
+{
+	int resultado = 0;
+	if (k < N)
+	{
+		resultado = best(k + 1) + 1;
+		for (int i = k + 1; i < N; i++)
+		{
+			if (existe traducción desde k hasta i)
+				resultado = min(resultado, best(i + 1) + 1);
+		}
+	}
+	return resultado;
+}
+_______________________________________________________________________________
+
+
+
+_______________________________________________________________________________
+P06. Dieta
+-------------------------------------------------------------------------------
+Se puede hacer un voraz que escoja todos los alimentos que pueda (hasta que se
+agote el dinero o hasta que se alcance el nivel de proteinas). Cualquiera de
+esas condiciones finaliza el voraz (y que se acaben los elementos). Si al final
+no se han cumplido las restricciones, se devuelve null en el voraz.
+
+La función de cota es similar. Pero en este caso, se hace la suposición de que
+todos los alimentos son ideales. Es decir, tienen la mayor cantidad de
+proteinas, tienen las menores calories y son los más baratos. Es decir, mejor
+que eso no va a haber nada. Por lo tanto, se puede obtener una aproximación
+mínima que indique el nivel de calorías mínimo (es decir, podrá ser superior,
+pero no inferior al que indique esa función de cota inferior).
+_______________________________________________________________________________
+
+

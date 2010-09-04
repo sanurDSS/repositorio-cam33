@@ -1,0 +1,253 @@
+package AA;
+
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.Comparator;
+import java.util.HashMap;
+
+public class P93
+{
+	/**
+	 * Vector con los pesos de los objetos.
+	 */
+	private int[] v;
+
+	/**
+	 * Cantidad de objetos que hay en el vector.
+	 */
+	private int N;
+
+	/**
+	 * Valor del peso que ya está en la balanza.
+	 */
+	private int p;
+
+	/**
+	 * Tabla que almacena las soluciones parciales para las posibles combinaciones de <suma,k>
+	 * en la entrada del método int best(int suma, int k).
+	 */
+	private HashMap<Integer, HashMap<Integer, Integer>> tabla;
+
+	/**
+	 * Resuelve el problema de la mochila.
+	 * @param data data[0]: pesos de los objetos separados por un espacio, data[1]: valor de los objetos, data[2]: capacidad de la mochila
+	 * @return el máximo valor que podrían alcanzar los objetos de la mochila
+	 */
+	public ArrayList<Integer> bestSolution(String data)
+	{
+		// Extrae y divide las cadenas de entrada en múltiples cadenas.
+		String[] aux = data.split("\\p{Space}+");
+
+		// Valores iniciales de entrada de la función.
+		N = aux.length-1;
+		p = new Integer(aux[0]);
+		
+		// Los elementos del montículo se ordenarán según la diferencia absoluta con el peso p original.
+		Comparator<Integer> comparador = new Comparator<Integer>()
+		{
+			/*public int compare(Integer x, Integer y)
+			{
+				if (x == y)
+				{
+					return 0;
+				}
+				else
+				{
+					if (x < y)
+					{
+						return 1;
+					}
+					else
+					{
+						return -1;
+					}
+				}
+			}*/
+
+			public int compare(Integer x, Integer y)
+			{
+				if (x == y)
+					return 0;
+				else
+					if (Math.abs(p-x) < Math.abs(p-y))
+						return 1;
+					else
+						return -1;
+			}
+		};
+
+		// Convierte de String a Integer y lo introduce en un montículo mínimo.
+		PriorityQueue<Integer> cola = new PriorityQueue<Integer>(N, comparador);
+		for (int i = 0; i < N; i++)
+		{
+			cola.add(new Integer(aux[i+1]));
+		}
+
+		// Extrae los elementos del montículo y los inserta en el vector.
+		v = new int[N];
+		for (int i = N-1; i >= 0; i--)
+		{
+			v[i] = cola.poll();
+		}
+
+		// Calculamos la cantidad de elementos mínimos que necesitamos de una forma rápida.
+		tabla = new HashMap<Integer, HashMap<Integer, Integer>>();
+		int nFinal = best(0, 0);
+		if (nFinal > N)
+		{
+			return new ArrayList<Integer>();
+		}
+
+		//System.out.print (p);
+		//for (int i = 0; i < N; i++)
+		//	System.out.print(" " + v[i]);
+		//System.out.println();
+
+		PriorityQueue<Nodo> nodosVivos = new PriorityQueue<Nodo>();
+		nodosVivos.add(new Nodo());
+
+		while (!nodosVivos.isEmpty())
+		{
+			Nodo nodoActual = nodosVivos.poll();
+			if (nodoActual.suma == p)
+			{
+				return nodoActual.pesas;
+			}
+			else
+			{
+				if (nodoActual.k < N && nodoActual.n + 1 <= nFinal)
+				{
+					Nodo sumar = (Nodo) nodoActual.clone();
+					sumar.suma += v[sumar.k];
+					sumar.pesas.add(v[sumar.k]);
+					sumar.n++;
+					sumar.k++;
+					nodosVivos.add(sumar);
+
+					Nodo restar = (Nodo) nodoActual.clone();
+					restar.suma -= v[restar.k];
+					restar.pesas.add(-v[restar.k]);
+					restar.n++;
+					restar.k++;
+					nodosVivos.add(restar);
+
+					Nodo nada = (Nodo) nodoActual.clone();
+					nada.k++;
+					nodosVivos.add(nada);
+				}
+			}
+		}
+		
+		return new ArrayList<Integer>();
+	}
+
+	private class Nodo implements Comparable<Nodo>
+	{
+		public int suma;
+		public int n;
+		public int k;
+		public ArrayList<Integer> pesas;
+
+		public Nodo()
+		{
+			suma = 0;
+			n = 0;
+			k = 0;
+			pesas = new ArrayList<Integer>();
+		}
+
+		@Override
+		public Object clone()
+		{
+			Nodo copia = new Nodo();
+			copia.suma = suma;
+			copia.n = n;
+			copia.k = k;
+			copia.pesas = (ArrayList<Integer>) pesas.clone();
+			return copia;
+		}
+
+		public int compareTo(Nodo nodo)
+		{
+			if (n == nodo.n)
+			{
+				return 0;
+			}
+			else
+			{
+				if (n < nodo.n)
+				{
+					return 1;
+				}
+				else
+				{
+					return -1;
+				}
+
+			}
+		}
+
+		@Override
+		public String toString()
+		{
+			return "(" + suma + ", " + n + ", " + k + ")";
+		}
+	}
+
+	private int best(int suma, int k)
+	{
+		if (suma == p)
+		{
+			return 0;
+		}
+		else
+		{
+			// Comprobamos que no hayamos alcanzado el límite de elementos.
+			if (k < N)
+			{
+				// Extraemos la tabla que se corresopnda con la primera componente.
+				HashMap<Integer, Integer> tablaAux = null;
+				tablaAux = tabla.get(k + 1);
+				if (tablaAux == null)
+				{
+					tablaAux = new HashMap<Integer, Integer>();
+					tabla.put(k + 1, tablaAux);
+				}
+
+				// Extraemos el valor de la tabla para el resultado "sumando". Si no está, se calcula.
+				Integer sumar = tablaAux.get(suma + v[k]);
+				if (sumar == null)
+				{
+					sumar = best(suma + v[k], k + 1);
+					tablaAux.put(suma + v[k], sumar);
+				}
+				if (sumar != Integer.MAX_VALUE)
+					sumar++;
+
+				// Extraemos el valor de la tabla para el resultado "restando". Si no está, se calcula.
+				Integer restar = tablaAux.get(suma - v[k]);
+				if (restar == null)
+				{
+					restar = best(suma - v[k], k + 1);
+					tablaAux.put(suma - v[k], restar);
+				}
+				if (restar != Integer.MAX_VALUE)
+					restar++;
+
+				// Extraemos el valor de la tabla para el resultado "no hacer nada". Si no está, se calcula.
+				Integer nada = tablaAux.get(suma);
+				if (nada == null)
+				{
+					nada = best(suma, k + 1);
+					tablaAux.put(suma, nada);
+				}
+
+				return Math.min(sumar, Math.min(restar, nada));
+			}
+			else
+			{
+				return Integer.MAX_VALUE;
+			}
+		}
+	}
+}
