@@ -1,0 +1,110 @@
+FUNCTION_BLOCK aceleracion
+
+VAR_INPUT
+    velocidad : REAL;
+    angulo : REAL;
+	posicion : REAL;
+	velocidadlineal : REAL;
+END_VAR
+
+VAR_OUTPUT
+    aceleracion : REAL;
+END_VAR
+
+FUZZIFY velocidad
+	TERM negativa := (-0.5, 1) (-0.3, 1) (-0.025, 0);
+	TERM neutra := (-0.075, 0) (0, 1) (0.075, 0);
+	TERM positiva := (0.025, 0) (0.3, 1) (0.5, 1);
+END_FUZZIFY
+
+FUZZIFY velocidadlineal
+	TERM izquierda_rapida := (-100, 1) (-30, 0);
+    TERM moderada := (-40, 0) (0, 1) (40, 0);
+	TERM derecha_rapida := (30, 0) (100, 1);
+END_FUZZIFY
+
+FUZZIFY angulo
+	TERM izquierda_invertido := (-180, 1) (-80, 0);
+	TERM izquierda_grande := (-110, 0) (-80, 1) (-50, 1) (-20, 0);
+    TERM izquierda_normal := (-30, 0) (-17.5, 1) (-5, 0);
+    TERM izquierda_pequeno := (-10, 0) (-5, 1) (-2, 0);
+	TERM nulo := (-5, 0) (0, 1) (5, 0);
+	TERM derecha_pequeno := (2, 0) (5, 1) (10, 0);
+	TERM derecha_normal := (5, 0) (17.5, 1) (30, 0);
+	TERM derecha_grande := (20, 0) (50, 1) (80, 1) (110, 0);
+	TERM derecha_invertido := (80, 0) (180, 1);
+END_FUZZIFY
+
+FUZZIFY posicion
+	TERM izquierda := (-500, 1) (0, 0);
+	TERM centrado := (-50, 0) (0, 1) (50, 0);
+	TERM derecha := (0, 0) (500, 1);
+END_FUZZIFY
+
+DEFUZZIFY aceleracion
+    TERM izquierda_fuerte := (-50000, 1) (-5750, 0);
+	TERM izquierda_medio := (-875, 0) (-500, 1) (-125, 0);
+    TERM izquierda_suave := (-250, 0) (-125, 1) (0, 0);
+	TERM nulo := (-125, 0) (0, 1) (125, 0);
+    TERM derecha_suave := (0, 0) (125, 1) (250, 0);
+    TERM derecha_medio := (125, 0) (500, 1) (875, 0);
+    TERM derecha_fuerte := (5750, 0) (50000, 1);
+
+    // Use 'Center Of Gravity' defuzzification method
+    METHOD : COG;
+    // Default value is 0 (if no rule activates defuzzifier)
+    DEFAULT := 0;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+    // Use 'min' for 'and' (also implicit use 'max'
+    // for 'or' to fulfill DeMorgan's Law)
+    AND : PROD;
+    // Use 'min' activation method
+    ACT : MIN;
+    // Use 'max' accumulation method
+    ACCU : MAX;
+
+	RULE  1 : IF angulo IS derecha_grande AND velocidad IS negativa THEN aceleracion IS derecha_fuerte;
+	RULE  2 : IF angulo IS derecha_grande AND velocidad IS neutra THEN aceleracion IS derecha_fuerte;
+	RULE  3 : IF angulo IS derecha_grande AND velocidad IS positiva THEN aceleracion IS derecha_fuerte;
+
+	RULE  4 : IF angulo IS derecha_normal AND velocidad IS negativa THEN aceleracion IS derecha_suave;
+	RULE  5 : IF angulo IS derecha_normal AND velocidad IS neutra THEN aceleracion IS derecha_fuerte;
+	RULE  6 : IF angulo IS derecha_normal AND velocidad IS positiva THEN aceleracion IS derecha_fuerte;
+
+	RULE  7 : IF angulo IS derecha_pequeno AND velocidad IS negativa THEN aceleracion IS nulo;
+	RULE  8 : IF angulo IS derecha_pequeno AND velocidad IS neutra THEN aceleracion IS derecha_medio;
+	RULE  9 : IF angulo IS derecha_pequeno AND velocidad IS positiva THEN aceleracion IS derecha_fuerte;
+
+	RULE 10 : IF angulo IS nulo AND velocidad IS negativa THEN aceleracion IS izquierda_suave;
+	RULE 11 : IF angulo IS nulo AND velocidad IS neutra THEN aceleracion IS nulo;
+	RULE 12 : IF angulo IS nulo AND velocidad IS positiva THEN aceleracion IS derecha_suave;
+
+	RULE 13 : IF angulo IS izquierda_pequeno AND velocidad IS negativa THEN aceleracion IS izquierda_fuerte;
+	RULE 14 : IF angulo IS izquierda_pequeno AND velocidad IS neutra THEN aceleracion IS izquierda_medio;
+	RULE 15 : IF angulo IS izquierda_pequeno AND velocidad IS positiva THEN aceleracion IS nulo;
+
+	RULE 16 : IF angulo IS izquierda_normal AND velocidad IS negativa THEN aceleracion IS izquierda_fuerte;
+	RULE 17 : IF angulo IS izquierda_normal AND velocidad IS neutra THEN aceleracion IS izquierda_fuerte;
+	RULE 18 : IF angulo IS izquierda_normal AND velocidad IS positiva THEN aceleracion IS izquierda_suave;
+
+	RULE 19 : IF angulo IS izquierda_grande AND velocidad IS negativa THEN aceleracion IS izquierda_fuerte;
+	RULE 20 : IF angulo IS izquierda_grande AND velocidad IS neutra THEN aceleracion IS izquierda_fuerte;
+	RULE 21 : IF angulo IS izquierda_grande AND velocidad IS positiva THEN aceleracion IS izquierda_fuerte;
+
+	RULE 22 : IF angulo IS derecha_invertido AND velocidad IS negativa THEN aceleracion IS izquierda_fuerte;
+	RULE 23 : IF angulo IS derecha_invertido AND velocidad IS positiva THEN aceleracion IS derecha_fuerte;
+	RULE 24 : IF angulo IS izquierda_invertido AND velocidad IS negativa THEN aceleracion IS izquierda_fuerte;
+	RULE 25 : IF angulo IS izquierda_invertido AND velocidad IS positiva THEN aceleracion IS derecha_fuerte;
+
+	RULE 26 : IF velocidadlineal IS derecha_rapida THEN aceleracion IS derecha_medio;
+	RULE 28 : IF velocidadlineal IS moderada THEN aceleracion IS nulo;
+	RULE 30 : IF velocidadlineal IS izquierda_rapida THEN aceleracion IS izquierda_medio;
+
+	RULE 31 : IF posicion IS izquierda THEN aceleracion IS izquierda_medio;
+	RULE 32 : IF posicion IS centrado THEN aceleracion IS nulo;
+	RULE 33 : IF posicion IS derecha THEN aceleracion IS derecha_medio;
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK
