@@ -1,0 +1,19 @@
+class Pollaca
+{
+     public double prueba()
+     {
+          double a[][];
+          a = new double[50][3];
+          
+          a[6][5] = 5123;
+          return a[6][5];
+     }
+
+     public static void Main()
+     {
+          Pollaca a;
+          a = new Pollaca();
+          System.Console.WriteLine(a.prueba());
+     }
+}
+

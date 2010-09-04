@@ -1,0 +1,12 @@
+class verde
+{
+   double hola;
+   void adios ()
+   {
+       double adios2;
+       hola = adios2;
+       jesuscristo = hola;
+   }
+
+   double jesucristo;
+}

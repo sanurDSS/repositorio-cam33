@@ -1,0 +1,6 @@
+class ojetico {
+    void pollaca () const {
+        double polla;
+        polla = 12312.123123;
+    }
+}

@@ -1,0 +1,15 @@
+class test {
+    void main () const {
+        double a;
+        a = 1.0;
+    }
+    void m () const {
+        double d1;
+        double d;
+        double d2;
+        d1 = 64.9963;
+        d = 34.591;
+        d2 = d1; 
+        d = 34.591;
+    }
+}

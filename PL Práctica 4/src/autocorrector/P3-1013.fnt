@@ -1,0 +1,18 @@
+class Single{
+public static void Main()
+{
+ int a,b,c;
+ double x,y,z;
+ bool e,o;
+
+ e.bool.Parse(System.Console.ReadLine());  /*True*/
+ o.bool.Parse(System.Console.ReadLine());  /*False*/
+ a.int.Parse(System.Console.ReadLine());   /*5*/
+ b.int.Parse(System.Console.ReadLine());  /*30*/
+ c.int.Parse(System.Console.ReadLine());  /*7*/
+ y.int.Parse(System.Console.ReadLine()); /*0.5*/
+ z.double.Parse(System.Console.ReadLine()); /*3.5*/
+ x=a+z*y-(e==(b*c-o));
+ System.Console.WriteLine(x);
+}
+}

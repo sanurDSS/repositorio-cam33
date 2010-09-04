@@ -1,0 +1,15 @@
+class Viernes13 {
+    double v15;
+    double v16;
+    void Functionvoid () const {
+        double Viernes13;
+        Viernes13 = v15;
+    }
+    void procedure () const {
+        double v;
+        v = v15;
+    }
+    void const () {
+        v16 = 102.203;
+    }
+}

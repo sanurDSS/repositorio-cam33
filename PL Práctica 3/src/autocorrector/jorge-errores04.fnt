@@ -1,0 +1,12 @@
+class Single{
+	public static void Main()
+	{		
+	
+		bool a,b,c,d,e;
+		a = True;
+		b = False;
+		c = False;
+		d = True;
+		e = True | False | a | b & c | 10.2;
+	}
+}

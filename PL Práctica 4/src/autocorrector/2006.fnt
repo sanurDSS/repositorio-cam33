@@ -1,0 +1,135 @@
+class Metodos{
+private int vector[];
+private int N;
+public bool Lectura()
+{
+ vector=new int [11];
+ N=11;
+ for(int i=0;i<N;i++)
+  vector[i].int.Parse(System.Console.ReadLine());   
+}
+public bool Imprimir()
+{
+  for(int i=0;i<N;i++)
+   System.Console.WriteLine(vector[i]);
+}
+
+public int SeleccionDirecta()
+{
+  int min,aux;
+/*  Imprimir();*/
+  for(int i=0;i<N;i++)
+  {
+    min=i;
+    for(int j=i+1;j<N;j++)
+    {
+      if (vector[j] < vector[min])
+        min = j;
+    } 
+    
+    aux = vector[min];
+    vector[min] = vector[i];
+    vector[i] = aux;
+  
+  } 
+  /*Imprimir();*/
+}
+
+public int Burbuja()
+{
+ int aux;
+  for(int i=N-1;i>0;i--)
+  {
+    for(int j=0;j<i;j++)
+    {  
+      if (vector[j]>vector[j+1]) 
+       {
+        aux = vector[j];
+        vector[j] = vector[j+1];
+        vector[j+1] = aux;
+       }
+    } 
+  } 
+}
+
+public int InsercionDirecta()
+{
+  int min,aux;
+/*Llamar a lectura*/
+  Imprimir();
+  int INTMIN; INTMIN = (-2147483648); 
+  int b[];
+  b=new int [12];
+  b[0] = INTMIN; 
+  for(int i=1;i<=N;i++)
+    b[i] = vector[i-1];
+  for(int i=2;i<=N;i++)
+  {
+    aux = b[i];
+    int j;
+    j=i-1; 
+    for(int jj=j;aux < b[jj];jj--)
+    {
+      b[jj+1] = b[jj]; j=jj-1;
+    }
+    /* aqui j es 1 (aux es el minimo) o b[j] es menor que aux*/
+    b[j+1]=aux;
+  } 
+  for(int i=1;i<=N;i++)
+    System.Console.WriteLine(b[i]);
+
+}
+
+}
+
+class Intermedia
+{
+ private Metodos vector1;
+ public int Reserva()
+ {
+  vector1=new Metodos();
+ }
+ public int Ejecuta()
+ {
+  vector1.Lectura();
+  vector1.Imprimir();
+  vector1.SeleccionDirecta();
+  vector1.Imprimir();
+ }
+}
+
+class Principal
+{
+  private Intermedia objeto;
+  public int Reserva()
+  {
+    objeto=new Intermedia();
+    objeto.Reserva();
+  }
+  public int Ejecuta()
+  {
+    objeto.Ejecuta();
+  }
+  public static void Main()
+  {
+    Principal piobo;
+    
+    piobo=new Principal();
+    piobo.Reserva();
+    piobo.Ejecuta();
+
+    Metodos variba;
+  
+    variba=new Metodos();
+    variba.Lectura();
+    variba.Imprimir();
+    variba.Burbuja();
+    variba.Imprimir();
+    variba.Lectura();
+    variba.InsercionDirecta();
+
+  }
+}
+
+
+

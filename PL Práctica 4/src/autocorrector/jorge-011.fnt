@@ -1,0 +1,11 @@
+class C1
+{
+    public static void Main()
+    {
+        int i;
+        //i = 1;
+        C1 o1;
+
+	NoDeclarado a;
+    }
+}

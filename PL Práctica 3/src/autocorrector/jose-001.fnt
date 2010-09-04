@@ -1,0 +1,121 @@
+class Single
+{
+    public static void Main()
+    {
+        int a;
+        int b;
+        int c[], d[][];
+        int e[][][];
+        double f[],g;
+        bool i,h,k[][];
+
+        // Pruebas de entrada y salida
+        a.int.Parse(System.Console.ReadLine());
+        b = 1 + (a + 1) + (1 + 2);
+        System.Console.WriteLine(a);
+        System.Console.WriteLine(b);
+        i.bool.Parse(System.Console.ReadLine());
+        System.Console.WriteLine(!i);
+        System.Console.WriteLine(i);
+        h = !(((!(!(!(!i))))));
+        System.Console.WriteLine(h);
+        k = new bool[5][5];
+        b = 0;
+
+        for(int i = 10-(1-(1-(1-(1-(1-(1-(1-(1-1))))))))-5; (i >= 0 | i >= 0 | i >= b++); a--)
+        {
+            System.Console.WriteLine(i);
+            for(int j = 0; j < 5; j++)
+            {
+                k[i][j] = True;
+            }
+            for(int j = 0; j < 5; j++)
+            {
+                k[i][j] = False;
+                k[i][j] = True;
+            }
+            System.Console.WriteLine(i--);
+        }
+        System.Console.WriteLine(b*3 + a*2);
+        
+        // Inicializamos f e c
+        f = new double[5];
+        c = new int[5];
+        for(int i = 0; i < 5; i++)
+        {
+            f[i].double.Parse(System.Console.ReadLine());
+            c[i].int.Parse(System.Console.ReadLine());
+        }
+
+        // Mostramos f e c
+        for(int i = 0; i < 5; i++)
+        {
+            System.Console.WriteLine(f[i]+0.1);
+            System.Console.WriteLine(c[i]+0.1);
+        }
+
+        // Inicializamos k
+        k = new bool[8][8];
+        for(int j = 0; j < 5; j++)
+        {
+            k[j][j].bool.Parse(System.Console.ReadLine());
+            k[j][j] = !k[j][j];
+            System.Console.WriteLine(k[j][j]);
+        }
+
+        // Jugamos con los postincrementos y postdecrementos
+        b = 0;
+        a = 1;
+        b = a++;
+
+        
+        System.Console.WriteLine(a);
+        System.Console.WriteLine(b);
+       
+        e = new int[5][5][5];
+        e[0][0][0] = 1;
+        System.Console.WriteLine(e[0][0][0]);
+        System.Console.WriteLine(True);
+        System.Console.WriteLine(True);
+        System.Console.WriteLine(True);
+        // pua.... 
+        e[0][0][0] = e[0][0][0]++ + 0;
+        System.Console.WriteLine(e[0][0][0]);
+        a = 1;
+        a = a++ + a++;
+        System.Console.WriteLine(a);
+        System.Console.WriteLine(b);
+        a = b--;
+        System.Console.WriteLine(a);
+        System.Console.WriteLine(b);
+        e[0][0][0] = 1;
+        System.Console.WriteLine(e[0][0][0]--);
+        System.Console.WriteLine(e[0][0][0]);
+        System.Console.WriteLine(f[0]);
+        System.Console.WriteLine(f[0]++);
+        System.Console.WriteLine(f[0]--);
+        System.Console.WriteLine(f[0]);
+        System.Console.WriteLine(a);
+        f[0] = a;
+        System.Console.WriteLine(f[0]+0.1);
+        a = f[0];
+        if(f[1] == f[f[0]])
+            System.Console.WriteLine(9999 - f[0]);
+        else
+            System.Console.WriteLine((-9999));
+
+        double p;
+        f[0] = 6.11;
+        c[0] = 4;
+        p = (f[0] * c[0]) / 4;
+        System.Console.WriteLine(p);
+        p = c[0] * f[0] * 6;
+        System.Console.WriteLine(p);
+
+        System.Console.WriteLine(5*5.0*5);
+        System.Console.WriteLine(5+5.0+5);
+        System.Console.WriteLine(5/5.0/5/5);
+        System.Console.WriteLine(5-5.0-5-5);
+        System.Console.WriteLine((5 == 5) & True);
+    }
+}

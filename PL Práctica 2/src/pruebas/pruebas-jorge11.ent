@@ -1,0 +1,19 @@
+class A
+{
+	double B;
+	
+	void G(){}
+}
+
+class B
+{
+	double B;
+	void G(){}
+}
+
+class G
+{
+	double A;
+	void B(){}
+}
+

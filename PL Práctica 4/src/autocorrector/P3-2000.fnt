@@ -1,0 +1,122 @@
+class Single{
+public static void Main()
+{ 
+
+int ns;
+double x;
+
+x=0;
+for(int ns=0.2;ns < 10;ns++)
+{
+ double fact,pot;
+ int i;
+ double y,yant;
+
+ ns=ns;ns=ns;ns=ns;
+ i = 1; 
+ x=x+1;
+ y=1.0;
+ yant=0.0;
+ for(int j=0;y != yant;j)
+ {
+  yant = y; 
+  /* Calculo de x elevado a i */
+  {
+     pot=x;
+      for(int i3=2;i3<=i;i3++) 
+        pot=pot*x;
+  }
+  /* Calculo del factorial de i*/
+  {
+     fact = 1.0; 
+     for(int i2=2.0;i2<=i;i2++) 
+         fact = fact*i2;
+  }
+  y = y + pot/fact;
+  i = i + 1;
+ } 
+ System.Console.WriteLine(y); 
+ System.Console.WriteLine(i); 
+} 
+
+  int ar[][];
+  double a[][][][][];
+
+  ar=new int[2][2];
+  a=new double[1][2][3][4][5];
+  ar[0][0]=0;
+  ar[0][1]=1;
+  ar[1][0]=2;
+  ar[1][1]=3;
+  System.Console.WriteLine(ar[0][0]);
+  System.Console.WriteLine(ar[0][1]);
+  System.Console.WriteLine(ar[1][0]);
+  System.Console.WriteLine(ar[1][1]);
+  for(int v1=0;v1<1;v1++)
+   for(int v2=0;v2<2;v2++)
+    for (int v3=0;v3<3;v3++)
+    for(int v4=0;v4<4;v4++)
+     for(int v5=0;v5<5;v5++)
+      a[v1][v2][v3][v4][v5]=v1+v2+v3+v4+v5;
+  for(int v1=0;v1<1;v1++)
+   for(int v2=0;v2<2;v2++)
+    for (int v3=0;v3<3;v3++)
+    for(int v4=0;v4<4;v4++)
+     for(int v5=0;v5<5;v5++)
+      System.Console.WriteLine(a[v1][v2][v3][v4][v5]);
+
+ int a1[];
+ double b[];
+ double c;
+
+ a1=new int[100];
+ b=new double[10];
+ b[1]=1.1;  
+ b[2]=2.2;   
+ b[3]=3.3;     
+ b[4]=4.4;     
+ b[5]=5.5;     
+ b[6]=6.6;     
+ a1[b[1]]=(-1);   
+ a1[b[2]]=(-2);   
+ a1[b[3]]=(-3);   
+ a1[b[4]]=(-4);   
+ a1[b[5]]=(-5);   
+ a1[b[6]]=(-6);    
+ a1[7.1]=(-7);     
+ a1[8.2]=(-8);     
+ a1[9.09]=(-9);    
+ a1[10.3]=(-10);   
+ System.Console.WriteLine(a1[1]); 
+ System.Console.WriteLine(a1[2]);
+ System.Console.WriteLine(a1[3]);
+ System.Console.WriteLine(a1[4]);
+ System.Console.WriteLine(a1[5]);
+ System.Console.WriteLine(a1[6]);
+ System.Console.WriteLine(a1[7]);
+ System.Console.WriteLine(a1[8]);
+ System.Console.WriteLine(a1[9]); 
+ System.Console.WriteLine(a1[10]);
+
+ double a2[][];
+ int x2,y;
+
+ a2=new double[2][5];
+ x2=2;
+ y=5;
+ double semilla;
+ semilla=x2*y;
+ int total;
+ total=0;
+ for(int i=0;i<x2;i++)
+   for(int j=0;j<y;j++)
+     {
+       a2[i][j]=semilla*(i+j);
+       total=total+a2[i][j];
+     }
+ for(int i=0;i<x2;i++)
+  for(int j=0;j<y;j++)
+      System.Console.WriteLine(a2[i][j]);
+
+} 
+}

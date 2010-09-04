@@ -1,0 +1,36 @@
+class Single{
+public static void Main()
+{ 
+
+/* Calculo del numero 'e'
+ Se imprime 'e' y el numero de iteraciones que se necesitaron */
+
+double i,i2,fact;
+double e;
+double eant;
+
+ i = 1.0; 
+ e = 1;
+ eant=0;
+
+ for(int j=0;e != eant[i];j) 
+  {
+    eant = e; 
+    /* Calculo del factorial de i
+       Como si fuera una funcion 'inline' */
+    {
+       fact = 1.0; 
+       i2=2.0;
+       if (i2<=i) 
+        for(int k=i2;k<=i;k++) 
+           fact = fact*k;
+    }
+    e = e + 1/fact;
+    i = i + 1.0;
+  }  
+
+ System.Console.WriteLine(e); /* Muestra el valor de e */
+ System.Console.WriteLine(i); /* Muestra el numero de iteraciones */
+}
+} 
+

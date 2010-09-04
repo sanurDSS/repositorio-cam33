@@ -1,0 +1,61 @@
+class Single
+{
+	public static void Main()
+	{
+		{
+			int x[][][];
+			{
+				x = new int [5][100][15];
+				x[1][72][9] = 500;
+				
+				System.Console.WriteLine(x[1][72][9]);
+				
+				double x[][][];
+				{
+					x = new double[7][199][123];
+					x[1][72][9] = 500.1923;
+					x[1][50][8] = 15.12;
+					
+					int tam1, tam2, tam3;
+					tam1 = 7;
+					tam2 = 199;
+					tam3 = 123;
+					
+					double total;
+					total = 0;
+					
+					int dimensiones;
+					dimensiones = 0;
+					
+					for (int i = 0; i < tam1; i++)
+					{
+						for (int j = 0; j < tam2; j++)
+						{
+							for (int k = 0; k < tam3; k++)
+							{
+								total = total + x[i][j][k];
+								
+								if (total > 500)
+								{
+									i = tam1 + 1;
+									j = tam2 + 1;
+									k = tam3 + 1;
+								}
+								
+								dimensiones = dimensiones + 1;
+							}						
+						}
+					}
+					
+					System.Console.WriteLine(total);
+					System.Console.WriteLine(dimensiones);
+					
+					bool x[];
+					x = new bool[1];
+					x[0] = True;
+					System.Console.WriteLine(x[0]);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,10 @@
+class Coche
+{
+     public double a[][];
+     public static void Main()
+     {
+          a = new double[10][10];
+          System.Console.WriteLine(a);
+     }
+}
+

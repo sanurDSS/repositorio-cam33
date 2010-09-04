@@ -1,0 +1,19 @@
+class Single{
+public static void Main()
+{ 
+  double x[][];
+  int f1,c1;
+  
+  x=new double [2][3];
+  f1=2;
+  c1=3;
+  for(int i=0;i<f1;i++)
+   for(int j=0;j<c1;j++)
+      x[i]=inicia*2.0;
+  int res;
+  res=0;
+  for(int i1=0;i1<f1;i1++)
+   for(int j1=0;j1<c1;j1++)
+      res=res+x[i1][j1];
+}
+}

@@ -1,0 +1,9 @@
+class Single
+{
+	public static void Main()
+	{
+		bool australopithecus[][][];
+		australopithecus[12][3][55][54][12313.123][9] = 2000 < 2000;
+	}
+}
+

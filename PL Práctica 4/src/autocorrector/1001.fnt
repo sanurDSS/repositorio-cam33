@@ -1,0 +1,49 @@
+class Crear{
+ public double a[][];
+ public int x,y;
+
+ public int Reserva()
+ {
+   x=2;
+   y=5;
+   a=new double[2][5];
+   return x*y;
+ }
+
+ public int Rellena(double semilla)
+ {
+   int total;
+
+   total=0;
+   for(int i=0;i<x;i++)
+      for(int j=0;j<y;j++)
+       {
+         a[i][j]=semilla*(i+j);
+         total=total+a[i][j];
+       }
+  return total;
+ }
+
+ public int Mostrar()
+ {
+   for(int i=0;i<x;i++)
+      for(int j=0;j<y;j++)
+      System.Console.WriteLine(a[i][j]);
+ }
+
+}
+
+class Ejecutar{
+public int Moin()
+{
+  Crear objeto;
+  int pos;
+  int t;
+ 
+  objeto=new Crear();
+  pos=objeto.Reserva();
+  t=objeto.Rellena(pos);
+  objeto.Mostrar();
+  System.Console.WriteLine(t);
+}
+}

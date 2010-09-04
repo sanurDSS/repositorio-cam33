@@ -1,0 +1,12 @@
+int vacia()
+{
+ int a;
+}
+
+main()
+{
+  int n;
+
+  vacia(n);
+
+}

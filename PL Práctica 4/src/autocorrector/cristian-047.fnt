@@ -1,0 +1,10 @@
+class Coche
+{
+     public double a[][];
+     public static void Main()
+     {
+          Coche a[];
+          a = new Coche();
+     }
+}
+

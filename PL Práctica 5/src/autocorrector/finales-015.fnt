@@ -1,0 +1,23 @@
+int funcion(int cantidad)
+{
+	int i = 0;
+	while(i < cantidad)
+	{
+		print(cantidad * i);
+		i = i + 1;
+	}
+}
+
+main()
+{
+	int i = !10021;
+	if (i / 2 == 18)
+	{
+		funcion(7);
+	}
+	else
+	{
+		funcion(19);
+	}
+}
+

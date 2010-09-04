@@ -1,0 +1,15 @@
+class Coche
+{
+     public double a[][];
+     public double getSize()
+     {
+     
+     }
+     
+     public static void Main()
+     {
+          Coche coche;
+          coche.a[1][1] = coche.getSize;
+     }
+}
+

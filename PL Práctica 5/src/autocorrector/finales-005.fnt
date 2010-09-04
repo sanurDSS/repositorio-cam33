@@ -1,0 +1,14 @@
+int factorial(int a)
+{
+	int b, a;
+}
+
+int factorial()
+{
+	print(10);
+}
+
+main()
+{
+	factorial();
+}

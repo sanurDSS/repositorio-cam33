@@ -1,0 +1,24 @@
+class Single
+{
+	public static void Main()
+	{
+		bool b;
+		int a;
+		a = 5;
+		b = True;
+		
+		/*
+		 b no se ha inicialziado y puede valer 981238123 y si está mal hecho el RELOP va a cascar porque va a comprar 5 con 898123123
+		 mara que este bien, un booleano (este inicializado o no), no deberia tener nunca un valor distinto a 0 o 1
+		*/
+		if (a > b)
+		{
+			System.Console.WriteLine(11111111);
+		}
+		else
+		{
+			System.Console.WriteLine(22222222);
+		}
+	}
+}
+

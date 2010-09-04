@@ -1,0 +1,16 @@
+class Single
+{
+	public static void Main()
+	{
+		double pi;
+		pi = 3.14159265;
+		for ( int pi2 = pi; pi < pi * pi & pi<15; pi++){
+			System.Console.WriteLine((1.4-32768));
+			System.Console.WriteLine((1.4-32768)*pi*pi2);
+			bool k;
+			k = !!!!!k;		
+		
+		}
+	}
+}
+

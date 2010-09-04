@@ -1,0 +1,91 @@
+class Single{
+public static void Main()
+{ 
+  int A[]; 
+  int N,n,h,x,p,maxi,hmaxi;
+
+  maxi = 4096;
+  hmaxi = 12;
+  A=new int[4097];
+
+  for(int i=1;i<=maxi;i++) 
+    A[i]=(-1);
+  System.Console.WriteLine(True); 
+
+  N.int.Parse(System.Console.ReadLine());
+  { 
+   bool cabe;
+   int i;
+   for(int j=1;j<=N;j++) 
+   {
+    int j; 
+    x.int.Parse(System.Console.ReadLine());
+    n=0; 
+    i=1; 
+    cabe=False;
+    if (x>=0) 
+     for(int n=0;n<hmaxi & !cabe;n) 
+     {
+      if (A[i]!=(-1)) 
+       {
+        if (x<A[i])
+          i=2*i; 
+        else
+          i=2*i+1; 
+        n=n+1;
+       } 
+      else cabe=True;
+     } 
+    if (cabe) A[i]=x; 
+    System.Console.WriteLine(cabe); 
+    j=12000;
+   }
+  } 
+
+  System.Console.WriteLine(True); 
+  
+  int Pila[]; 
+  bool visitado[]; 
+  int tope,aux,cabe;
+  tope = 0; 
+  
+  Pila =new int[4097];
+  visitado =new bool[4097];
+  for(int i=1;i<=maxi;i++) 
+    visitado[i]=False;
+  if (A[1]!=(-1)) 
+   {
+    tope=tope+1;  
+    Pila[tope] = 1;
+   }
+  for(int cabe=5000;tope>0;cabe--) 
+   { 
+    aux = Pila[tope]; 
+    tope = tope-1;
+    if (visitado[aux]) 
+     {
+      System.Console.WriteLine(A[aux]); 
+      if (aux < 2048) 
+        if (A[aux*2+1]!=(-1))
+         { 
+          tope = tope+1;
+          Pila[tope] = aux*2+1;
+         }
+     }
+    else 
+     {
+      visitado[aux]=True; 
+      tope = tope+1;
+      Pila[tope] = aux; 
+      if (aux < 2048)  
+        if (A[aux*2]!=(-1)) 
+         {
+          tope = tope+1;
+          Pila[tope] = aux*2;
+         }
+     }
+   } 
+ 
+
+}
+}

@@ -1,0 +1,26 @@
+class Single{
+public static void Main()
+{
+  int n,num;
+  double suma,media;
+
+  n=4;
+
+  suma = 0;
+
+  for(int i=0;i<n;i++)
+  {
+    num=n+2;
+    suma = suma + num;
+    {
+      bool car;
+      car=False;
+      if (car|i) 
+        System.Console.WriteLine(True); 
+      else System.Console.WriteLine(False);
+    }
+  }
+  media = suma/n;
+  System.Console.WriteLine(media);
+}
+}

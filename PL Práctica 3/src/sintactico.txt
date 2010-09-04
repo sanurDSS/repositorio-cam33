@@ -1,0 +1,53 @@
+s: clase;
+clase: CLASS SINGLE LLAVEI metodo LLAVED;
+metodo: PUBLIC STATIC VOID MAIN PARI PARD bloque;
+tiposimple: INT | DOUBLE | BOOL;
+decl: tiposimple varid (COMA varid)* PYC;
+varid: ID (CORI CORD)*;
+declins: (instr | decl)*;
+bloque: LLAVEI declins LLAVED;
+instr: bloque;
+instr: IF PARI expr PARD instr (ELSE instr)?;
+instr: FOR PARI INT ID ASIG expr PYC expr PYC expr PARD instr;
+instr: ref cambio;
+instr: ID ASIG NEW tiposimple (CORI ENTERO CORD)+ PYC;
+instr: WRITELINE PARI expr PARD PYC;
+cambio: ASIG expr PYC;
+cambio: PUNTO READLINE PYC;
+expr: eand (OR eand)*;
+eand: erel (AND erel)*;
+erel: esum (RELOP esum)*;
+esum: term (ADDOP term)*;
+term: factor (MULOP factor)*;
+factor: base;
+factor: NOT factor;
+factor: PARI ADDOP factor PARD;
+base: ENTERO | REAL | BOOLEANO;
+base: PARI expr PARD;
+base: ref (POSTINCR | POSTDECR)?;
+ref: ID (CORI expr CORD)*;
+
+
+s:          clase;
+clase:      CLASS SINGLE LLAVEI metodo LLAVED;
+metodo:     PUBLIC STATIC VOID MAIN PARI PARD bloque;
+tiposimple: INT | DOUBLE | BOOL;
+decl:       tiposimple varid (COMA varid)* PYC;
+varid:      ID (CORI CORD)*;
+declins:    (instr | decl)*;
+bloque:     LLAVEI declins LLAVED;
+instr:      bloque |
+            (IF PARI expr PARD instr (ELSE instr)?) |
+            (FOR PARI INT ID ASIG expr PYC expr PYC expr PARD instr) |
+            (ref cambio) |
+            (ID ASIG NEW tiposimple (CORI ENTERO CORD)+ PYC) |
+            (WRITELINE PARI expr PARD PYC);
+cambio:     (ASIG expr PYC) | (PUNTO READLINE PYC);
+expr:       eand (OR eand)*;
+eand:       erel (AND erel)*;
+erel:       esum (RELOP esum)*;
+esum:       term (ADDOP term)*;
+term:       factor (MULOP factor)*;
+factor:     base | (NOT factor) | (PARI ADDOP factor PARD);
+base:       ENTERO | REAL | BOOLEANO | (PARI expr PARD) | (ref (POSTINCR | POSTDECR)?);
+ref:        ID (CORI expr CORD)*;

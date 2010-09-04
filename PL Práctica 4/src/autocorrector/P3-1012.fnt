@@ -1,0 +1,22 @@
+
+class Single{
+public static void Main()
+{
+
+int a;
+double c;
+bool d;
+
+a=128;
+c=2.81;
+d=False>(1!=8.9);
+
+System.Console.WriteLine (a);
+System.Console.WriteLine (c);
+System.Console.WriteLine (d);
+System.Console.WriteLine (1.000000000000000000<0.0000000000000000);
+System.Console.WriteLine (a<c);
+System.Console.WriteLine (c<a);
+c=a==1.99999999999-(8.9*1.6-(-2)+1);
+}
+}

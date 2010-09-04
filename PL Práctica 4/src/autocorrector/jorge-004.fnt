@@ -1,0 +1,13 @@
+class C1
+{
+	public int A1;
+}
+
+class Run
+{
+	public int noHayMain(double a, double b)
+	{
+		return 2.0;
+	}
+}
+

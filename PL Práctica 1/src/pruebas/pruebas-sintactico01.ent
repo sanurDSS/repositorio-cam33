@@ -1,0 +1,13 @@
+class A {
+	double j;
+	void f () {
+		double m; double n;
+		j =m; n= j; m = 23.1;
+	}
+	void g () {
+		double k;
+		double j;
+		double26;
+	}
+}
+

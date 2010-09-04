@@ -1,0 +1,24 @@
+class Coche
+{
+     public bool vector[];
+     public Coche a, b;
+     public int arrancar()
+     {
+          vector = new bool[96];
+          vector[45] = True;
+          
+          if (vector[45])
+               return 55;
+          else
+               return 39;
+     }
+     
+     public static void Main()
+     {
+          Coche c;
+          c = new Coche();
+          a.bool.Parse(System.Console.ReadLine());
+          System.Console.WriteLine(252.12 > c);
+     }
+}
+

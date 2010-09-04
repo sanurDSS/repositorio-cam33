@@ -1,0 +1,9 @@
+class Single
+{
+	public static void Main()
+	{
+          int a;
+		a = new bool[10];
+	}
+}
+

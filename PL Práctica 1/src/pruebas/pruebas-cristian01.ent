@@ -1,0 +1,9 @@
+class hola
+{
+     double maquina;
+     void funcioncilla()
+     {
+          double maquina;
+          maquina = fosforito;
+     }
+}

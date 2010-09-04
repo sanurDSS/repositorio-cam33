@@ -1,0 +1,32 @@
+class Single{
+public static void Main()
+{
+
+ double a[][];
+ int x,y;
+ a=new double[2][5];
+   x=2;
+   y=5;
+ double semilla;
+   semilla=x*y;
+   int total;
+   total=0;
+   for(int i=0;i<x;i++)
+      for(int j=0;j<y;j++)
+       {
+         a[i][j]=semilla*(i+j);
+         total=total+a[i][j];
+       }
+   bool j1;
+   for(int i=0;i<x;i++)
+   {
+     j1=False;
+     for(int j=0;j1<y;j)
+     {
+      System.Console.WriteLine(a[i][j1]);
+      j1=True;
+     }
+   }
+ }
+}
+

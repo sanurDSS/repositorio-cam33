@@ -1,0 +1,12 @@
+class A {
+    void G () const {
+    }
+}
+class B {
+    void G () const {
+    }
+}
+class G {
+    void B () const {
+    }
+}

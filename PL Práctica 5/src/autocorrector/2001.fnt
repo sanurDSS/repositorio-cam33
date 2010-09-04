@@ -1,0 +1,84 @@
+int tribonacci(int x)
+{
+  if (x==1 || x==2) return 1;
+  if (x==3) return 2;
+  return tribonacci(x-1) + tribonacci(x-2) + tribonacci(x-3);
+} 
+
+int tetranacci(int x)
+{
+  if (x==0) return 0;
+  if (x==1 || x==2) return 1;
+  if (x==3) return 2;
+  return tetranacci(x-1) + tetranacci(x-2) + tetranacci(x-3) + tetranacci(x-4);
+} 
+
+int geotribonacci(int x)
+{
+  if (x==1 || x==2) return 1;
+  if (x==3) return 2;
+  return geotribonacci(x-1) * geotribonacci(x-2) * geotribonacci(x-3);
+} 
+
+int geofibonacci(int x)
+{
+  if (x==0 || x==1) return 1;
+
+  return geofibonacci(x-1) * geofibonacci(x-2) + 1;
+}  
+
+int transfibonacci(int x)
+{
+  if (x<=1) return 1;
+
+  return transfibonacci( transfibonacci(x-1) + transfibonacci(x-2) -
+  (transfibonacci(x-2) + transfibonacci(x-3)) - 1);
+} 
+
+main() {
+int x;
+
+read(x);
+
+int a,b;
+int c,d;
+
+a = 6*5*4*3*2*1*x;
+b= (6/5)/(4/3/2/1+1*x);
+c= 1+2*x+x*3+4+5+6;
+d= 6-5-4*x-x*3-2-1;
+
+int e,f;
+int g,h;
+
+e= 6-(-6*1*x)+0*5+5*5/2*1*1*1*1*x/x/x*x;
+
+f= 2/5 + 5/2 + 8/2 + 2/(((8)*x));
+
+g= 1+1-1+1-1+1-1+1-1+1-1+1-1+1-1+1-1+1-1+1-1+1;
+
+h= 100+100*2*x-24*2-1024;
+
+int total;
+
+total= a+b+c+d+e+f+g+h;
+
+print (x*total*x);
+
+int valor,i;
+
+read(valor);
+i=0;
+while (i<valor)
+{
+     print(i); print(1);
+     print( tribonacci(i+1) );  
+     print( tetranacci(i) );  
+     print( geotribonacci(i+1) );  
+     print( geofibonacci(i) );  
+     print( transfibonacci(i) );  
+     print(0);
+     i=i+1;
+}
+
+}

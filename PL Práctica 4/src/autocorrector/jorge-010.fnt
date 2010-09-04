@@ -1,0 +1,13 @@
+class ErrorX
+{
+	public ErrorX obj;
+
+	public int Method()
+	{
+		if(2+3 > obj)
+		{
+			int ultraFallo;
+		}
+	}
+
+}

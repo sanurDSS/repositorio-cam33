@@ -1,0 +1,25 @@
+class Coche
+{
+     public bool arrancar()
+     {
+
+     }
+}
+
+class Principal
+{
+     public static void Main()
+     {
+          Coche c;
+          c = new Coche();
+          c.arrancar();
+     }
+     
+     public static void Main()
+     {
+          Principal p;
+          p = new Principal();
+          p.main();
+     }
+}
+

@@ -1,0 +1,22 @@
+class Otra
+{
+     private double mierdaca[][][][][][][][];
+     
+     public bool inicializar()
+     {
+          mierdaca = new double[2][2][2][2][2][2][2][3];
+     }
+}
+
+class Coche
+{     
+     public static void Main()
+     {
+          Otra o;
+          o = new Otra();
+          o.inicializar();
+          o.mierdaca[1][1][1][0][0][0][0][2] = 8888.7777;
+          System.Console.WriteLine(o.mierdaca[1][1][1][0][0][0][0][2]);
+     }
+}
+

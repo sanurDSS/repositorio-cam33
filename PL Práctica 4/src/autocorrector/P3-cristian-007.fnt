@@ -1,0 +1,25 @@
+class Single
+{
+	public static void Main()
+	{
+		int a[][][];
+		a = new int[5][5][5];
+
+		int contador;
+		contador = 0;
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				for (int k = 0; k < 5; k++)
+					a[i][j][k] = contador++;
+			}
+		}
+
+		for (int i = 0; i < 5; i++)
+			for (int j = 0; j < 5; j++)
+				for (int k = 0; k < 5; k++)
+					System.Console.WriteLine(a[i][j][k]);
+	}
+}
+

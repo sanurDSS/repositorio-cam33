@@ -1,0 +1,13 @@
+class Programa
+{
+	public int piriprpir;
+}
+
+class Single
+{
+     public static void Main()
+     {
+          Programa p;
+	  p = new Single();
+     }
+}

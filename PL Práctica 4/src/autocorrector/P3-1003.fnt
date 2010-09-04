@@ -1,0 +1,31 @@
+
+/* # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ # @*/
+class Single{
+public static void Main()
+{
+
+int a,b;
+
+ a=7;
+ b=6;
+
+ System.Console.WriteLine(((a)));
+ System.Console.WriteLine(b);
+ System.Console.WriteLine ((-1));
+ System.Console.WriteLine (2.0);
+
+ if (a < 10)
+  for(int a=7;a<=10;a) 
+   {
+     b=1;
+     if (b < 10) 
+       for(int b=1;b==1;b++)  
+        {
+          rj=a*b;
+          System.Console.WriteLine (rj);
+          b= b+1;
+        }
+     a=a+10;
+   }
+}
+}

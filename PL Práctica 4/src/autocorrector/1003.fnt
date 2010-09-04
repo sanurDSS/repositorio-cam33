@@ -1,0 +1,57 @@
+class Operar {
+private bool pred;
+
+public int Mostrar()
+{
+ System.Console.WriteLine(pred);
+}
+
+public double divsor(double x)
+{
+ int r;
+ if (x>=1)
+  r=x*divsor(x-1);
+ else
+  r=1;
+ return r;
+}
+
+public double divendo(double y,double z)
+{
+ int r,a;
+ a=10;
+ if (z>0)
+  r=(y-z)*divendo(a,z-1);
+ else
+  r=y;
+ return r;
+}
+
+public double binomio(double x,double y)
+{
+ double r;
+ r=divendo(x,y,r)/divsor(y);
+ return r;
+}
+
+}
+
+class declara{
+public Operar miobj; 
+public static void Main()
+{
+ double newton;
+ int a,b;
+ miobj=new Operar();
+ a.int.Parse(System.Console.ReadLine());
+ b.int.Parse(System.Console.ReadLine());
+ newton=miobj.binomio(a,b);
+ if (newton==140)
+  miobj.pred=True;
+ else
+  miobj.pred=False;
+ System.Console.WriteLine(miobj.pred);
+ System.Console.WriteLine(newton);
+}
+
+}

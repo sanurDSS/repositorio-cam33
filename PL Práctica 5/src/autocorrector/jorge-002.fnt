@@ -1,0 +1,21 @@
+int factorial(int n)
+{
+	if(n < 2)
+		return 1;
+	else
+		return n*factorial(n-1);
+}
+
+main() 
+{ 
+   	int i = 0, n;
+
+	read(n);
+
+	while(i < n)
+	{
+		print(i);
+		print(factorial(i));
+		i = i + 1;
+	}
+}

@@ -1,0 +1,111 @@
+class Single{
+public static void Main()
+{
+  double parole;
+  int A[]; /* 2^13-1 nodos (13 niveles) max. */
+
+  int N,i,n,h,x,p,maxi,hmaxi;
+
+  A=new int[8193];
+  maxi = 8192;
+  hmaxi = 13;
+  parole=0.69;
+
+  // Inicializacion 
+
+  for(int i=1;i<=maxi;i++) 
+    A[i]=(-1);
+  System.Console.WriteLine(True); // fin inicializacion  
+
+  /* Insercion */
+
+  N.int.Parse(System.Console.ReadLine()); 
+  bool cabe;
+
+  for(int j=1;j<=N;j++) 
+  {
+    x.int.Parse(System.Console.ReadLine());
+    n=0; 
+    i=1; 
+    cabe=False;
+    if (x>=0) 
+     for(int n=0;(n<hmaxi & !cabe);n)
+     {
+      if (A[i]!=(-1)) 
+       {
+        if (x<A[i])
+          i=2*i; 
+        else
+          i=2*i+1; 
+        n=n++;
+       } 
+      else 
+        cabe=True;
+     } 
+    if (cabe)
+     A[i]=x; 
+    System.Console.WriteLine(cabe); 
+  } 
+  System.Console.WriteLine(True);  
+
+  if (parole<1)
+  {
+    double porma;
+    porma.double.Parse(System.Console.ReadLine());
+    int plea;
+    plea=porma-parole;
+    System.Console.WriteLine(plea);
+  }
+  System.Console.WriteLine(parole);
+  // Busqueda 
+  bool encontrado; 
+
+  x.int.Parse(System.Console.ReadLine());
+  for(int j=0;x!=(-1);j)
+  {
+
+    encontrado=False;
+    n=0; i=1; 
+    for(int j=0;(!encontrado & i<maxi);j)
+    {
+      if (A[i]==x) 
+       {
+        encontrado=True;
+        System.Console.WriteLine(encontrado);
+       }
+      else 
+       if (2*i<maxi)
+         if (x < A[i])
+             i = 2*i;
+         else 
+             i = 2*i+1;
+       else
+         i = maxi;
+    } 
+    if (!encontrado) System.Console.WriteLine(False);
+    x.int.Parse(System.Console.ReadLine());
+  }
+
+  /* Recorrido por niveles */
+  int j;
+  int inivel; 
+  
+  inivel = 1; // indice donde comienza el nivel actual 
+  i=1; // indice de nodo 
+  j=1; // j = numero de elementos del nivel actual 
+
+  for(int k=0;i<=maxi;k) 
+   {
+    if (A[i]!=(-1))
+     System.Console.WriteLine(A[i]);
+    i=i+1;
+    if (i == inivel+j) 
+    {
+      System.Console.WriteLine(True); /* marca de siguiente nivel */
+      inivel=i;
+      j = 2*j;
+    }
+   } 
+
+}
+}

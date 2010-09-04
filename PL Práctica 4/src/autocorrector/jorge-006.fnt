@@ -1,0 +1,17 @@
+class Error6aux
+{
+	public int m;
+}
+
+class Error6
+{
+	public Error6 obj;
+	public Error6aux obj2;
+
+	public int Method()
+	{
+		obj2 = new Error6aux();
+		obj = obj2;
+	}
+
+}

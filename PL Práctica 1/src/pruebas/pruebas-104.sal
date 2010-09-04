@@ -1,0 +1,21 @@
+class CalendarExample {
+    double working;
+    void prt () const {
+    }
+    void doCalendarTimeExample () const {
+    }
+    void doSimpleDateFormat () const {
+    }
+    void doAdd () {
+        double calendar;
+        working = calendar;
+    }
+    void doDateDifference () const {
+        double diff;
+        diff = working;
+    }
+    void doGetMethods () const {
+    }
+    void main () const {
+    }
+}

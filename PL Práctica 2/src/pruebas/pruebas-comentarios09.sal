@@ -1,0 +1,46 @@
+class pollaca {
+}
+class negraca {
+}
+class puton {
+    double altavoz;
+    double calculadora;
+    double monitor;
+    double lectora;
+    double router;
+    double modem;
+    double impresora;
+    double escaner;
+    double mochila;
+    double puerta;
+    double armario;
+    void torre () const {
+        double teclado;
+        teclado = monitor;
+    }
+    void carpeta () const {
+        double raton;
+        double alfombrilla;
+        raton = alfombrilla;
+        raton = alfombrilla;
+        raton = alfombrilla;
+        raton = alfombrilla;
+        raton = alfombrilla;
+    }
+    void lapiz () {
+        double lapiz;
+        lapiz = altavoz;
+        calculadora = monitor;
+    }
+    void telefono () const {
+        double auriculares;
+        auriculares = calculadora;
+    }
+    void cable () {
+        lectora = router;
+        modem = impresora;
+        escaner = mochila;
+        puerta = armario;
+        puerta = calculadora;
+    }
+}

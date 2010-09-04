@@ -1,0 +1,4 @@
+class Pua {
+    void G () const {
+    }
+}

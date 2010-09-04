@@ -1,0 +1,17 @@
+class Coche
+{
+     public double get()
+     {
+          int a;
+          
+          a = Coche() + True;
+     }
+
+     public static void Main()
+     {
+          Coche coche;
+          coche.Coche();
+          System.Console.WriteLine();
+     }
+}
+

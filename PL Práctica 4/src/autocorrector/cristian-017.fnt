@@ -1,0 +1,9 @@
+class Coche
+{
+     public bool arrancar()
+     {
+          Coche c;
+          c = new c();
+     }
+}
+

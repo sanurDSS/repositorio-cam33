@@ -1,0 +1,51 @@
+class Single{
+public static void Main()
+{
+  int G[][];
+  int V;
+  int org, dest, peso;
+
+  V=5;
+  G=new int[6][6];
+  for(int x=1;x<=V;x++) 
+    for(int y=1;y<=V;y++) 
+       G[x][y]=0;
+
+  org=1;
+  for(int i=0;org!=0;i++)
+   {
+     org.int.Parse(System.Console.ReadLine());
+     dest.int.Parse(System.Console.ReadLine());
+     peso.int.Parse(System.Console.ReadLine());
+     if (org<=0 | org>V | dest <=0 | dest>V | peso < 0)
+       org=0;
+     if (org!=0) 
+      {
+       G[org][dest] = peso;
+       System.Console.WriteLine(True);
+      } 
+     else System.Console.WriteLine(False);
+  } 
+
+  for(int y=1;y<=V;y++)
+    for(int x=1;x<=V;x++) 
+      {
+        if (G[x][y]!=0) 
+         {
+          for(int j=1;j<=V;j++)
+            {
+             if (G[y][j]>0)
+              if (G[x][j]==0 | (G[x][y] + G[y][j] < G[x][j]))
+                 G[x][j] = G[x][y] + G[y][j];
+            } 
+         } 
+      }
+
+  for(int x=1;x<=V;x++)
+    {
+     for(int y=1;y<=V;y++)
+        System.Console.WriteLine(G[x][y]);
+     System.Console.WriteLine(True);
+    }
+ 
+}}

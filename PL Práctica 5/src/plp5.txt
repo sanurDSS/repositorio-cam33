@@ -1,0 +1,9 @@
+AUTOR = 74236861; CRISTIAN AGUILERA MARTINEZ
+HORAS = 10
+
+# 1 hora copiando el proyecto, reescribiendo la gramatica, ajustando la tabla de simbolos, copiando los errores y leyendo la practica (jueves)
+# 1 hora haciendo los errores y añadiendo el código basico para poder compilar con gcc el .s
+# 3 hora traduciendo casi todo y haciendo pruebas de cada cosa (un buen rato con idiv)
+# 2 horas traduciendo lo que faltaba: llamadas a funciones, relop, return, lectura, if, while y arreglando el corrige.sh
+# 1 y pico haciendo las pruebas finales
+

@@ -1,0 +1,83 @@
+class CLASE1 {
+public double r;
+public double mif(double p1)
+{
+  int a[][][][][];
+  a=new int [1][2][3][4][5];
+  r=p1*(1.05-3);
+  return r;
+
+}
+}
+
+class CLASE2 {
+public int seve;
+private bool noseve;
+private bool lapera;
+public CLASE1 mo;
+
+public int primero(double unparam)
+{
+  int local;
+
+  local=1;
+  if (local<unparam)
+   noseve=True;
+  else noseve=False;
+  local=local+unparam;
+  return local;
+}
+
+public int segundo(double val)
+{
+  mo = new CLASE1();
+  if (val==0 & noseve)
+   seve=mo.mif(5);
+  else
+   seve=4;
+   return seve;
+}
+
+public bool tercero(double valor)
+{
+  lapera=(valor!=8.7);
+}
+
+public bool cuarto(double otro)
+{
+  lapera=(otro==9.0);
+}
+public bool quinto()
+{ return lapera;}
+}
+
+class CLASE3{
+public static void Main()
+{
+  CLASE2 obj1;
+  int ar[][];
+  int v1,v2;
+ 
+  obj1=new CLASE2();
+  ar=new int [2][2];
+  ar[0][0]=0;
+  ar[0][1]=1;
+  ar[1][0]=2;
+  ar[1][1]=3;
+  System.Console.WriteLine(ar[0][0]);
+  System.Console.WriteLine(ar[0][1]);
+  System.Console.WriteLine(ar[1][0]);
+  System.Console.WriteLine(ar[1][1]);
+
+  v1=obj1.primero(5.6);
+  v2=obj1.segundo(ar[1][0]);
+  obj1.seve=9;
+  if (obj1.tercero(3.4))
+   return CLASE2.cuarto(8.7);
+  System.Console.WriteLine(obj1.quinto());
+  System.Console.WriteLine(v1);
+  System.Console.WriteLine(v2);
+  System.Console.WriteLine(obj1.seve);
+}
+}
+

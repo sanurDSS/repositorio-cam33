@@ -1,0 +1,13 @@
+class A
+{
+	double xx;
+	void M(){double xx;double A;}
+	double A;
+    double M2(){Esto no es un metodo valido, sobran los parentesis}
+double xx;/*aqui fallara*/
+	class Aquinollega{}
+}
+class A{}
+class Aquinollega
+{
+}

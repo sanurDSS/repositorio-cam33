@@ -1,0 +1,48 @@
+class Single{
+public static void Main()
+{
+int a[];
+double b[][];
+bool c[][][][];
+int d;
+
+a=new int[1];
+b=new double[2][3];
+c=new bool[4][5][6][2];
+a[0]=1;
+b[0][0]=2;
+c[0][0][0][0]=True;
+System.Console.WriteLine(a[0]);
+System.Console.WriteLine(b[0][0]);
+System.Console.WriteLine(c[0][0][0][0]);
+a[0].int.Parse(System.Console.ReadLine());
+b[1][1].double.Parse(System.Console.ReadLine());
+c[1][1][1][a[0]-b[0][0]].bool.Parse(System.Console.ReadLine());
+System.Console.WriteLine(a[0]);
+System.Console.WriteLine(b[1][1]);
+System.Console.WriteLine(c[1][1][1][a[0]-b[0][0]]);
+a[0].int.Parse(System.Console.ReadLine());
+b[1][2].double.Parse(System.Console.ReadLine());
+c[3][4][5][0].bool.Parse(System.Console.ReadLine());
+System.Console.WriteLine(a[0]);
+System.Console.WriteLine(b[1][2]);
+System.Console.WriteLine(c[3][4][5][0]);
+b[0][1]=a[0]*9.7-2.4/8-b[1][2]+2-c[1][1][1][a[0]-b[0][0]]*c[1][1][1][1][1][c[0][0][0][0]];
+if (a[0]>b[1][2]<c[3][4][5][7-a[0]]==c[1][1][1][1])
+ {
+   b[0][1].double.Parse(System.Console.ReadLine());
+   c[0][1][2].bool.Parse(System.Console.ReadLine());
+   if (b[0][1]<=b[0][0]>=b[1][1]!=c[0][1][2]) 
+    {
+      b[1][0]=b[1][2];
+      if (True==(7<10.9*90)!=(False>0.91*123))
+       {
+         if (b[1][2]==b[1][0]==True)
+          System.Console.WriteLine(69);
+         else
+          System.Console.WriteLine(96);
+       }
+    }
+ }
+}
+}

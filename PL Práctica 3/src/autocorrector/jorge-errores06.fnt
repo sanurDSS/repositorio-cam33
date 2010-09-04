@@ -1,0 +1,17 @@
+class Single{
+	public static void Main()
+	{		
+	
+		bool a,b,c,d,e;
+		a = True;
+		b = False;
+		c = False;
+		d = True;
+		if((10 + 2) * 4)
+		{
+			int h;
+			h = 3;
+		}
+
+	}
+}

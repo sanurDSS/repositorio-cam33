@@ -1,0 +1,28 @@
+
+/* Tablas de multiplicar */
+
+main() {
+
+int a,b;
+
+
+if (a < 10)  {
+   int a,b,c,d;
+
+    if (b < 10) { 
+       int e;
+    } 
+
+} 
+
+if (a < 10)  {
+   int a2,b2,c2,d,c2;
+
+    if (c < 10) { 
+       int e2;
+    } 
+
+} 
+
+}
+

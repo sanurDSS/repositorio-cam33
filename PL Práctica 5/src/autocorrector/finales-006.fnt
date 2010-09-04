@@ -1,0 +1,9 @@
+int factorial(int b)
+{
+	int b;
+}
+
+main()
+{
+	factorial();
+}

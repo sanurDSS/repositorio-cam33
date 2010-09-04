@@ -1,0 +1,40 @@
+class Math
+{
+     private int id;
+     public double pow(double base, double exponente)
+     {
+          if (exponente == 0)
+          {
+               return 1;
+          }
+          else
+          {
+               return base * pow(base, exponente - 1);
+          }
+     }
+     
+     public double factorial(double n)
+     {
+          if (n == 0)
+          {
+               return 1;
+          }
+          else
+          {
+               return n * factorial(n - 1);
+          }
+     }
+
+     public static void Main()
+     {
+          for (int i = 0; i < 10; i++)
+          {
+               Math math;
+               math = new Math();
+               System.Console.WriteLine(math.pow(2, i));
+               System.Console.WriteLine(math.factorial(i));
+               System.Console.WriteLine(math.id); // deberia fallar? o como estamos dentro de la clase Math si que puedo acceder al "id" aunque sea static?
+          }
+     }
+}
+

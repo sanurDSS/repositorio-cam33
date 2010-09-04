@@ -1,0 +1,37 @@
+class Single{
+public static void Main()
+{
+int x,y;
+
+x=(-37);y=11;
+{
+    int a, b, p;
+
+if (x<0) 
+  a=(-x);
+else
+  a=x;
+if (y<0) 
+  b=(-y);
+else
+  b=y;
+
+p=0; 
+for (int c=b;c>0;c--) 
+{
+  p=p+a;
+}
+
+if (1.0*(x<0)+0.0) 
+{
+  if (y>0) 
+    p=-(p);
+} 
+else 
+  if (y<0) 
+    p=-(p);
+
+System.Console.WriteLine(p);
+}
+}
+}

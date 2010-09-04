@@ -1,0 +1,149 @@
+class Clase{
+private int A[];
+private int x,N,n,h,i,j,p,maxi,hmaxi;
+private bool cabe;
+private int Pila[];
+public bool xp[][][][];
+private bool visitado[];
+private int tope,aux;
+
+public int Reserva()
+{
+ A=new int[257];
+ Pila=new int [257];
+ xp=new bool [2][2][2][2];
+ visitado=new bool [257];
+}
+public int Obtener(double param)
+{
+  if (param==0)
+    return xp[0][0][0][0];
+  if (param==1)
+    return xp[0][0][0][1];
+  if (param==2)
+    return xp[0][0][1][0];  
+  if (param==3)
+    return xp[0][0][1][1];
+  if (param==4)
+   return xp[0][1][0][0];  
+  if (param==5)
+   return xp[0][1][0][1];
+  if (param==6)
+   return xp[0][1][1][0]; 
+  if (param==7)
+   return xp[0][1][1][1];
+  if (param==8)
+   return xp[1][0][0][0];  
+  if (param==9)
+   return xp[1][0][0][1];
+  if (param==10)
+   return xp[1][0][1][0]; 
+}
+
+
+public int Rellena(double f,double a,double l,double s)
+{
+  xp[0][0][0][0]=a;  xp[0][0][0][1]=8;
+  xp[0][0][1][0]=3;  xp[0][0][1][1]=1;
+  xp[0][1][0][0]=9;  xp[0][1][0][1]=f;
+  xp[0][1][1][0]=l;  xp[0][1][1][1]=2;
+  xp[1][0][0][0]=99;  xp[1][0][0][1]=7;
+  xp[1][0][1][0]=s; 
+}
+public int Operar(double lim1,double lim2)
+{
+ Reserva();
+ maxi=lim1;
+ hmaxi=lim2;
+ i=1;
+ Rellena(4,5.9,10,6);
+ for(int ii=i;ii<=maxi;ii++)
+  {
+    A[i]=(-1);
+    i=ii;
+  }
+ System.Console.WriteLine(True);
+ N.int.Parse(System.Console.ReadLine());
+ j=1;
+ for(int jj=j;jj<=N;jj++)
+ {
+  int tmp;
+  x.int.Parse(System.Console.ReadLine());
+  n=0;
+  i=1;
+  cabe=False;
+  tmp=Obtener(j);
+  if (x>=0)
+  for(int nn=n;((nn<hmaxi)&(!cabe));nn++)
+   {
+     if (A[i]!=(-1))
+     {
+       if (x<A[i])
+          i=2*i;
+       else
+          i=2*i+1;
+       n=nn;
+     }
+     else
+      cabe=True;
+   }
+  if (cabe)
+   A[i]=x;
+  System.Console.WriteLine(cabe);
+  j=jj;
+ }
+ System.Console.WriteLine(True);
+ tope=0;
+ i=1;
+ for(int ii=i;ii<=maxi;ii++)
+ {
+  visitado[i]=False;
+  i=ii;
+ }
+ if (A[1]!=(-1))
+ {
+  tope=tope+1;
+  Pila[(tope)]=1;
+ }
+ if (tope>0)
+ for(int tt=tope;tope>0;tt)
+ {
+   aux=Pila[tope];
+   tope=tope-1;
+   if (visitado[aux])
+    {
+      System.Console.WriteLine(A[aux]);
+      if (aux<128)
+       if (A[aux*2+1]!=(-1))
+        {
+         tope=tope+1;
+         Pila[(tope)]=aux*2+1;
+        }
+    }
+   else
+   {
+    visitado[aux]=True;
+    tope=tope+1;
+    Pila[tope]=aux;
+    if (aux<128) 
+    {
+     if (A[aux*2]!=(-1))
+     {
+      tope=tope+1;
+      Pila[tope]=aux*2;
+     }
+    }
+   }
+ }
+}
+
+}
+class Principal{
+public static void Main()
+{
+  Clase pulle;
+  pulle=new Clase();
+  pulle.Operar(256,8);
+}
+}
+

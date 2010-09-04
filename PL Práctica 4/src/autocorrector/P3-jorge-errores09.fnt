@@ -1,0 +1,11 @@
+class Single{
+	public static void Main()
+	{		
+	
+		bool a,c,d,e;
+		int b[][];
+		b = new int[3][4];
+		b[0][0].bool.Parse(System.Console.ReadLine());
+		
+	}
+}

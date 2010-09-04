@@ -1,0 +1,22 @@
+main()
+{
+	int a = 67;
+	int b = 39;
+	int c = 11;
+	int d = 98;
+	while (a + b + c + d > 0)
+	{
+		print(a || b && c || d && a && b || c || 89);
+		print(a || !(b && c || d) && !a && b || c || 89);
+		print(a || b && c || d && a && b || c || 89);
+		print(!(a || b && c || d) && !(a && b || c || 89));
+		print(a || !b && c || d && (a && b || c) || 89);
+		print((a || b && c) || !(d && a && b) || !(c || 89));
+		a = a - 1;
+		b = b - 1;
+		c = c - 1;
+		d = d - 1;
+		if (a < 0)
+			a = 0;
+	}
+}

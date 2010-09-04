@@ -1,0 +1,9 @@
+class A {
+     double X;
+     double DOUBLE;
+     void G () {
+          double DOUBLE;
+          DOUBLE = DOUBLE;
+     }
+     double G;
+}

@@ -1,0 +1,9 @@
+class Coche
+{
+     public double a[][];
+     public static void Main()
+     {
+          System.Console.WriteLine(a);
+     }
+}
+

@@ -1,0 +1,79 @@
+class Single
+{
+	public static void Main()
+	{
+		int a[], b, c, d, e, f, g, h, i;
+		a = new int[10];
+		b = 0;
+		c = 0;
+		d = 0;
+		e = 0;
+		f = 0;
+		g = 0;
+		h = 0;
+		i = 0;
+		a[0] = b++ + b + c++ + d + e + f++ + f + g + h++ + i + h++ + h;
+		System.Console.WriteLine(a[0]);
+		
+		{
+			double a[], b, c, d, e, f, g, h, i;
+			a = new double[10];
+			b = 0;
+			c = b;
+			d = 182.123;
+			e = d;
+			f = 16.12;
+			g = f;
+			h = d;
+			i = 91.1;
+			a[0] = b++ + b + c++ + d + e + f++ + f + g + h++ + i + h++ + h;
+			System.Console.WriteLine(a[0]);
+			
+			if (True | False)
+			{
+				bool a[], b, c, d, e, f, g, h, i;
+				b = False;
+				c = False;
+				d = False;
+				e = True;
+				bool z;
+				z = b | c | d | e | True;
+
+				System.Console.WriteLine(b | c | d | e | True);				
+				System.Console.WriteLine(z);
+
+				if (z)
+				{
+					System.Console.WriteLine(808);
+					int a[], b, c, d, e, f, g, h, i;
+					{
+						double a[], b, c, d, e, f, g, h, i;
+					}
+					
+					int booleano;
+					booleano = 0;
+					for (int i = 0; i < 0; i++ + 1000)
+					{
+						booleano = 1;
+						bool a[], b, c, d, e, f, g, h;
+					}
+					
+					if (booleano == 0)
+					{
+						System.Console.WriteLine(55555);
+					}
+					else
+					{
+						System.Console.WriteLine(66666);
+					}
+				}
+				else
+				{
+					System.Console.WriteLine(404);
+					double a[], b, c, d, e, f, g, h, i;
+				}
+			}
+		}
+	}
+}
+

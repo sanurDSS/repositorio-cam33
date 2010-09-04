@@ -1,0 +1,17 @@
+class Coche
+{
+     public double get1000()
+     {
+          int a;
+          a = 5000;
+          return 2*a;
+     }
+
+     public static void Main()
+     {
+          Coche coche;
+          coche.Coche();
+          System.Console.WriteLine();
+     }
+}
+

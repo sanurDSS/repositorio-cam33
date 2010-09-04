@@ -1,0 +1,11 @@
+class Single{
+public static void Main()
+{
+ double A[][][];
+
+ for(int i=9;i<78;i--){
+  int i;}
+ System.Console.WriteLine(i);
+ A=new int [2][3][0];
+}
+}

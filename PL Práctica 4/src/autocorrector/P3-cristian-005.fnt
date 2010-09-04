@@ -1,0 +1,16 @@
+class Single
+{
+	public static void Main()
+	{
+		double i, j;
+		i = 100.66;
+		j = i*1.1415;
+		
+		System.Console.WriteLine(j);
+		for (int i = i; i < j; i++)
+		{
+			System.Console.WriteLine(i);
+		}
+	}
+}
+

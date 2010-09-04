@@ -1,0 +1,36 @@
+class C2
+{
+    public int c;
+    public int metodo()
+    {
+        return 50.0;
+    }
+}
+
+class C1
+{
+    public C2 a;
+    public C1 b;
+    public int c;
+    public int i;
+
+    public double m2(double m)
+    {
+        a = new C2();
+    }
+
+    public double m1()
+    {
+        return 5.0;
+    }
+
+    public static void Main()
+    {
+	int i;
+	i = 0;
+
+	//Esto da error16 porque C1 no es un campo ni un metodo ni pollas y no el 2 porque como identificador existe
+        C1.a = 3;
+        
+    }
+}

@@ -1,0 +1,89 @@
+class ontr{
+private double A[][],B[][];
+private double suma;
+private int i,j,k,M,N,P;
+
+public int Iniciar(double p1,double p2,double p3)
+{
+ M=p1;
+ N=p2;
+ P=p3;
+ A=new double [4][3];
+ B=new double[3][5];
+ return M+N+P;
+}
+
+public int Operar(double x,double y)
+{
+ j=Iniciar(x,y);
+
+ for(int i=1;i<=M;i++) 
+  for(int j=1;j<=N;j++) 
+    A[i,j]=i*(j-1);
+
+ System.Console.WriteLine(True);
+ i=1;
+ for(int ii=i;ii<=N;ii++) 
+ {
+  j=1;
+  for(int jj=j;jj<=P;jj++) 
+  {
+   B[i,j]=j*(i-1);
+   j=jj;
+  }
+  i=ii;
+ }
+ System.Console.WriteLine(True);
+ i=1;
+ for(int ii=i;ii<=M;ii++) 
+ {
+  j=1;
+  for(int jj=j;jj<=P;jj++) 
+  {
+    k=1;
+    suma=0;
+    for(int kk=k;kk<=N;kk++) 
+     {
+      suma=suma+A[i,k]*B[k,j];
+      k=kk;
+     }
+    System.Console.WriteLine(suma);
+    j=jj;
+ }
+ System.Console.WriteLine(True);
+ i=ii;
+ }
+}
+}
+
+
+class media{
+public ontr goal;
+
+public int reserva()
+{
+  goal=new ontr();
+}
+
+public int inicia(double p2,double p1)
+{
+  goal.Operar(p1,p2);
+}
+
+}
+
+
+class final{
+public static void Main()
+{
+  media valor;
+  double x,y;
+
+  valor= new media();
+  valor.reserva();
+  x.double.Parse(System.Console.ReadLine());
+  y.double.Parse(System.Console.ReadLine());
+  valor.inicia(x,y);   
+}
+
+}

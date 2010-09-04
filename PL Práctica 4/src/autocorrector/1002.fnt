@@ -1,0 +1,86 @@
+class classA {
+private int a,b,c;
+
+public double f()
+{
+ a=9;
+}
+
+public bool f2()
+{
+ System.Console.WriteLine(True);
+ return True;
+}
+
+public bool f3()
+{
+ System.Console.WriteLine(False);
+ return False;
+}
+
+public double g(double d)
+{
+ System.Console.WriteLine(d);
+ return d;
+}
+
+public double g2(double d)
+{
+ int x;
+ System.Console.WriteLine(d*d);
+ return d*d;
+}
+
+public double g3(double d)
+{
+ g2(d);
+}
+public double h(double d,double e)
+{
+ int k,l;
+ k=d;
+ l=e;
+ System.Console.WriteLine(k*l);
+ return (k*l);
+}
+public double h2(double d,double e)
+{
+ h(d,e);
+ return (d*e);
+}
+public double i(double d,double e,double k)
+{
+ int l,m,j;
+ l=d;
+ h=e;
+ j=k;
+ System.Console.WriteLine(l+h+j);
+ return l+h+j;
+}
+public double i2(double d,double e,double f)
+{
+ int l,h,j;
+ l=d;
+ h.int.Parse(System.Console.ReadLine());
+ j=f;
+ i(d,h,j);
+ return d+e+f;
+}
+}
+
+class Inicial{
+public static void Main()
+{
+ double a,b,c;
+ classA var;
+
+ var = new classA();
+ a.double.Parse(System.Console.ReadLine());
+ b.double.Parse(System.Console.ReadLine());
+ c.double.Parse(System.Console.ReadLine());
+ var.h2(a,b);
+ System.Console.WriteLine(var.h2(a,b)+var.h2(b,c));
+}
+}
+
+

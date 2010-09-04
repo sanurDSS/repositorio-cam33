@@ -1,0 +1,36 @@
+class Single
+{
+	public static void Main()
+	{
+		int sumatorio;
+		sumatorio = 0;
+		for (int i = 0; i < 17; (1829 + 567) * 3.1415)
+		{
+			if (i == 0)
+			{
+				sumatorio = 0;
+			}
+			else
+			{
+				sumatorio = (sumatorio++ + i) * sumatorio;
+			}
+			
+			i = i + 2;
+		}
+		
+		System.Console.WriteLine(sumatorio);
+		if (sumatorio > 300)
+		{
+			System.Console.WriteLine(True);
+			System.Console.WriteLine(sumatorio + 0.001);
+			System.Console.WriteLine(sumatorio * 2);
+		}
+		else
+		{
+			System.Console.WriteLine(False);
+			System.Console.WriteLine(sumatorio + 0.001);
+			System.Console.WriteLine(sumatorio / 2);
+		}
+	}
+}
+

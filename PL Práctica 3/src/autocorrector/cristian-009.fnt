@@ -1,0 +1,24 @@
+class Single
+{
+	public static void Main()
+	{
+		int a[], b;
+		a = new int[40];
+
+		b = 6;
+		a[b] = 11;
+
+		/* Se muestran las variables. */
+		System.Console.WriteLine(a[b]);
+		System.Console.WriteLine(b);
+
+		int c;
+		c = a[b++]++;
+
+		// Se muestran las variables otra vez.
+		System.Console.WriteLine(a[b - 1]);
+		System.Console.WriteLine(b);
+
+	}
+}
+

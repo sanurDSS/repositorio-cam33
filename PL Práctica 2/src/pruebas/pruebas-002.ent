@@ -1,0 +1,7 @@
+class A {
+}
+/* repetimos la clase A
+*/
+class A 
+{
+}

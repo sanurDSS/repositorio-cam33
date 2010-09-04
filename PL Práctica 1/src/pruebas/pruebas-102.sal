@@ -1,0 +1,17 @@
+class XYZ {
+    double xyz;
+    double zyx;
+    void swap () {
+        double aux;
+        aux = xyz;
+        xyz = zyx;
+        zyx = aux;
+    }
+}
+class Otra {
+    double xyz;
+    double zyx;
+    void swap () {
+        xyz = zyx;
+    }
+}

@@ -1,0 +1,52 @@
+class Single{
+public static void Main()
+{
+   int a,b,c;
+
+   a=34;b=56;c=90;
+
+   if (a > b) 
+   { 
+     if (b > c) 
+     {
+       System.Console.WriteLine(a);
+       System.Console.WriteLine(c);
+     }
+     else
+     { 
+       if (a > c) 
+       {
+         System.Console.WriteLine(a);
+         System.Console.WriteLine(b); 
+       }
+       else
+       {
+         System.Console.WriteLine(c);
+         System.Console.WriteLine(b); 
+       }
+     }
+   }
+   else
+   {
+     if (a > c) 
+     {
+       System.Console.WriteLine(b);
+       System.Console.WriteLine(c);
+     }
+     else
+     { 
+       if (b > c & !a) 
+       {
+         System.Console.WriteLine(b);
+         System.Console.WriteLine(c); 
+       }
+       else
+       {
+         System.Console.WriteLine(c);
+         System.Console.WriteLine(a); 
+       }
+     }
+   }
+}
+}
+

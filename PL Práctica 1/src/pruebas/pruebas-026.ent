@@ -1,0 +1,12 @@
+class A
+{
+	double xx;
+	void M(){double xx;double A;}
+	double A;
+double xx;/*aqui fallara*/
+	class Aquinollega{}
+}
+class A{}
+class Aquinollega
+{
+}

@@ -1,0 +1,139 @@
+/* Funciones no recursivas con 0, 1, 2 y 3 parametros */
+
+
+int f() {
+  int a;
+}
+
+int f2() {
+  print (1);
+  return 1;
+}
+
+int f3() {
+  int f;
+  print (0);
+  return 0;
+}
+
+int g(int a) {
+  print(a);
+  return a;
+}
+
+int g2(int a) {
+  int x;
+  print(a*a);
+  return a*a;
+}
+
+int g3(int a) {
+  g2(a);
+}
+
+int h(int a, int b) {
+  int c,d;
+  c=a; d=b;
+  print(c*d);
+  return (c*d);
+}
+
+int h2(int a, int b) {
+  int x;
+
+  h(a,b);
+  return(a*b);
+}
+
+int i(int a, int b, int c) {
+  int d,e,f;
+
+  d=a; e=b; f=c;
+  print(d+e+f);
+  return d+e+f;
+}
+
+int i2(int a, int b, int c) {
+  int d,e,f;
+
+  d=a; e=b; f=c;
+  i(a,b,c);
+  return a+b+c;
+}
+
+int que(int p1) {
+
+int aux;
+
+aux = p1;
+p1 = 10;
+return(aux+p1);
+
+}
+
+int divsor(int x)
+{
+  int r;
+  
+  if(x>=1)
+    r=x*divsor(x-1);
+  else
+   r=1;
+  return r;
+}
+
+int divendo(int y, int z)
+{
+  int r;
+  
+  if (z>0)
+   r=(y-z)*divendo(y,z-1);
+  else
+   r=y;
+  return r;
+}
+
+int binomio(int x, int y)
+{
+  int r;
+  
+  r=divendo(x,y)/divsor(y);
+
+  return r;
+}
+
+
+main() {
+
+  int a,b,c;
+  b=2; c=3;
+
+  f();
+  read(a);
+  print(f2()); f3();
+  g(a); g2(a); g3(a);
+  print(h(a,b)); print(2*h2(a,b)*2);
+  read(c);
+  i(a,b,c); print(i2(a,b,c));
+  read(b);
+  print( que( que( que( que(b) ) ) ) );
+  print(que (3 +que (4 -que (5 *que (b) ) ) ) ); 
+  {
+  int a,b;
+  read(a);read(b);
+  int newton=binomio(a,b);
+  if (newton==140)
+    a=1;
+  else
+    a=0;
+  print(a);
+  print(newton);
+  }
+  read(a);read(b);
+  print (a/b);
+  read(a);read(b);
+  print (a/b);
+  read(a);read(b);
+  print (a/b);
+
+}

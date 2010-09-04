@@ -1,0 +1,85 @@
+class Nueva{
+private int a[];
+private double b[];
+private double c;
+
+public int Reserva()
+{
+  a=new int[100];
+  b=new double[10];
+}
+public int Crear()
+{
+ b[1]=1.1;  
+ b[2]=2.2;   
+ b[3]=3.3;     
+ b[4]=4.4;     
+ b[5]=5.5;     
+ b[6]=6.6;     
+ a[b[1]]=(-1);   
+ a[b[2]]=(-2);   
+ a[b[3]]=(-3);   
+ a[b[4]]=(-4);   
+ a[b[5]]=(-5);   
+ a[b[6]]=(-6);    
+ a[7.1]=(-7);     
+ a[8.2]=(-8);     
+ a[9.09]=(-9);    
+ a[10.3]=(-10);   
+ System.Console.WriteLine(a[1]); 
+ System.Console.WriteLine(a[2]);
+ System.Console.WriteLine(a[3]);
+ System.Console.WriteLine(a[4]);
+ System.Console.WriteLine(a[5]);
+ System.Console.WriteLine(a[6]);
+ System.Console.WriteLine(a[7]);
+ System.Console.WriteLine(a[8]);
+ System.Console.WriteLine(a[9]); 
+ System.Console.WriteLine(a[10]);
+}
+}
+
+class Crear{
+ public double a[][];
+ public int x,y;
+
+ public int Reserva()
+ {
+   a=new double[2][5];
+   x=2;
+   y=5;
+   return x*y;
+ }
+ public int Rellena(double semilla)
+ {
+   int total;
+   total=0;
+   for(int i=0;i<x;i++)
+      for(int j=0;j<y;j++)
+       {
+         a[i][j]=semilla*(i+j);
+         total=total+a[i][j];
+       }
+  return total;
+ }
+ public int Mostrar()
+ {
+   for(int i=0;i<x;i++)
+     for(int j=0;j<y;j++)
+      System.Console.WriteLine(a[i][j]);
+ }
+}
+
+class Ejecutar{
+public static void Main()
+{
+  Crear variable;
+  int pos,t;
+ 
+  variable=new Nueva();
+  pos=variable.Reserva();
+  t=variable.Rellena(pos);
+  variable.Mostrar();
+  System.Console.WriteLine(t);
+}
+}

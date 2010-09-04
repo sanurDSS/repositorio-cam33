@@ -1,0 +1,23 @@
+/**
+@author drizo
+@date 13/10/2009
+ **/
+class a100 {
+	double j;
+	double i;
+	void F() {
+		i=0.0;
+		j=0.0;		
+	}
+	void F1() {
+		double i;
+		double j;
+		i =
+			10.0239312356703828;
+	}
+	void F2() {
+		double j;		
+		j=0.0;
+		i=1.0;
+	}
+}

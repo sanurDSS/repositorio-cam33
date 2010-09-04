@@ -1,0 +1,22 @@
+class XYZ
+{
+double xyz;
+double zyx;
+	void swap(/*nada+/*/) 
+	{
+		double aux;
+		aux=xyz;
+		xyz=zyx;
+		zyx=aux;
+	}
+	}
+class Otra{
+	double xyz;
+double zyx;
+	void swap(/*nada2+/*/) 
+	{
+		double aux;
+		xyz=zyx;
+	}
+	/*}*/
+}

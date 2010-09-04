@@ -1,0 +1,58 @@
+class Mochila
+{
+	private int valores[];
+	private int pesos[];
+	private int N;
+
+	public int max(double a, double b)
+	{
+		if(a > b)
+			return a;
+		else
+			return b;
+	}
+
+	public int rellenar(double n)
+	{
+		N = n;
+		valores = new int[10]; //no se puede reservar con N 
+		pesos = new int[10];
+
+		for(int i = 0; i < n; i++)
+		{
+			pesos[i].int.Parse(System.Console.ReadLine());
+			valores[i].int.Parse(System.Console.ReadLine());
+		}
+	}
+
+	public int resolver(double n, double acc, double cap)
+	{
+		if(n == N)
+		{
+			return acc;
+		}
+		else
+		{
+			if(cap >= pesos[n])
+				return max( resolver(n+1,acc+valores[n],cap-pesos[n]) , resolver(n+1,acc,cap) );
+			else
+				return resolver(n+1,acc,cap);
+		}			
+	
+	}
+}
+
+class Principal
+{
+    public static void Main()
+    {
+        Mochila m;
+	int N, P;
+	N = 10;
+	P = 100;
+
+	m = new Mochila();
+	m.rellenar(10);
+	System.Console.WriteLine(m.resolver(0,0,P));
+    }
+}

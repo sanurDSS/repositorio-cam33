@@ -1,0 +1,5 @@
+class A
+{
+	double a /* Tiene que saltar aqui */
+	void G()
+}

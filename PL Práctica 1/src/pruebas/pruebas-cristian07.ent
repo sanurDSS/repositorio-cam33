@@ -1,0 +1,8 @@
+class polla
+{
+    double polla;
+    void polla()
+    {
+         double polla;
+    }
+}

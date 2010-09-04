@@ -1,0 +1,181 @@
+
+int digito(int x, int n) 
+{
+  int a, b, digito, i=0;
+
+  a=x; 
+  digito=0;
+  while (i<=n)
+  {
+    b = a/10;
+    digito = a - b*10;
+    a = b;
+    i=i+1;
+  } 
+  return digito;
+}
+
+/* funcion que obtiene la seccion 'alta' o 'baja' de un numero entero
+   Ej.: Las mayusculas son los digitos de x
+   x = ABCDEF, i = 2
+      seccion alta = ABCD
+      seccion baja = EF
+   x = ABCDEF, i = 0
+      seccion alta = ABCDEF
+      seccion baja = 0
+   x = ABCDEF, i = 5
+      seccion alta = A
+      seccion baja = BCDEF
+*/  
+int seccion(int x, int i, int cual) 
+{
+  int a=x,b=a,e=1,k=0;
+
+  while(k<i)
+  {
+    b = b/10;
+    e = e*10; 
+    k=k+1;
+  } 
+
+/*'b' contiene la seccion alta*/
+  if (cual == 1) 
+    return b;
+  else
+    return a-b*e;
+}
+
+/* eleva un numero entero a un exponente entero*/
+int elevar(int x, int e) 
+{
+  int a=x,b=e;
+
+  int i, res;
+  i=0;
+  res=1;
+
+  if (b<=0)
+    return 1;
+  else
+    return a*elevar(a,b-1);
+}
+
+
+int Karatsuba  (int x, int y, int n) 
+{
+  int r;        /* producto de x e y */
+  int a, b, c, d; /* numeros de (n/2) digitos*/
+  int U, V, W;    /* numeros de n-digit integer;*/
+
+   if (n == 1)
+      return digito(x,0)*digito(y,0);
+   else {
+      a = seccion(x,n/2,1);
+      b = seccion(x,n/2,0);
+      c = seccion(y,n/2,1);
+      d = seccion(y,n/2,0);
+      U = Karatsuba ( a, c, n/2 );
+      V = Karatsuba ( b, d, n/2 );
+      W = Karatsuba ( a+b, c+d, n/2 );
+      return U*elevar(10,n) + (W-U-V)*elevar(10,n/2) + V;
+   }
+}
+
+
+main() 
+{
+int a,b;
+int c;
+int d,e,f,g;
+
+read(a);
+read(c);
+read(d);
+read(e);
+read(f);
+
+print (d&&a);
+print (d&&e);
+print (e&&c);
+print (d&&a&&d);
+print (d&&c&&e);
+print (d&&e&&c);
+print (a&&c);
+print (c&&e);
+print (e&&d);
+print (e&&e);
+read(g);
+print (d||a);
+print (d||e);
+print (e||c);
+print (d||a||d);
+print (d||c||e);
+print (d||e||c);
+print (a||c);
+print (c||e);
+print (e||d);
+print (e||e);
+
+
+print (d||a&&d);
+print (d&&a||e);
+print (d||e&&c);
+print (d&&a||e||c&&d||e);
+print (!(a&&c)||e||!a&&d||e);
+print (!c||d);
+print (!(a||c));
+
+read(b);
+read(f);
+
+int i;
+i=0;
+
+while (i<g)
+{
+  print(digito(b,i));
+  i=i+1;
+} 
+
+print (1);
+
+i=0;
+while (i<g)
+{
+  print(digito(f,i));
+  i=i+1;
+} 
+
+i=0;
+while(i<g) 
+{
+  print(seccion(b,i,1));
+  i=i+1;
+} 
+
+print (1);
+
+i=0;
+while(i<g) 
+{
+  print(seccion(b,i,0));
+  i=i+1;
+} 
+
+read(b);
+i=0;
+while (i<b)
+{
+  print(elevar(b,i));
+  i=i+1;
+} 
+
+read(a);read(b);
+read(c);read(d);
+read(e);read(f);
+print (Karatsuba(a,b,c));
+print (Karatsuba(a,b,d));
+print (Karatsuba(e,f,a));
+
+}
+

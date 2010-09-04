@@ -1,0 +1,128 @@
+class Triangulo{
+public double iso[];
+public bool fld;
+
+public int Reserva()
+{
+  iso=new double[3];
+}
+
+}
+class Cuadrado{
+  private int A[][];
+  private int M; /* como maximo 99*/
+  private bool ok;
+  public Triangulo t;
+
+  public int i,j,n; 
+
+  public bool Inicializar()
+  {
+    int i,j;
+    A=new int [100][100];
+    i=1;
+    ok=False;t=new Triangulo(); t.Reserva();
+    for(int i=1;i<=M;i++) 
+    {
+     for(int j=1;j<=M;j++) 
+       A[i][j]=(-1);
+     ok=True;
+    } 
+    return ok;
+  }
+  public int anti,antj;
+  public bool Rellenar()
+  {
+    A[1][M/2+1]=1;
+    i=1; j=M/2+1;ok=False;
+    for(int n=2;n<=M*M;n++) 
+    {
+      anti=i;
+      if (i==1) i=M;
+      else      i=i-1;
+
+      antj=j;
+      if (j==M) j=1;
+      else      j=j+1;
+
+      if (A[i][j]==(-1)) 
+        A[i][j]=n;
+      else 
+      { 
+        if (anti==M) anti=1;
+        else         anti=anti+1;
+        i=anti;j=antj;
+        A[i][j]=n;
+      }
+      ok=True;
+    } 
+   return ok;
+  }
+  public bool Imprimir()
+  {
+    i=1;ok=False;
+    for(int i=1;i<=M;i++)
+    {
+     for(int j=1;j<=M;j++) 
+       System.Console.WriteLine(A[i][j]);
+     System.Console.WriteLine(True);
+     ok=True;
+    } 
+   return ok;
+  }
+  public int Sumar(double suma)
+  {
+    i=1;
+    for(int ii=i;ii<=M;ii++) 
+    {
+     suma= suma + A[ii][1];
+     i=ii;
+    }
+    return suma; 
+  }
+  public bool Empezar()
+  {
+    M.int.Parse(System.Console.ReadLine());
+    if (M>0 & M <100 & M/2.0 - M/2 > 0.0)  
+    { 
+      Inicializar();
+      if (ok) 
+       ok=Rellenar(); 
+      if (ok)
+       ok=Imprimir();
+       int suma;
+       suma=0;
+       if (ok)
+       {
+        suma=Sumar(suma);
+        System.Console.WriteLine(suma);
+       }
+    }
+    else 
+     System.Console.WriteLine(False);
+  }
+}
+
+class Principal
+{
+ private Cuadrado c;
+ public int Reserva()
+ {
+  c=new Cuadrado();
+  c.Inicializar();
+ }
+ public static void Main()
+ {
+  Cuadrado obj;
+  Principal prc;
+  
+  obj=new Cuadrado();
+  obj.Empezar();
+  obj.Empezar();
+  prc=new Principal();prc.Reserva();
+  for(int i=0;i<3;i++) {prc.c.t.iso[i]=i*0.5;}
+  for(int i=0;i<3;i++) System.Console.WriteLine(prc.c.t.iso[i]);
+  }
+}
+
+

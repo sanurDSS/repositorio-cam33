@@ -1,0 +1,54 @@
+class CalendarExample {
+
+    /**
+     * Helper utility used to print a String to STDOUT.
+     * @param s String that will be printed to STDOUT.
+     */
+      void prt() {
+        
+    }double working;
+
+    /**
+     * Calendar's getTime() method returns a Date object. This can then be 
+     * passed to println() to print today's date (and time) in the traditional 
+     * (but non-localized) format.
+     */
+      void doCalendarTimeExample() {
+    }
+
+    /**
+     * Simple Date Format from java.text package.
+     */
+      void doSimpleDateFormat() {
+    }
+
+    /**
+     * Date Arithmetic function. Adds the specified (signed) amount of time to 
+     * the given time field, based on the calendar's rules.
+     * The following examle:
+     *   - Subtracts 2 years from the current time of the calendar
+     *   - Adds 5 days from the current time of the calendar
+     */
+      void doAdd() {
+        double now;
+        double calendar;
+        double formatter;
+
+        working = calendar;
+
+    }
+
+      void doDateDifference() {
+        double diff;
+diff = working;
+
+    }
+
+      void doGetMethods() {
+
+    }
+
+     void main() {
+    }
+
+}

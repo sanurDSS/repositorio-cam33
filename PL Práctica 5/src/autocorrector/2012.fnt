@@ -1,0 +1,37 @@
+int p(int a)
+{
+  if (a) print(1);
+  else print(0);
+}
+
+int comprobar(int i,int j,int x,int y,int z,int w,int v,int s)
+{
+   print((i*01)*((j+17)+((x+32*5)+005-(y*z+(w-(v*s)))))+1);
+}
+
+main()
+{
+ int m,j;
+ m=0;j=1;
+ int a,b,c,d,e,f,g,h;
+
+comprobar(1,2,3,4,5,6,7,8);
+
+read(a);
+read(b);
+read(c);
+read(d);
+read(e);
+read(f);
+read(g);
+read(h);
+
+comprobar(a,b,c,d,e,f,g,h);
+ 
+comprobar(!g,b,e&&c,d,2,f,3,h,p);
+
+comprobar(a,2,c,4,e,6,g,8);
+
+comprobar(!a>(f&&e),h>=g||e,2,3,h,g,f,e);
+
+}

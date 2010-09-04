@@ -1,0 +1,10 @@
+class ErrorX
+{
+	public ErrorX obj;
+
+	public int Method()
+	{
+               System.Console.WriteLine(obj);
+	}
+
+}

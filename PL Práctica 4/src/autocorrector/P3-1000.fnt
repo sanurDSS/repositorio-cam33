@@ -1,0 +1,24 @@
+class Single{
+public static void Main()
+{
+  int i;
+  bool k;
+  double x;
+  
+  k.bool.Parse(System.Console.ReadLine());
+  if (k)
+   {
+    x.double.Parse(System.Console.ReadLine());
+    for(int j=0;j<3;j++)
+     {
+      x=x+1;
+      for (int k=0;k<4;k++)     
+      {
+        i.int.Parse(System.Console.ReadLine());
+        System.Console.WriteLine(i);
+      }
+     }
+   }
+  System.Console.WriteLine(x);
+}
+}

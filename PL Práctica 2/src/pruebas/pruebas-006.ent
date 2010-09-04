@@ -1,0 +1,12 @@
+class/***/Estoesunaclase034
+/*
+Probamos la asignacion de un numero a una clase
+
+*/
+{	void M(){
+		
+		Estoesunaclase034 
+		= 
+		2.23;
+		}
+		

@@ -1,0 +1,38 @@
+class Single{
+public static void Main()
+{
+
+int a,b;
+bool vector[][];
+
+ a=9;
+ b=0;
+ if (a > 10)
+  {
+   double b1;
+   bool c,d;
+    c=True;d=False;
+    b1=0;
+    if (b1 < 10)
+     { 
+       bool e;
+       e = (c != d == b1);
+       a = a-1;
+       c = e;
+     }
+ } 
+ System.Console.WriteLine(a);
+ vector=new int [1][1];
+ if (a < 10) 
+  {
+   double c,e;
+    e=2.5;
+    c=e-9*13-(-3);
+    if (e < 10)
+        b=c+(-9.0);
+  }
+ else b=4;
+ vector[0][0]=True;
+ System.Console.WriteLine(b);
+}
+}

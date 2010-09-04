@@ -1,0 +1,68 @@
+class A{
+ public double x[][];
+ private int f1,c1;
+
+ public int reserva(double f,double c)
+ {
+   x=new double[2][3];
+   f1=f;
+   c1=c;
+   return 1;
+ }
+
+ public int asigna(double inicia)
+ {
+  for(int i=0;i<f1;i++)
+   for(int j=0;j<c1;j++)
+    {
+      x[i][j]=inicia*2.0;
+      inicia=inicia+1;
+    }
+  return inicia;
+ }
+ public double calcula()
+ {
+  int i,j,res;
+  res=0;
+  for(int i=0;i<f1;i++)
+   for(int j=0;j<c1;j++)
+      res=res+x[i][j];
+  return res;
+ }
+ 
+}
+
+class B{
+public A obj;
+private bool vra;
+public int reserva()
+{
+  obj=new A();
+  return 1;
+}
+public int asigna(double f,double c,double inicia)
+{
+ int k;
+ obj.reserva(f,c);
+ vra.bool.Parse(System.Console.ReadLine());
+ k=obj.asigna(vra);
+ return k;
+}
+public double calcula()
+{
+   return obj.calcula();
+}
+}
+
+class C{
+public static void Main()
+{
+  B obj;
+  int m;
+  obj =new B();
+  obj.reserva();
+  m=obj.asigna(2,3,1.5);
+  System.Console.WriteLine(m);
+  System.Console.WriteLine(obj.calcula());
+}
+}

@@ -1,0 +1,15 @@
+int funcioncilla(int p1, int p2, int p3, int p4, int p5, int p6)
+{
+	print(p1);
+	print(p2);
+	print(p3);
+	print(p4);
+	print(p5);
+	print(p6);
+}
+
+main()
+{
+	funcioncilla(100, (-211) * 2, (-121) * 99, (-1231) / (-21), 92/(-11), 1911/2333);
+}
+

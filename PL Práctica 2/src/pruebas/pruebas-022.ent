@@ -1,0 +1,12 @@
+class A{
+
+
+
+
+
+double x;
+/*{Esto debe
+estar en un*/doublex=3;/*metodo*
+}
+/
+}

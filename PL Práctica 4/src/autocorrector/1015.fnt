@@ -1,0 +1,128 @@
+
+class engloba{
+  private int a,b;
+
+public int func()
+{
+ a=7;
+ b=6;
+
+ System.Console.WriteLine(((a)));
+ System.Console.WriteLine(b);
+ System.Console.WriteLine ((-1));
+ System.Console.WriteLine (2.0);
+ System.Console.WriteLine (True);
+ System.Console.WriteLine (False);
+
+ if (a < 10)
+  for(int a=a;a>=7;a--)
+    for(int b=b;b >= 1;b--)
+        System.Console.WriteLine (a*b);
+}
+}
+
+class Dos{
+public int A[]; 
+public int N,n,h,i,j,x,p,maxi,hmaxi;
+
+public int  Inorden()
+{ 
+  A=new int [4097];
+  maxi = 4096;
+  hmaxi = 12;
+  i=1;
+  for(int ii=i;ii<=maxi;ii++) 
+  {
+    A[i]=(-1);
+    i=ii;
+  }
+  System.Console.WriteLine(True); 
+  N.int.Parse(System.Console.ReadLine());
+  j=1; 
+  bool cabe;
+  for(int jj=j;jj<=N;jj++) 
+  {
+    x.int.Parse(System.Console.ReadLine());
+    n=0; 
+    i=1; 
+    cabe=False;
+    if (x>=0) 
+     for(int kk=0;n<hmaxi & !cabe;kk) 
+     {
+      if (A[i]!=(-1)) 
+      {
+        if (x<A[i])
+          i=2*i; 
+        else
+          i=2*i+1; 
+        n=n+1;
+      } 
+      else 
+        cabe=True;
+     } 
+
+    if (cabe)
+     A[i]=x; 
+    System.Console.WriteLine(cabe); 
+    j=jj;
+  }
+}
+
+public bool Mostrar()
+{ 
+  System.Console.WriteLine(True); 
+  int Pila[]; 
+  bool visitado[]; 
+  int tope,aux;
+  tope = 0;
+  Pila=new int [4097];
+  visitado=new bool [4097]; 
+  i=1;
+  for(int ii=i;ii<=maxi;ii++) 
+  {
+    visitado[i]=False;
+    i=ii;
+  } 
+  if (A[1]!=(-1)) 
+  {
+    tope=tope+1;  
+    Pila[tope] = 1;
+  }
+  if (tope>0) 
+   for(int kk=0;tope>0;kk) 
+   { 
+    aux = Pila[tope]; 
+    tope = tope-1;
+    if (visitado[aux]) 
+     {
+      System.Console.WriteLine(A[aux]); 
+      if (aux < 2048) 
+        if (A[aux*2+1]!=(-1))
+         { 
+          tope = tope+1;
+          Pila[tope] = aux*2+1;
+         }
+     }
+    else 
+     {
+      visitado[aux]=True; 
+      tope = tope+1;
+      Pila[tope] = aux; 
+      
+      if (aux < 2048)  
+        if (A[aux*2]!=(-1)) {tope = tope+1;
+          Pila[tope] = aux*2;
+          }
+    }
+  } 
+}
+
+public static void Main()
+{
+  engloba func;
+  func=new engloba();
+  func.func();
+  func.bool.Parse(System.Console.ReadLine());
+}
+}
+

@@ -1,0 +1,9 @@
+class Single
+{
+	public static void Main()
+	{
+		bool b;
+		System.Console.WriteLine(b[10]);
+	}
+}
+

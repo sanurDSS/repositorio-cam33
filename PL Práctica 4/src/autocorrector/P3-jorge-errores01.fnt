@@ -1,0 +1,9 @@
+class Single {
+	public static void Main()
+	{		
+	
+		int a;
+		for(int i = i; i < 10; i++)
+			a = a+i;
+	}
+}

@@ -1,0 +1,34 @@
+int a() {return 1;}
+int b(int b1) {return -(-b1)+1;}
+int c(int c1, int c2) {return !(c1>c2);}
+int d(int d1, int d2, int d3) {int dd;dd=d3;return (d1/d2>=1&&dd)+2/(-1);}
+
+main() {
+int b1,c1,d1;
+int c2,d2;
+int d3;
+
+
+read(b1); 
+read(c1); 
+read(d1);
+read(c2); 
+read(d2);
+read(d3);
+
+int ra,rd; int rc;
+ra=a();
+print(ra);
+print(b(b1));
+rc=c(c1,b1);
+print(rc);
+rd=(d(d1,d2,d3));
+print(rd);
+
+print (b(c2));
+
+rc=(c(c2,c1));
+print(rc);
+
+
+}

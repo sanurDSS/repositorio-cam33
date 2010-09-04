@@ -1,0 +1,65 @@
+class Single{
+public static void Main()
+{ 
+
+/* Calculo de 'e^x'
+ No admite numeros negativos */
+
+double x;
+
+x=0;
+for(int ns=0.2;ns < 10;ns++)
+{
+ double fact,pot;
+ int i,i2;
+ double y,yant;
+
+
+ ns=ns;ns=ns;ns=ns;
+ i = 1; 
+ x=x+1;
+ y=1.0;
+ yant=0.0;
+ for(int j=0;y != yant;j)
+ {
+ 
+  yant = y; 
+
+  /* Calculo de x elevado a i */
+  {
+    int i3;
+     pot=x;
+     i3=2;
+     if (i3<=i) 
+      for(int j=0;i3<=i;j) 
+       {
+        pot=pot*x;
+        i3=i3+1;
+       }
+  }
+
+  /* Calculo del factorial de i*/
+  {
+     fact = 1.0; 
+     i2=2.0;
+     if (i2<=i) 
+     for(int j=0;i2;j) 
+       {
+         fact = fact*i2;
+         i2 = i2+1;
+       }
+  }
+
+  y = y + pot/fact;
+  i = i + 1;
+ } 
+
+ System.Console.WriteLine(y); /* e^x */
+ System.Console.WriteLine(i); /* numero de iteraciones */
+
+} 
+
+} 
+
+
+}

@@ -1,0 +1,29 @@
+class Autentica { 
+    double a;
+    double b; 
+    void Funciona () const { 
+        double c; 
+        c = b; 
+        c = a;
+    }
+}
+class Autenticb {
+    double b;
+    void Funcionb () const {
+        double c; 
+        c = b;
+    }
+}
+class Autenticc {
+    double a;
+    void Funciona () const {
+        double c; 
+        c = a; 
+    }
+}
+class Autenticd {
+    void Funciona () const {
+        double c; 
+        c = c;
+    }
+}

@@ -1,0 +1,16 @@
+int fact(int n)
+{
+  int r;
+  if (n>=1)
+     r=n*fact(n-1);
+  else
+    r=1;
+  return r;
+}
+main()
+{
+  int f;
+
+  f=fact(5)*f(10);
+  print(f);
+}

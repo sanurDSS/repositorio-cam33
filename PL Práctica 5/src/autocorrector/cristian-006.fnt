@@ -1,0 +1,8 @@
+main()
+{
+     int a, b, c = 3;
+     read(a);
+     read(b);
+     
+     print((a + b) / c);
+}

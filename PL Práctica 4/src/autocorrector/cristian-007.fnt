@@ -1,0 +1,17 @@
+class Coche
+{
+     public bool arrancar()
+     {
+
+     }
+}
+
+class Principal
+{
+     public bool arrancar()
+     {
+
+     }
+     
+}
+

@@ -1,0 +1,19 @@
+class Coche
+{
+     public int cantidadRuedas;
+     public double metodo(double a, double b, double c, double d, double e, double f, double g, double h, double i, double j, double k)
+     {
+          return a * b / c + d + e + f + g + h + i + j + k;
+     }
+     
+     public static void Main()
+     {
+          Coche c;
+          c = new Coche();
+          c.cantidadRuedas = 20;
+          
+          // Aqui os puede fallar el maxstack de la regla params.
+          System.Console.WriteLine(c.metodo(1231.123, 12313.123, 8823.12, 1, 2, 3, 4, 5, 6*123*12313.123 + c.cantidadRuedas, 91*1, c.cantidadRuedas));
+     }
+}
+

@@ -1,0 +1,14 @@
+int funcioncilla(int p1, int p2, int p3, int p4, int p5, int p6)
+{
+	int p1;
+}
+
+main()
+{
+	int verde;
+	verde = 199.12;
+	verde = (verde * 7 + 11) / (-19);
+
+	print(verde);
+}
+

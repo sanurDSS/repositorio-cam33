@@ -1,0 +1,28 @@
+class Otra
+{
+     public double mierdaca[][][][][][][][];
+}
+
+class Coche
+{
+     public bool vector[];
+     public Coche a, b;
+     public int arrancar(double a)
+     {
+          vector = new bool[96];
+          vector[45] = True;
+          
+          if (vector[45])
+               return 55;
+          else
+               return 39;
+     }
+     
+     public static void Main()
+     {
+          Coche c;
+          c = new Otra();
+          c.arrancar(c + c++);
+     }
+}
+

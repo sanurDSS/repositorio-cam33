@@ -1,0 +1,40 @@
+class id {
+}
+class id2 { 
+double id2d; double id; 
+
+/*fin id doubleerno*/}class
+	/* Redefinimos */
+id0 {
+void id44() {double id;id = 6.0;}
+double id2d; double id; 
+void id2() {double id;id = 7.0;id2d = id;}
+void id3() {double id3;id = 7.0;id2d = id;}
+void id4() {double id4;id = 7.0;id2d = id;}
+}
+
+class recurscion                     {
+double i; double j; double k; double l; double m; double n; double o;
+
+void p(){double i; double j; double k; double l; double m; double n; double o;
+i=1.0; j=i; k=j; l=k; m=l; n=m; o=n;} 
+
+void q(){
+i=1.0; j=i; k=j; l=k; m=l; n=m; o=n;
+} 
+
+void r(){double i; double j; double k; 
+i=1.0; j=i; k=j; l=k; m=l; n=m; o=n;} 
+
+void s(){double l; double m; double n; double o;
+i=1.0; j=i; k=j; l=k; m=l; n=m; o=n;} 
+
+double w; double x; double y; double z;
+
+void t(){z=o;} 
+
+void u(){double y; y=x;} 
+
+void v(){double ll; w=ll;} 
+
+}

@@ -1,0 +1,4 @@
+class Autentica{double a;double b; void Funciona() {double c; c=b; c=a;}}
+class Autenticb{double a;double b; void Funcionb() {double c; c=b;}}
+class Autenticc{double a;double b; void Funciona( ) {double c; c=a;}}
+class Autenticd{double a;double b; double c;void Funciona() {double c; c=c;}}

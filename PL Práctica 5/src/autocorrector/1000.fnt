@@ -1,0 +1,22 @@
+main() 
+{
+int a,b;
+int c;
+int d,e,f;
+
+d = 0;
+e = 1;
+a = 1;
+c = 2;
+
+if (a>c) {
+  int a;
+  a=0;
+  print(a>c);
+}
+else {
+ int c;
+ c=4;
+ print(c);
+}
+}

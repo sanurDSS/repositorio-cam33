@@ -1,0 +1,9 @@
+class Coche
+{
+     public static void Main()
+     {
+          Coche coche;
+          System.Console.WriteLine(coche.campo);
+     }
+}
+

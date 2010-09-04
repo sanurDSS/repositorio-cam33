@@ -1,0 +1,4 @@
+class verde  {}
+
+class rojo { void verde (){ double azul; } }
+class amarillo { void rojo();}

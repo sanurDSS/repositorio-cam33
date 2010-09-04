@@ -1,0 +1,16 @@
+class Coche
+{
+     public bool vector[];
+     public Coche a, b;
+     public bool arrancar()
+     {
+          arrancar = new double[];
+     }
+     
+     public static void Main()
+     {
+          Coche c;
+          c = new Coche();     
+     }
+}
+

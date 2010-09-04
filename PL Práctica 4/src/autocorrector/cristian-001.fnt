@@ -1,0 +1,99 @@
+class Imagen
+{
+     private int width, height;
+     private double pixels[][];
+     
+     public bool inicializar()
+     {
+          width = 12;
+          height = 13;
+          pixels = new double[12][13];
+          return True;
+     }
+     
+     public bool print()
+     {
+          for (int i = 0; i < width; i++)
+          {
+               for (int j = 0; j < height; j++)
+               {
+                    System.Console.WriteLine(pixels[i][j]);
+               }
+          }
+          return True;
+     }
+     
+     public int getWidth()
+     {
+          return width;
+     }
+     
+     public int getHeight()
+     {
+          return height;
+     }
+     
+     public double getPixel(double i, double j)
+     {
+          return pixels[i][j];
+     }
+     
+     public double setPixel(double i, double j, double value)
+     {
+          int aux;
+          aux = pixels[i][j];
+          pixels[i][j] = value;
+          return aux;
+     }
+}
+
+class Foto
+{
+     public Imagen imagen;
+     public int puntuacion;
+     
+     public bool inicializar()
+     {
+          imagen = new Imagen();
+          imagen.inicializar();
+          return True;
+     }
+}
+
+class Usuario
+{
+     public int id;
+     public Foto foto;
+     
+     public bool inicializar()
+     {
+          foto = new Foto();
+          foto.inicializar();
+     }
+}
+
+class Principal
+{
+     public static void Main()
+     {
+          Usuario usuario;
+          usuario = new Usuario();         
+          usuario.inicializar();
+          
+          double contador;
+          contador = 1;
+          for (int i = 0; i < usuario.foto.imagen.getWidth(); i++)
+          {
+               for (int j = 0; j < usuario.foto.imagen.getHeight(); j++)
+               {
+                    usuario.foto.imagen.setPixel(i, j, contador++);
+               }
+          }
+               
+          Foto foto;
+          foto = usuario.foto;
+          usuario.foto.imagen.print();
+          foto.imagen.print();
+     }
+}
+

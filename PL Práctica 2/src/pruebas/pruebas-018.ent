@@ -1,0 +1,3 @@
+class 
+{
+	@no deberia llegar al error lexico, debe dar el sintactico

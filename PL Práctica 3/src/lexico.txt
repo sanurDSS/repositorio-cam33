@@ -1,0 +1,42 @@
+CLASS: 'class';
+SINGLE: 'Single';
+VOID: 'void';
+MAIN: 'Main';
+INT: 'int';
+DOUBLE: 'double';
+BOOL: 'bool';
+PUBLIC: 'public';
+STATIC: 'static';
+IF: 'if';
+ELSE: 'else';
+FOR: 'for';
+NEW: 'new';
+WRITELINE: 'System.Console.WriteLine';
+READLINE: ('int' | 'double' | 'bool') '.Parse(System.Console.ReadLine())';
+LLAVEI: '{';
+LLAVED: '}';
+PARI: '(';
+PARD: ')';
+CORI: '[';
+CORD: ']';
+COMA: ',';
+PYC: ';';
+ASIG: '=';
+OR: '|';
+AND: '&';
+RELOP: '==' | '!=' | '<' | '>' | '<=' | '>=';
+ADDOP: '+' | '-';
+MULOP: '*' | '/';
+POSTINCR: '++';
+POSTDECR: '--';
+NOT: '!';
+PUNTO: '.';
+ENTERO: ('0'..'9')+;
+REAL: ('0'..'9')+ '.' ('0'..'9')+;
+BOOLEANO: 'True' | 'False';
+ID: ('a'..'z' | 'A'..'Z') ('a'..'z' | 'A'..'Z' | '0'..'9' | '_')*;
+
+
+SEPARADOR: ('\r'? '\n'|' '|'\t')+ {skip();};
+COMENTARIO: ('/*' .* '*/') | ('//' .* ('\r' | '\n')) {skip();};
+// Pregunta: ¿\r\n o \r o \n para el fin de línea de los comentarios?

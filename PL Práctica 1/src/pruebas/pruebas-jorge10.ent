@@ -1,0 +1,13 @@
+class
+A
+{
+double
+x
+;
+void
+M
+(
+)
+x
+=
+22.3;

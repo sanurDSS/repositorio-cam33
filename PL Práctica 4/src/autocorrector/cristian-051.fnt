@@ -1,0 +1,58 @@
+class Polla
+{
+     public double valor;
+     public double contador;
+     public double i1, i2, i3, i4, i5, i6;
+     public double a[][][][][];
+     
+     public double metodo(double i, double j, double k)
+     {
+          valor = ((1777.123 + i) * j + k++);
+          a = new double[5][5][5][5][5];
+
+          contador = 0;
+          
+          i1 = 0;
+          for (int i = 0; i1 < 5; i1++)
+          {
+               i2 = 0;
+               for (int i = 0; i2 < 5; i2++)
+               {
+                    i3 = 0;
+                    for (int i = 0; i3 < 5; i3++)
+                    {
+                         i4 = 0;
+                         for (int i = 0; i4 < 5; i4++)
+                         {
+                              i5 = 0;
+                              for (int i = 0; i5 < 5; i5++)
+                              {
+                                   
+                                   if (i1 <= 0)
+                                   {
+                                        a[i1][i2][i3][i4][i5] = valor++ + valor++;                                   
+                                   }
+                                   else
+                                   {
+                                        a[(((i1*(i1*(i1*i1)))/i1)/i1)/i1][i2][i3][i4][i5] = a[(((i1*(i1*(i1*i1)))/i1)/i1)/i1][i2][i3][i4][i5];
+                                        a[(((i1*(i1*(i1*i1)))/i1)/i1)/i1][i2][i3][i4][i5] = valor++ + valor++;
+                                   }
+                                   System.Console.WriteLine(a[i1][i2][i3][i4][i5]);
+                                   
+                                   contador = contador + 1;
+                              }
+                         }
+                    }
+               }
+          }          
+          return contador;
+     }
+     
+     public static void Main()
+     {
+          Polla pollica;
+          pollica = new Polla();
+          pollica.metodo(1000, 2000, 3000);
+          System.Console.WriteLine(pollica.contador);
+     }
+}

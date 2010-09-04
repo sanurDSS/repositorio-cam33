@@ -1,0 +1,41 @@
+class Single{
+public static void Main()
+{
+   int n,pp,i,cuenta,primo;
+
+   n=23;
+   cuenta = 0;
+   pp = 1;
+   for(int cuenta=0;cuenta < n;cuenta)
+   {
+      int resto;
+      primo = 1;
+      i = 2;
+      for(int tmp=0;(pp & (primo!=0));tmp++)
+      {
+        int resto1,cociente;
+        resto1=pp;
+        for(int a=resto1;a>=i;a)
+        {
+           resto1=resto1-i;
+           a=a-i;
+        }
+        if (resto1 == 0)
+          primo = 0;
+        i = i + 1;
+      }
+      resto=pp;
+      for(int a=resto;a>=10;a)
+      {
+          resto=resto-10;
+          a=a-10;
+      }
+      if ((primo!=0) & (resto!=3)) 
+      {
+        System.Console.WriteLine(pp);
+        cuenta = cuenta + 1;
+      }
+      pp = pp + 1;
+   }     
+}
+}

@@ -1,0 +1,12 @@
+class Single{
+	public static void Main()
+	{		
+	
+		int a,b,c,d,e;
+		a = 0;
+		b = 1;
+		c = 2;
+		d = 3;
+		e = a + 2 + 4 + 6 + b + c + d + 10.2 + True;
+	}
+}

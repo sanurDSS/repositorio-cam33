@@ -1,0 +1,7 @@
+class cLass
+{
+	double DouBle;
+	void VoiD(){
+		double DouBle = 22.3;
+	}
+}

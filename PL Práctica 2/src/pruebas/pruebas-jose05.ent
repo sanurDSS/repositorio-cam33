@@ -1,0 +1,21 @@
+/*ggg***/class tres/**/
+{
+    void prueba()
+    {
+        double tres;
+        double lol;
+        double pelele;
+        tres = tres;
+        pelele = lol;
+    }
+    void prueba2()
+    {
+        double tres;
+        tres = 5.0;
+  			/* casca */ double /* como un campeon */ = tres;
+    }
+}
+/* adios */
+
+	/**/
+ 

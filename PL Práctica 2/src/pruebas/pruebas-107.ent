@@ -1,0 +1,19 @@
+class test
+{
+/*-----------------------------------------------------------------
+// Reads the number of hours worked and calculates wages.
+//-----------------------------------------------------------------*/
+void main ()
+{
+
+double a;
+a= 1.0;
+
+
+}
+
+double m(){double d1;d1 = 64.9963;
+double d ;d=34.591;
+double d2;d2 = d1; d=34.591;
+}
+}

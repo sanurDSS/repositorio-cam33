@@ -1,0 +1,415 @@
+class Mochila {
+  private int N,M;
+  private int peso[],valor[];
+  private int i;
+ public bool inicializa()
+ {
+   M=10;
+   N=5;
+   peso=new int[6];valor=new int [6];
+   i=1;
+   for(int ii=i;i<=5;i++)
+   {
+     peso[i].int.Parse(System.Console.ReadLine());
+     valor[i].int.Parse(System.Console.ReadLine());
+   }
+ }
+
+ public double MochilaRec(double n,double m)
+ {
+   int s1,s2;
+
+   if ((n==0)|(m==0))
+     return 0;
+   if (peso[n]>m)
+     return MochilaRec(n-1,m);
+   s1=MochilaRec(n-1,m);
+   s2=valor[n]+MochilaRec(n-1,m-peso[n]);
+   if (s1>s2)
+     return s1;
+   return s2;
+ }
+
+
+ public double MochilaPD(double n,double m)
+ {
+   int almacen[][];
+   almacen=new int[7][12];
+   int i,j;
+   i=0;
+   for(int ii=0;i<=n;ii++)
+   {
+    j=0;
+    for(int jj=0;j<=m;jj++)
+    {
+      if ((i==0)|(j==0)) 
+        almacen[i+1][j+1]=0;
+      else
+       if (peso[i]>j) 
+         almacen[i+1][j+1]=almacen[i][j+1];
+       else
+       {
+         int s1,s2;
+         s1=almacen[i][j+1];
+         s2=valor[i]+almacen[i][(j-peso[i])+1];
+         if (s1>s2) 
+            almacen[i+1][j+1]=s1;
+         else
+            almacen[i+1][j+1]=s2;
+       }
+     j=j+1;
+    }
+   i=i+1;
+   }
+   i=1;
+   for(int ii=1;i<=n+1;ii++) 
+   {
+    j=1;
+    for(int jj=1;j<=m+1;jj++)
+    { 
+      System.Console.WriteLine(almacen[i][j]);
+      j=j+1;
+    }
+    System.Console.WriteLine(True);
+    i=i+1;
+   }
+   return almacen[n+1][m+1];
+ }
+}
+
+class Imprime{
+
+public int Ver(double valor)
+{
+  int valorentero;
+
+  valorentero=valor;
+  System.Console.WriteLine(valorentero);
+}
+
+}
+
+
+class Math{
+ public int G[][];
+ private int y,x,j,V;
+ private Imprime aux;
+
+ public int Inicia()
+ {
+   G=new int [5][5];
+   V=5;
+   x=0;
+   y=0;
+   aux=new Imprime();
+   for(int i=x;x<V;x++) 
+   {
+    y=0;
+    for(int j=y;y<V;y++)
+     G[x][y]=0;
+   }
+ }
+
+ public int Calcular()
+ {
+  y=0;
+  for(int ii=y;y<V;y++)
+  {
+   x=0;
+   for(int jj=x;x<V;x++)
+   {
+    if (G[x][y]!=0)
+    {
+     for(int j=0;j<V;j++)
+     {
+      if (G[y][j]>0)
+        if ((G[x][j]==0) | ((G[x][y]>0) | (G[y][j]<G[x][j])))
+             G[x][j]=G[x][y]+G[y][j];
+     }
+    }
+   }
+  }
+ }
+ 
+ public int Mostrar()
+ {
+  Math copia;
+
+  copia=new Math();
+  copia.Inicia();
+  copia.G[0][1]=G[0][1];
+  copia.G[0][2]=G[0][2];
+  copia.G[0][3]=G[0][3];
+  copia.G[1][2]=G[1][2];
+  copia.G[1][4]=G[1][4];
+  copia.G[2][3]=G[2][3];
+  copia.G[2][4]=G[2][4];
+  copia.G[4][1]=G[4][1];
+  copia.G[3][0]=G[3][0];
+  copia.G[0][0]=G[0][0];
+  copia.Calcular();
+  x=0;
+  for(int i=x;x<V;x++)
+  {
+   y=0;
+   for(int j=y;y<V;y++)
+    aux.Ver(copia.G[x][y]);
+   System.Console.WriteLine(True);
+  }
+ }
+}
+
+class mant{
+ private int M[][];
+ private int k,l;
+
+ public int Iniciar(double m)
+ {
+   M=new int [20][20];
+   for(int i=0;i<m;i++) 
+    {
+     for(int j=0;j<m;j++)
+       M[i][j]=0;
+     M[i][i]=1;
+     M[i][m-1-i]=1;
+     M[i][1]=1;
+     M[i][m-1]=1;
+    }
+ }
+
+ public int Mostrar(double m)
+ {
+   int i,j;
+
+   for(int i=0;i<m;i++)
+    {
+     for(int j=0;j<m;j++)
+       System.Console.WriteLine(M[i][j]);
+     System.Console.WriteLine(True);
+    }
+ }
+
+ public int comprobar(double i,double j,double x,double y,
+                      double z,double w,double v,double s)
+ {
+   System.Console.WriteLine((i*01.7)*((j+0.17)+((x+0.32*1.5)+0.05-(y*z+(w-(v*s)))))+1.00909);
+ }
+ public int DUB(double m)
+ {
+  int m2;
+
+  Iniciar(m);
+  m2=m/2;
+  k=2;
+  for(int KK=k;k<m2;KK++)
+   {
+    l=1;
+    for(int LL=1;l<k;LL++) 
+     {
+      M[m-1-k+1][m-1-l+1]=M[k-1][l-1]+M[k-1][l];
+      M[m-1-k+1][l]=M[m-1-k+1][m-1-l+1];
+      M[k][m-1-l+1]=M[m-1-k+1][l];
+      M[k][l]=M[k][m-1-l+1];
+      l=l+1;
+     }
+    k=k+1;
+   }
+  Mostrar(m);
+ }
+}
+
+class Operar {
+private bool pred;
+
+public int Mostrar()
+{
+ System.Console.WriteLine(pred);
+}
+
+public int Asigna(double v)
+{
+  if (v==0.0)
+   pred=False;
+  else
+   pred=True;
+}
+
+public double divsor(double x)
+{
+ int r;
+ if (x>=1)
+  r=x*divsor(x-1);
+ else
+  r=1;
+ return r;
+}
+
+public double divendo(double y,double z)
+{
+ int r,a;
+ a.int.Parse(System.Console.ReadLine()); /*10;*/
+ if (z>0)
+  r=(y-z)*divendo(a,z-1);
+ else
+  r=y;
+ return r;
+}
+
+public double binomio(double x,double y)
+{
+ double r;
+ r=divendo(x,y)/divsor(y);
+ return r;
+}
+
+}
+
+class declara{
+public Operar miobj; 
+public int vlr;
+
+public double llamada(double x,double y)
+{
+  miobj=new Operar();
+  return miobj.binomio(x,y);
+}
+
+public int davalor(double p)
+{
+  miobj.Asigna(p);
+}
+
+public int mostrar()
+{
+  miobj.Mostrar();
+}
+
+}
+
+class intermedia{
+ public declara unobj;
+ private declara prueba;
+
+ public double inicia(double x,double y)
+ {
+   unobj=new declara();
+   return unobj.llamada(x,y);
+ }
+ 
+ public int asigna(double v)
+ {
+  unobj.davalor(v);
+ }
+
+ public int muestra()
+ {
+  unobj.mostrar();
+ }
+ public int vamosaprobar(double x,double y)
+ {
+   declara tmp;
+   tmp=new declara();
+   prueba=tmp;
+   prueba.vlr=x*y;
+   System.Console.WriteLine(prueba.vlr);
+   return prueba.llamada(x,y);
+ }
+ public bool comprobando()
+ {
+   if (prueba.vlr>0)
+     return True;
+   return False;
+ }
+}
+
+class Principal{
+public int Secundaria()
+{
+ int m,j;
+ mant dub;
+ 
+ m=20;
+ dub=new mant();
+ dub.DUB(m);
+
+ double array[][][][];
+
+ m=0;j=1;
+ array= new double[2][3][2][3];
+ for(int m=0;m<3;m++)
+ {
+   array[0][m][0][m]=j*(m+1);
+   array[0][m][1][m]=j*(m+2);
+   array[1][m][0][m]=j*(m+3);
+   array[1][m][1][m]=j*(m+4);
+ }
+ dub.comprobar(array[0][0][0][0],array[0][0][0][1],array[0][0][1][0],array[0][0][1][1],
+               array[0][1][0][0],array[0][1][0][1],array[0][1][1][0],array[0][1][1][1]);
+ dub.comprobar(array[1][0][0][0],array[1][0][0][1],array[1][0][1][0],array[1][0][1][1],
+               array[1][1][0][0],array[1][1][0][1],array[1][1][1][0],array[1][1][1][1]);
+ dub.comprobar(array[1][2][0][0],array[1][2][0][1],array[1][2][1][0],array[1][2][1][1],
+               array[1][2][0][0],array[1][2][0][1],array[1][2][1][0],array[1][2][1][1]);
+ dub.comprobar(array[1][0][0][2],array[1][0][0][2],array[1][0][1][2],array[1][0][1][2],
+               array[1][1][0][2],array[1][1][0][2],array[1][1][1][2],array[1][1][1][2]);
+ dub.comprobar(array[1][2][0][2],array[1][2][0][2],array[1][2][1][2],array[1][2][1][2],
+               array[1][2][0][2],array[1][2][0][2],array[1][2][1][2],array[1][2][1][2]);
+
+return 81;
+}
+
+public static void Main()
+{
+ double newton,newton2;
+ intermedia objeto;
+ int pos[];
+ int i;
+ Principal propio;
+ pos=new int[10];
+ for(int i=0;i<10;i++)
+    pos[i].int.Parse(System.Console.ReadLine()); /*=i*-4+7;*/
+ objeto=new intermedia();
+ newton=objeto.inicia(pos[0],pos[1]);
+ if (newton==140)
+  objeto.asigna(1.0);
+ else
+  objeto.asigna(0.0);
+ System.Console.WriteLine(objeto.muestra());
+ System.Console.WriteLine(newton);
+ newton2=objeto.vamosaprobar(pos[2],pos[3]);
+ System.Console.WriteLine(newton2);
+ System.Console.WriteLine(objeto.comprobando());
+ propio=new Principal();
+ i=propio.Secundaria();
+ if (i==81)
+ {
+  Math grafo;
+  int i,j;
+  
+  grafo=new Math();  
+  grafo.Inicia();
+  for(int i=0;i<5;i++)
+   for(int j=0;j<5;j++)
+    grafo.G[i][j].int.Parse(System.Console.ReadLine());
+  grafo.Mostrar();
+ }
+ {
+   int N,M,r1,r2;
+   Mochila pd,rec;
+
+   M=10;
+   N=5; 
+   pd=new Mochila();
+   pd.inicializa(); 
+   rec=new Mochila();
+   rec.inicializa(); 
+   r1=pd.MochilaPD(N,M);
+   r2=rec.MochilaRec(N,M);
+   if (r1==r2)
+     System.Console.WriteLine(r1);
+   else
+     System.Console.WriteLine(False);
+ }
+
+}
+
+}

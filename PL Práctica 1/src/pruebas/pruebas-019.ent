@@ -1,0 +1,6 @@
+class XXX{
+double X;double Y;
+void doubleX(){}
+void doubleY(){}
+double YX;double XY;}
+class YY{double X;double Y;void M(){double X;double Y;X=Y;Y=X;}

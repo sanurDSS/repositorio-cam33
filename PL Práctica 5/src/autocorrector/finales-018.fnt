@@ -1,0 +1,22 @@
+int par(int n)
+{
+	while (n > 0)
+	{
+		n = n - 2;
+	}
+	if (n == 0)
+		return 1;
+	else
+		return 0;
+}
+
+main()
+{
+	int i = 0;
+	while (i < 100)
+	{
+		if (par(i))
+			print(i);
+		i = i + 1;
+	}
+}

@@ -1,0 +1,10 @@
+int factorial()
+{
+	print(6);
+}
+
+main()
+{
+	int a = 2;
+	b = 2 + factorial;
+}

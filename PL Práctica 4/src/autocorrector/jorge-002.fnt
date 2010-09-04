@@ -1,0 +1,26 @@
+class Programa
+{
+	public int ambito(double ambito)
+	{
+		int ambito;
+
+		if(True)
+		{
+			int ambito;
+			
+			for(int ambito = 1; ambito < 0; ambito++)
+			{
+				int ambito;
+			}
+		}
+	}
+}
+
+class Single
+{
+     public static void Main()
+     {
+          Programa p;
+	  p = new Programa();
+     }
+}

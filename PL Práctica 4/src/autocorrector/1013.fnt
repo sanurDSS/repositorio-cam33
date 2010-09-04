@@ -1,0 +1,98 @@
+class Valor{
+public int Dar()
+{
+ return 10;
+}
+public int Ini()
+{
+ return 0; 
+}
+}
+
+class Matrix{
+public Valor obt;
+public int a[];
+private int N;
+
+public int Inicia(double vi)
+{
+ int i,aux;
+ a=new int [10];
+ obt =new Valor();
+ N=obt.Dar();
+ i=0;
+ for(int ii=0;ii<N;ii)
+  {
+   aux=vi*(i+1);
+   if (aux>=0)
+    {
+     a[i]=aux;
+     i=i+1;
+    }
+   ii=i;
+  }
+}
+
+public int Rellena(double vi)
+{
+ int aux;
+ for(int i=vi-1;i>=0;i--)
+  for(int j=0;j<i;j++) 
+    if (a[j]>a[j+1])
+     {
+       aux=a[j];
+       a[j]=a[j+1];
+       a[j+1]=aux;
+     }
+}
+public int Buscar(double pram)
+{
+ int v;
+ v=250;
+ for(int ii=0;v!=(-1);ii)
+ {
+  int der,izq,x;
+  bool encontrado;
+  encontrado=False;
+  v=v-pram;
+  if (v<=0) v=(-1);
+  izq=1;
+  der=N;
+  for(int jj=0;der>=izq;jj)
+  {
+   x=(izq+der)/2;
+   if (v==a[x])
+   {
+     encontrado=True;
+     izq=der+1;
+   }
+   else
+     if (v<a[x])
+       der=x-1;
+     else
+       izq=x+1;
+  }
+  if (encontrado)
+     System.Console.WriteLine(x);
+  else
+     System.Console.WriteLine(encontrado);
+ }
+}
+}
+
+class Principal{
+public static void Main()
+{
+ Matrix dcl;
+ Valor nuevo;
+ int i,j,min,aux;
+ int v;
+ dcl=new Matrix();
+ nuevo=new Valor();
+ dcl.Inicia(100);
+ nuevo=dcl;
+ dcl.Rellena(nuevo.Dar());
+ dcl.Buscar(50);
+}
+}
+

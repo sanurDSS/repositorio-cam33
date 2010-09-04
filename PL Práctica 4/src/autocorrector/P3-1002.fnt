@@ -1,0 +1,33 @@
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ # @ */
+
+class Single{
+public static void Main()
+{
+
+int a,b;
+
+a=7;
+b=6;
+
+System.Console.WriteLine(((a)));
+System.Console.WriteLine(b);
+System.Console.WriteLine ((-1));
+
+if (a < 10) 
+ for(int c=a;c>=7;c--) 
+  {
+    b=1;
+    if (b < 10)
+     for(int b=1;b >= 1;b--) 
+      {
+        System.Console.WriteLine (c*b);
+        b=b-1;
+      } 
+  }
+System.Console.WriteLine (2.0);
+int a;System.Console.WriteLine (True);
+System.Console.WriteLine (False);
+
+}
+}

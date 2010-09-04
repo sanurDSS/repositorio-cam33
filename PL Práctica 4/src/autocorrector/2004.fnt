@@ -1,0 +1,106 @@
+class Calculo {
+ public double digito(double x,double n)
+ {
+   int a,digit;
+   bool b;
+   a=x;
+   digit=0;
+   for(int i=0;i<=n;i++)
+   {
+    int b;
+    b=a/10;
+    digit=a-b*10;
+    a=b;
+   }
+   return digit;
+ }
+
+ public double seccion(double x,double i,double cual)
+ {
+   int a,b,e;
+   a=x;
+   b=a;
+   e=1;
+   for(int k=0;k<i;k++)
+   {
+     b=b/10;
+     e=e*10;
+   }
+   if (cual==1)
+    return b;
+   else
+    return a-b*e;
+ }
+
+ public double elevar(double x,double e)
+ {
+  int a,b;
+  int i,res;
+  a=x;
+  b=e;
+  i=0;
+  res=1;
+  if (b<=0)
+   return 1;
+  else
+   return a*elevar(a,b-1);
+ }
+}
+
+class Uso{
+ public Calculo cl;
+ public bool reserva()
+ {
+  cl=new Calculo();
+ } 
+ public double Karatsuba(double x,double y,double n)
+ {
+   int r;
+   int a,b,c,d;
+   int U,V,W;
+   if (n==1)
+    return cl.digito(x,0)*cl.digito(y,0);
+   else
+   {
+     a=cl.seccion(x,n/2,1);
+     b=cl.seccion(x,n/2,0);
+     c=cl.seccion(y,n/2,1);
+     d=cl.seccion(y,n/2,0);
+     U=Karatsuba(a,c,n/2);
+     V=Karatsuba(b,d,n/2);
+     W=Karatsuba(a+b,c+d,n/2);
+     return U*cl.elevar(10,n)+(W-U-V)*cl.elevar(10,n/2)+V;
+   }
+ }
+}
+
+class Inicial{
+public static void Main()
+{
+  Calculo O;
+  Uso K;
+  int x,y;
+ 
+  O=new Calculo();
+  K=new Uso();
+  x.int.Parse(System.Console.ReadLine());
+  y.int.Parse(System.Console.ReadLine());
+  for(int i=0;i<6;i++)
+    System.Console.WriteLine(O.digito(x,i));
+  System.Console.WriteLine(True);
+  for(int i=0;i<6;i++)
+    System.Console.WriteLine(O.digito(y,i));
+  for(int i=0;i<6;i++)
+   System.Console.WriteLine(O.seccion(x,i,1));
+  System.Console.WriteLine(True);
+  for(int i=0;i<6;i++)
+   System.Console.WriteLine(O.seccion(x,i,0));
+  x=10;
+  for(int i=0;i<10;i++)
+   System.Console.WriteLine(O.elevar(x,i));
+  System.Console.WriteLine(K.Karatsuba(2,3,1));
+  System.Console.WriteLine(K.Karatsuba(2,3,4));
+  System.Console.WriteLine(K.Karatsuba(21,31,2));
+}
+
+}

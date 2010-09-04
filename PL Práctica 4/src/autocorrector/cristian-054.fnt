@@ -1,0 +1,16 @@
+class Coche
+{
+     public double get()
+     {
+          int a;
+          
+          a = getSize() + Coche();
+     }
+
+     public static void Main()
+     {
+          Coche coche;
+          System.Console.WriteLine();
+     }
+}
+

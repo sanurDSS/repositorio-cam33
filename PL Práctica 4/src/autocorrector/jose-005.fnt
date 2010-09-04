@@ -1,0 +1,56 @@
+class C3
+{
+    public int d;
+}
+
+class C2
+{
+    public int c;
+    public C3 o1;
+
+    public int p(double m)
+    {
+
+    }
+
+    public int metodo()
+    {
+        return 50.0;
+    }
+}
+
+class C1
+{
+    public C2 a;
+    public C1 b;
+    public int c;
+    public int i;
+    private int k;
+
+    public double m2(double m2, double m)
+    {
+        a = new C2();
+    }
+
+    public double m4()
+    {
+        int a;
+        a = m2(4.6,7);
+        i = i++;
+        return 5.0;
+    }
+
+    public static void Main()
+    {
+        int i;
+        //i = 1;
+        C1 o1;
+        //o1 = new C1();
+        //o1 = new C1();
+        //i = o1.a.metodo(); // yo creo que debe dar el error 16 antes que el 2...
+        //o1.a.o1.d = 4;
+        //o1.k = 4;
+        //i = i++;
+        o1[9] = 4;
+    }
+}

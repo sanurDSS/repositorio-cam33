@@ -1,0 +1,39 @@
+class Single{
+public static void Main()
+{
+	int a;
+	a = 0;
+	
+	for(int a = 9; a < 10; a++)
+	{
+		System.Console.WriteLine(a);	
+		{
+			int a;
+			a = 3;
+			System.Console.WriteLine(a);	
+		}
+	}
+
+	if(True)
+	{
+		int a;
+		a = 1;
+		System.Console.WriteLine(a);	
+		if(True)
+		{
+			int a;
+			a = 2;
+			System.Console.WriteLine(a);	
+		}
+	}
+	else
+	{
+		int a;	
+		{
+			int a;
+		}
+	}
+	System.Console.WriteLine(a);	
+	
+}
+}

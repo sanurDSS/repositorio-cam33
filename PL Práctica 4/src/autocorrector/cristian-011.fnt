@@ -1,0 +1,15 @@
+class Coche
+{
+     public double metodo(double a, double b, double c)
+     {
+          return a * b / c;
+     }
+     
+     public static void Main()
+     {
+          Coche c;
+          c = new Coche();
+          System.Console.WriteLine(c.metodo(1231.123, 12313.123, 8823.12));
+     }
+}
+

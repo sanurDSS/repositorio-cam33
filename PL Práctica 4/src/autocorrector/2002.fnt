@@ -1,0 +1,70 @@
+class Simple{
+  public int x;
+  public int Mostrar()
+  {
+   System.Console.WriteLine(x);
+  }
+  public bool Inicializa(double p)
+  {
+     x=p;
+  }
+}
+
+class Contenedora{
+  public Simple elemento;
+
+  public bool Acceso()
+  {
+   bool n;
+   
+   elemento=new Simple();
+   n=elemento.Inicializa(10);
+   System.Console.WriteLine(elemento.x);
+  }
+}
+
+class Combina{
+ public double combinatorio(double n,double k)
+ {
+  if ((k==0)|(k==n))
+   return 1.0;
+  else
+   return combinatorio(n-1,k-1)+combinatorio(n-1,k);
+ }
+}
+
+
+class Principal{
+private int m,n,o;
+
+public bool main(double p1,double p2,double p3)
+{
+  Contenedora objeto;
+  Combina a;
+
+  objeto=new Contenedora();
+  a=new Combina();
+  objeto.Acceso();
+  objeto.elemento.Mostrar();
+  System.Console.WriteLine(a.combinatorio(a.combinatorio(p3,p2),a.combinatorio(p1,p2)));
+  return True;
+}
+
+public static void Main()
+{
+  Principal p;
+  bool ok;
+
+  p=new Principal();
+  p.o.int.Parse(System.Console.ReadLine()); 
+  p.n.int.Parse(System.Console.ReadLine()); 
+  p.m.int.Parse(System.Console.ReadLine()); 
+  ok=p.main(p.m,p.n,p.o);
+  if (ok)
+   System.Console.WriteLine(ok);
+  else
+   System.Console.WriteLine((-1));
+}
+}
+
+

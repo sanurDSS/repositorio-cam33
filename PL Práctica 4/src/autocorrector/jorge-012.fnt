@@ -1,0 +1,9 @@
+class Principal
+{
+    public static void Main()
+    {
+	int a;
+
+	a = Principal--;
+    }
+}

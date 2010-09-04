@@ -1,0 +1,138 @@
+class Single
+{
+	public static void Main()
+	{
+        bool a;
+		int b;
+		b = 2;
+
+		if (b < a)
+		{
+			System.Console.WriteLine(404);
+		}
+	}
+}
+
+
+pollonga
+
+class Single{
+public static void Main()
+{
+
+int i2;
+double r1;
+bool c3,c4;
+
+
+i2 = 5;
+r1 = 3.0;
+c3 = True;
+c4 = False;
+
+c3 = r1 != (r1+1);
+}
+}
+
+class Single
+{
+	public static void Main()
+	{
+		int a;
+		a = 10 * 10;
+		if (a > 90)
+		{
+			for (int i = 0; i < 10; i++)
+			{
+
+			}
+		}
+	}
+}
+
+/*class Single
+{
+	public static void Main()
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			System.Console.WriteLine(i);
+		}
+		for (int i = 0; i < 10; i++)
+		{
+			System.Console.WriteLine(i);
+			int i;
+			i = 1000;
+			System.Console.WriteLine(i);
+		}
+	}
+}*/
+
+class Single
+{
+	public static void Main()
+	{
+        /*int a;
+		double b, c;
+		a = 100;
+		b = 17.0;
+		c = 29.3;
+		a = a * b + c;
+		System.Console.WriteLine(a + a);
+		System.Console.WriteLine(a - a);*/
+
+		/*int a[][][];
+		a = new int[20][2][50];
+		System.Console.WriteLine(a[1][2][3]);*/
+
+		/*int a;
+		double b;
+		b = 7.18;
+		a = (-b++);
+
+		System.Console.WriteLine(a);
+		System.Console.WriteLine(b);*/
+
+		/*bool a, b, c;
+		a = False;
+		b = False;
+		c = a | b;
+		System.Console.WriteLine(c);
+		a = False;
+		b = True;
+		c = a | b;
+		System.Console.WriteLine(c);
+		a = True;
+		b = False;
+		c = a | b;
+		System.Console.WriteLine(c);
+		a = True;
+		b = True;
+		c = a | b;
+		System.Console.WriteLine(c);*/
+
+		/*int i;
+		double j;
+		i.int.Parse(System.Console.ReadLine());
+		j.double.Parse(System.Console.ReadLine());
+		System.Console.WriteLine(i);
+		System.Console.WriteLine(j);
+		System.Console.WriteLine(i == j);
+		System.Console.WriteLine(i <= j);
+		System.Console.WriteLine(i < j);
+		System.Console.WriteLine(i >= j);
+		System.Console.WriteLine(i > j);
+		System.Console.WriteLine(i != j);*/
+
+		if (True)
+		{
+			double pollica;
+			pollica = 10.123;
+		}
+		else
+		{
+			int pollica;
+			pollica = 13;
+		}
+	}
+}

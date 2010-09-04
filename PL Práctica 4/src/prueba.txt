@@ -1,0 +1,9 @@
+class Hola
+{
+	public static void Main()
+	{
+		int a[][][][];
+		a = new int[50][100][70][90];
+		a[56][20][30][40] = 100;
+	}
+}

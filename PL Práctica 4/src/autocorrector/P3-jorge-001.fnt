@@ -1,0 +1,14 @@
+class Single
+{
+	public static void Main()
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			System.Console.WriteLine(i);
+			int i;
+			i = 1000;
+			System.Console.WriteLine(i);
+		}
+	}
+}
+

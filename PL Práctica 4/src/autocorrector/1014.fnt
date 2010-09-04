@@ -1,0 +1,58 @@
+class Combina{
+ public double combinatorio(double n,double k)
+ {
+  if ((k==0)|(k==n))
+   return 1.0;
+  else
+   return combinatorio(n-1,k-1)+combinatorio(n-1,k);
+ }
+}
+
+
+class Simple{
+  public int x;
+  public int Mostrar()
+  {
+   System.Console.WriteLine(x);
+  }
+  public bool Inicializa(double p)
+  {
+     Combina a;
+     a=new Combina();
+     x=p;
+     return True;
+     return (x>=p==a<=a);
+     return (a.combinatorio(a.combinatorio(6,2),a.combinatorio(4,2)));
+  }
+}
+
+class Contenedora{
+  public Simple elemento;
+
+  public bool Acceso()
+  {
+   bool n;
+   
+   elemento=new Simple();
+   n=elemento.Inicializa(10);
+   System.Console.WriteLine(elemento.x);
+  }
+}
+
+
+
+class Principal{
+
+public static void Main()
+{
+  Contenedora objeto;
+  Combina a;
+
+  objeto=new Contenedora();
+  a=new Combina();
+  objeto.Acceso();
+
+}
+}
+
+

@@ -1,0 +1,16 @@
+class P
+{
+    public int a () { }
+    public double b () { }
+    public bool c () { }
+
+    public static void Main()
+    {
+	P a;
+	a = new P();
+	System.Console.WriteLine(a.a());
+	System.Console.WriteLine(a.b());
+	System.Console.WriteLine(a.c());
+        
+    }
+}

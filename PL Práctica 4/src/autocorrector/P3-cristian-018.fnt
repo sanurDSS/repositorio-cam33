@@ -1,0 +1,16 @@
+class Single
+{
+	public static void Main()
+	{
+		int a[][];
+		a = new int[10][20];
+		a = new int[200][300];
+		
+		a[198][297] = 1000;
+		System.Console.WriteLine(a[198][297] + a[198 + 1][297 + 1]);
+		
+		
+		a = new int[0];
+	}
+}
+

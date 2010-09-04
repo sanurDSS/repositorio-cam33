@@ -1,0 +1,23 @@
+class Single
+{
+	public static void Main()
+	{
+		int a, b, c;
+		a = 182;
+		b = 98;
+		c = 12;
+		
+		if (a * b + c == 17848)
+			System.Console.WriteLine(True);
+		else
+		{
+			bool i, j;
+			i = c + b > a;
+			j = i | a > b;
+			
+			System.Console.WriteLine(i);
+			System.Console.WriteLine(j);
+		}
+	}
+}
+

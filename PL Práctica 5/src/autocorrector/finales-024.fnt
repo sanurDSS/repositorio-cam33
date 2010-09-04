@@ -1,0 +1,6 @@
+main()
+{
+	int a = 10, b = 33;
+	int c = (a && b);
+	print(c);
+}

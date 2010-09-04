@@ -1,0 +1,14 @@
+class P
+{
+    public int a () { }
+    public double b () { }
+    public bool c () { }
+
+    public static void Main()
+    {
+	P a;
+	int b;
+
+        b = a.P;
+    }
+}

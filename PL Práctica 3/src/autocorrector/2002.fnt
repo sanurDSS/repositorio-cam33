@@ -1,0 +1,37 @@
+class Single{
+public static void Main()
+{
+ double A[][], B[][], suma;
+ A=new double [4][3];
+ B=new double [3][5];
+
+ int M,N,P;
+ M=3; N=2; P=4;
+
+ for (int i=1;i<=M;i++) 
+  {
+   for(int j=1;j<=N;j++) 
+      A[i][j].double.Parse(System.Console.ReadLine());
+  } 
+ System.Console.WriteLine(True); 
+
+ for(int i=1;i<=N;i++)
+  {
+   for(int j=1;j<=P;j++)
+      B[i][j].double.Parse(System.Console.ReadLine());
+  }
+ System.Console.WriteLine(True);
+
+ for(int i=1;i<=M;i++)
+  {
+   for(int j=1;j<=P;j++)
+    {
+     suma = 0;
+     for(int k=1;k<=N;k++)
+        suma = suma + A[i][k] * B[k][j];
+     System.Console.WriteLine(suma);
+    } 
+   System.Console.WriteLine(True); /* marca para siguiente fila */
+  } 
+}
+}

@@ -1,0 +1,28 @@
+int divsor(int x)
+{
+  int r;
+
+  read(r);  
+  if(x>=1)
+    return r/x-1;
+  else
+   return 1;
+}
+
+main()
+{
+  int a;
+  int newton;
+
+  newton=divsor(7);
+  if (newton==2)
+    a=1;
+  else
+    a=0;
+  print(a);
+  print(newton);
+  if (a) {
+    print(newton);
+    return newton;
+  } else print(a);
+}

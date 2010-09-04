@@ -1,0 +1,14 @@
+/*
+En este ejemplo la variable var no esta; declarada*/
+class Clase
+{
+	void M() {
+	}
+	
+	void F() {
+		double x;
+		double y;
+		var = x;
+	
+/* El error semantico debe saltar antes del sintactico
+*/

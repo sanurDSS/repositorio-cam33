@@ -1,0 +1,22 @@
+class Adios
+{
+     private double majestad;
+}
+
+class Hola
+{
+     private Hola h;
+     private Adios a;
+     
+     public double metodo()
+     {
+          Hola b;
+          b = h;
+          b.h = b;
+          b.a = a;
+          
+          Adios adios;
+          adios.majestad = True;
+     }
+}
+

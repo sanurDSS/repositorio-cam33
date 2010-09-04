@@ -1,0 +1,5 @@
+class M{
+	double x;
+	void F() {
+       x =;
+		/* fallara arriba

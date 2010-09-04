@@ -1,0 +1,9 @@
+class A {
+	/* esta clase vacia es valida*/
+}
+class B {
+	double x;
+	void F() {
+       int clasB;
+	}
+}

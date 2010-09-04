@@ -1,0 +1,11 @@
+int factorial()
+{
+	print(6);
+	return 10;
+}
+
+main()
+{
+	int a = factorial();
+	print(a);
+}

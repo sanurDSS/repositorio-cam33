@@ -1,0 +1,10 @@
+class Error24
+{
+	public Error24 obj;
+
+	public int Method()
+	{
+		obj = new Method();	
+	}
+
+}

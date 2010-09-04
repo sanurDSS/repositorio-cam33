@@ -1,0 +1,15 @@
+class A {
+	double j;
+	int yy;	 /* int no es un tipo de datos */
+	void f () {
+		double m; double n;
+		j =m; n= j; m = 23.1;
+	}
+	void g () {
+		double k;
+		double j;/* cuidado, esto es una variable local */
+		j=2.2;
+	}
+}
+
+

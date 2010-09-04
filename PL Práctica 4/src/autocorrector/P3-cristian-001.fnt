@@ -1,0 +1,20 @@
+class Single
+{
+     public static void Main()
+     {
+          int a, b;
+          a = 100 + 200 + 19;
+          a = a * a * a;
+          b = a * (a / 10);
+          double c;
+          c = 10 + (-b) * b + a++;
+          
+          System.Console.WriteLine(a);
+          System.Console.WriteLine(b);
+          System.Console.WriteLine(c);
+     }
+}
+
+//a.int.Parse(System.Console.ReadLine());
+//System.Console.WriteLine(a);
+

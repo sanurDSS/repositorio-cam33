@@ -1,0 +1,66 @@
+class Single{
+public static void Main()
+{
+
+int i1,i2;
+double r1,r2;
+bool c1,c2,c3,c4;
+
+
+i1 = 12;
+i2 = 5;
+r1 = 3.0;
+r2 = 3.05;
+c1 = True;
+c2 = False;
+c3 = True;
+c4 = False;
+
+if (i1<i1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (i1<i1+1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1<r1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1<r1+1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (i1<r1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1<i1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+System.Console.WriteLine(0.0); 
+if (i1<=i1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (i1<=i1+1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1<=r1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1<=r1+1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (i1<=r1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1<=i1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+System.Console.WriteLine(0.0); 
+if (i1>i1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (i1>i1+1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1>r1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1>r1+1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (i1>r1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1>i1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+System.Console.WriteLine(0.0); 
+if (i1>=i1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (i1>=i1+1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1>=r1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1>=r1+1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (i1>=r1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1>=i1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+System.Console.WriteLine(0.0);
+if (i1!=i1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (i1!=i1+1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1!=r1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1!=(r1+1>i2))   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (c1!=c1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (c1!=c2)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (i1!=r1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1!=i1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+System.Console.WriteLine(0.0); 
+if (i1==i1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (i1==i1+1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1==r1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1==r1+1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (c1==c1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (c1==c2)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (i1==r1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+if (r1==i1)   System.Console.WriteLine(c3); else System.Console.WriteLine(c4);  
+}
+
+}

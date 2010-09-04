@@ -1,0 +1,100 @@
+class Array{
+public double b,bar[];
+public int Reserva()
+{
+  bar=new double[2];
+}
+}
+class Read{
+public Array redoble;
+
+public int Tambor()
+{
+ System.Console.WriteLine(redoble.bar[0]);
+ System.Console.WriteLine(redoble.bar[1]);
+ System.Console.WriteLine(redoble.b);
+
+}
+private double array[];
+public bool Reserva()
+{
+  redoble=new Array();
+  redoble.Reserva();
+  array=new double[4];
+}
+
+public bool Lectura(double posicion)
+{
+ array[posicion].double.Parse(System.Console.ReadLine());
+ return True; 
+}
+public double ObtenerValor(double posicion)
+{
+  return array[posicion];
+}
+}
+class Write{
+public Read objeto;
+public int Escritura(double posicion)
+{
+  System.Console.WriteLine(objeto.ObtenerValor(posicion));
+  return 1;
+}
+public Array vector;
+
+public bool Uso(double p1, double p2)
+{
+ vector = new Array();
+ vector.Reserva();
+ vector.b=p1;
+ vector.bar[0]=p2*p1-1;
+ vector.bar[1]=p2-1*p1;
+ objeto.Reserva();
+ objeto.redoble.Reserva();
+ objeto.redoble=vector;
+ return True;
+}
+
+public int Consulta()
+{
+ System.Console.WriteLine(vector.bar[0]);
+ System.Console.WriteLine(vector.bar[1]);
+ System.Console.WriteLine(vector.b);
+ objeto.Tambor();
+ return 1;
+}
+
+public double Modifica(double nuevo,double pos)
+{
+  vector.bar[pos]=nuevo;
+}
+}
+class Initial{
+public static void Main()
+{
+  Read leo;
+  Write escribo,mart;
+  int indice,index;
+
+  indice.int.Parse(System.Console.ReadLine());
+  leo=new Read();
+  leo.Reserva();
+  if ((indice<4) & (indice>=0))
+   if (leo.Lectura(indice)) 
+    {
+      escribo=new Write(); 
+      escribo.objeto=leo;
+      escribo.Escritura(indice);
+    }
+  mart=new Write();
+  index.int.Parse(System.Console.ReadLine());
+  escribo.Uso(indice,index);
+  mart.vector=escribo.vector;
+  escribo.Consulta();
+  mart.Modifica(888888.00007777,0);
+  escribo.vector.bar[1]=0.99999999;
+  escribo.objeto.redoble.b=5.6;
+  escribo.Consulta();
+
+} 
+}
